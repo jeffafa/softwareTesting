@@ -1,12 +1,8 @@
 data Boy = Matthew | Peter | Jack | Arnold | Carl 
             deriving (Eq,Show)
+type Sentence = [(Boy,Bool)]
 
 boys = [Matthew, Peter, Jack, Arnold, Carl]
-
-data Matrix = Matrix [[Bool]]
-
-data Sentence = Sentence [(Boy,Bool)]
-
 --Logical sentences
 sentencesMatthew = [(Matthew, False), (Peter, True), (Jack, True), (Arnold, True), (Carl,False)]
 sentencesPeter= [(Matthew, True), (Peter, False), (Jack, True), (Arnold, False), (Carl,False)]
@@ -14,30 +10,20 @@ sentencesJack = [(Matthew, False), (Peter, False), (Jack, False), (Arnold, False
 sentencesArnold = [(Matthew, True), (Peter, True), (Jack, True), (Arnold, True), (Carl,False)]
 sentencesCarl = [(Matthew, False), (Peter, False), (Jack, False), (Arnold, False), (Carl,True)]
 
-f sentencesMatthew Matthew 
-
-f :: [Sentence] -> Boy -> [Bool]
-f [] = []
-f xs Matthew,Peter,Jack,Arnold,Carl = map says xs
-
---f :: [Sentence] -> Boy -> Bool
---f (x:xs) b = if fst x == b then snd x else f(xs ,b)
---f [] = false
+valueByKey :: Boy -> Sentence -> Bool
+valueByKey _ [] = False
+valueByKey b (x:xs) = if (fst x) == b then snd x else valueByKey b xs
 
 --Encoding of each sentence
 says :: Boy -> Boy -> Bool
-says Matthew = f sentencesMatthew, b  
-
-
--- f matthew en zijn sentence
--- says aanroepen en zijn boy bijhouden
--- matrix uitlezen en alleen accusers (true) der uithalen
--- dan guily checken enzo
-
-
+says Matthew b = (valueByKey b sentencesMatthew)
+says Peter b = (valueByKey b sentencesPeter)
+says Jack b = (valueByKey b sentencesJack)
+says Arnold b = (valueByKey b sentencesArnold)
+says Carl b = (valueByKey b sentencesCarl)
 
 accusers :: Boy -> [Boy]
-accusers Matthew =  ( f om alles te bereken met die keys) says -de lijst van boys- matthew  
+accusers b =  if (says )  
 
 guilty :: [Boy]
 guilty = []
