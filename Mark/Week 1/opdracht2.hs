@@ -17,7 +17,11 @@ sentences = [sentencesMatthew, sentencesPeter, sentencesJack, sentencesArnold, s
 says :: Boy -> Boy -> [Bool]
 says a b = valueBy a b
 
-valueBy :: Boy -> Boy -> Bool
+--valueByKeyX :: Boy -> Sentence -> Bool
+--valueByKeyX _ [] = False
+--valueByKeyX b (x:xs) = if (fst x) == b then snd x else valueByKey b xs
+
+valueBy :: Boy -> Boy -> [Bool]
 valueBy a b = map (valueByKey a b) sentences   
 
 valueByKey :: Boy -> Boy -> Sentence -> Bool
@@ -47,70 +51,3 @@ guilty = []
 honest :: [Boy]
 honest = []
 
-
---Old solution
-
-boysString = ["Carl", "Matthew", "Peter", "Jack", "Arnold", "Carl"]
-booleanString = ["didnt ", "did"] 
-
-filterSentence :: String -> [Bool]
-filterSentence s = filterX (filterWords s)
-
-filterX ::[String] -> [Bool]
-filterX [] = []
-filterX xs = map mapWord xs 
-
-filterWords :: String -> [String]
-filterWords str = filter acceptableWord (words str)
-  where
-    acceptableWord = all (`elem` "Carl and didnt neither did I")
-	
-mapWord x = mapWordToBool x -- if x elem boysString then mapWordToPerson else mapWordToBool 
-	
-mapWordToBool :: String -> Bool
-mapWordToBool "didnt" = False
-mapWordToBool "did" = True
-mapWordToBool x = True
-
-mapWordToPerson :: String -> Boy
-mapWordToPerson "Carl" = Carl
-
-
------ oplossing 2?
-
---matthew    
-    --Matthew false
-    --Peter true
-    --Jack true
-    --Arnold true
-    --Carl false
-
---Peter
-    -- Matthew true
-    --Peter false
-    --Jack true
-    -- Arnold false
-    --Carl false
-    
---Jack carl en matthew, matthew of jack
-    --Matthew true/false ? tegenstrijdig false
-    --Peter false/true ? tegenstrijdig`false
-    --Jack False
-    -- arnold false/true ? tegenstrijdig false
-    --carl true
-    
---Arnold
-    --matthew or Peter hoe te vergelijken? Moeten we dan 
-    --true
-    --true
-    -- true
-    -- true
-    -- false
-    
---Carl moet deze niet inverse van arnold zijn?
-    -- !matthew or !Peter hoe te vergelijken?
-    -- true    false true 
-    -- false true true
-    -- false false false
-    -- false true true
-    -- true true     true
