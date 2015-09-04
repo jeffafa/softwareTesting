@@ -10,9 +10,23 @@ sentencesJack = [(Matthew, False), (Peter, False), (Jack, False), (Arnold, False
 sentencesArnold = [(Matthew, True), (Peter, True), (Jack, True), (Arnold, True), (Carl,False)]
 sentencesCarl = [(Matthew, False), (Peter, False), (Jack, False), (Arnold, False), (Carl,True)]
 
+sentences = [sentencesMatthew, sentencesPeter, sentencesJack, sentencesArnold, sentencesCarl]
+
+--needed to have some readability in whatDoTheySayAbout and creates ownly one place with static 
+getSentence :: Boy -> Sentence
+getSentence Matthew = sentencesMatthew
+getSentence Peter = sentencesPeter
+getSentence Jack = sentencesJack
+getSentence Arnold = sentencesArnold
+getSentence Carl = sentencesCarl
+
+--Could be fixed with getsentence
 valueByKey :: Boy -> Sentence -> Bool
 valueByKey _ [] = False
 valueByKey b (x:xs) = if (fst x) == b then snd x else valueByKey b xs
+
+getTulpe :: Boy -> Sentence -> (Boy,Bool)
+getTulpe b (x:xs) = if (fst x) == b then x else getTulpe b xs
 
 --Encoding of each sentence
 says :: Boy -> Boy -> Bool
@@ -22,8 +36,8 @@ says Jack b = (valueByKey b sentencesJack)
 says Arnold b = (valueByKey b sentencesArnold)
 says Carl b = (valueByKey b sentencesCarl)
 
-accusers :: Boy -> [Boy]
-accusers b =  if (says )  
+--accusers :: Boy -> [Boy]
+--accusers b =  map (\x -> if (even x) then (x `div` 2) else x) [1,2,3,4]  
 
 guilty :: [Boy]
 guilty = []
@@ -31,33 +45,15 @@ guilty = []
 honest :: [Boy]
 honest = []
 
+--Returns a sentence of what other people say about the boy
+whatDoTheySayAbout :: Boy -> Sentence
+whatDoTheySayAbout a = map(\xs -> toTuple xs (valueByKey a (getSentence xs))) boys
 
---Old solution
+--needed to have some readability in whatDoTheySayAbout
+toTuple :: Boy -> Bool -> (Boy,Bool)
+toTuple a b = (a,b) 
 
-boysString = ["Carl", "Matthew", "Peter", "Jack", "Arnold", "Carl"]
-booleanString = ["didnt ", "did"] 
 
-filterSentence :: String -> [Bool]
-filterSentence s = filterX (filterWords s)
-
-filterX ::[String] -> [Bool]
-filterX [] = []
-filterX xs = map mapWord xs 
-
-filterWords :: String -> [String]
-filterWords str = filter acceptableWord (words str)
-  where
-    acceptableWord = all (`elem` "Carl and didnt neither did I")
-	
-mapWord x = mapWordToBool x -- if x elem boysString then mapWordToPerson else mapWordToBool 
-	
-mapWordToBool :: String -> Bool
-mapWordToBool "didnt" = False
-mapWordToBool "did" = True
-mapWordToBool x = True
-
-mapWordToPerson :: String -> Boy
-mapWordToPerson "Carl" = Carl
 
 
 ----- oplossing 2?
