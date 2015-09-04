@@ -1,43 +1,45 @@
 data Boy = Matthew | Peter | Jack | Arnold | Carl 
             deriving (Eq,Show)
+type Sentence = [(Boy,Boy,Bool)]
 
 boys = [Matthew, Peter, Jack, Arnold, Carl]
 
-data Matrix = Matrix [[Bool]]
-
-data Sentence = Sentence [(Boy,Bool)]
-
 --Logical sentences
-sentencesMatthew = [(Matthew, False), (Peter, True), (Jack, True), (Arnold, True), (Carl,False)]
-sentencesPeter= [(Matthew, True), (Peter, False), (Jack, True), (Arnold, False), (Carl,False)]
-sentencesJack = [(Matthew, False), (Peter, False), (Jack, False), (Arnold, False), (Carl,True)]
-sentencesArnold = [(Matthew, True), (Peter, True), (Jack, True), (Arnold, True), (Carl,False)]
-sentencesCarl = [(Matthew, False), (Peter, False), (Jack, False), (Arnold, False), (Carl,True)]
+sentencesMatthew = [(Matthew,Matthew,False), (Matthew,Peter, True), (Matthew,Jack, True), (Matthew,Arnold, True), (Matthew,Carl,False)]
+sentencesPeter= [(Peter,Matthew, True), (Peter,Peter, False), (Peter,Jack, True), (Peter,Arnold, False), (Peter,Carl,False)]
+sentencesJack = [(Jack,Matthew, False), (Jack,Peter, False), (Jack,Jack, False), (Jack,Arnold, False), (Jack,Carl,True)]
+sentencesArnold = [(Arnold,Matthew, True), (Arnold,Peter, True), (Arnold,Jack, True), (Arnold,Arnold, True), (Arnold,Carl,False)]
+sentencesCarl = [(Carl,Matthew, False), (Carl,Peter, False), (Carl,Jack, False), (Carl,Arnold, False), (Carl,Carl,True)]
 
-f sentencesMatthew Matthew 
-
-f :: [Sentence] -> Boy -> [Bool]
-f [] = []
-f xs Matthew,Peter,Jack,Arnold,Carl = map says xs
-
---f :: [Sentence] -> Boy -> Bool
---f (x:xs) b = if fst x == b then snd x else f(xs ,b)
---f [] = false
+sentences = [sentencesMatthew, sentencesPeter, sentencesJack, sentencesArnold, sentencesCarl]
 
 --Encoding of each sentence
-says :: Boy -> Boy -> Bool
-says Matthew = f sentencesMatthew, b  
+says :: Boy -> Boy -> [Bool]
+says a b = valueBy a b
 
+valueBy :: Boy -> Boy -> Bool
+valueBy a b = map (valueByKey a b) sentences   
 
--- f matthew en zijn sentence
--- says aanroepen en zijn boy bijhouden
--- matrix uitlezen en alleen accusers (true) der uithalen
--- dan guily checken enzo
+valueByKey :: Boy -> Boy -> Sentence -> Bool
+valueByKey _ _ [] = False
+valueByKey a b (x:xs) = if (fst3 x) == a && (snd3 x) == b then thr3 x else valueByKey a b xs
 
+fst3 :: (a,b,c) -> a
+fst3 (x,_,_) = x
 
+snd3 :: (a,b,c) -> b
+snd3 (_,x,_) = x
+
+thr3 :: (a,b,c) -> c
+thr3 (_,_,c) = c
 
 accusers :: Boy -> [Boy]
-accusers Matthew =  ( f om alles te bereken met die keys) says -de lijst van boys- matthew  
+accusers b = []
+
+--Correct but need get the boy not only the bool
+f :: Boy -> Bool --[Boy]
+f a = False
+--f b = map (valueByKey b) sentences 
 
 guilty :: [Boy]
 guilty = []
