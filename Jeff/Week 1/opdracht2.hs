@@ -3,6 +3,7 @@ data Boy = Matthew | Peter | Jack | Arnold | Carl
 type Sentence = [(Boy,Bool)]
 
 boys = [Matthew, Peter, Jack, Arnold, Carl]
+--boys = [Matthew, Jack]
 --Logical sentences
 sentencesMatthew = [(Matthew, False), (Peter, True), (Jack, True), (Arnold, True), (Carl,False)]
 sentencesPeter= [(Matthew, True), (Peter, False), (Jack, True), (Arnold, False), (Carl,False)]
@@ -37,11 +38,19 @@ says Arnold b = (valueByKey b sentencesArnold)
 says Carl b = (valueByKey b sentencesCarl)
 
 accusers :: Boy -> [Boy]
-accusers b = map fst (filter ((==True).snd) (whatDoTheySayAbout b))   
+accusers b = map fst (filter ((==True).snd) (whatDoTheySayAbout b)) 
 
 --Need to have similar like honest function but instead get JACK and not the 3 guys who told the truth
 guilty :: [Boy]
-guilty = concat (filter (\x -> length x == 3)(map accusers boys))
+guilty = giveWhere (\x -> numberOfAccusers x >= 3) boys
+								
+giveWhere :: (a -> Bool) -> [a] -> [a]
+giveWhere _ [] = []
+giveWhere x (y:ys) | x y	= y : giveWhere x ys
+				   | otherwise = giveWhere x ys 
+
+numberOfAccusers :: Boy -> Int
+numberOfAccusers a = length (accusers a)
 
 --Returns the people who told the truth about the guilty guy
 honest :: [Boy]

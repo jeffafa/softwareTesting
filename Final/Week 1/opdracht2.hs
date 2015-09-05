@@ -1,12 +1,9 @@
 data Boy = Matthew | Peter | Jack | Arnold | Carl 
             deriving (Eq,Show)
+type Sentence = [(Boy,Bool)]
 
 boys = [Matthew, Peter, Jack, Arnold, Carl]
-
-data Matrix = Matrix [[Bool]]
-
-data Sentence = Sentence [(Boy,Bool)]
-
+--boys = [Matthew, Jack]
 --Logical sentences
 sentencesMatthew = [(Matthew, False), (Peter, True), (Jack, True), (Arnold, True), (Carl,False)]
 sentencesPeter= [(Matthew, True), (Peter, False), (Jack, True), (Arnold, False), (Carl,False)]
@@ -14,101 +11,55 @@ sentencesJack = [(Matthew, False), (Peter, False), (Jack, False), (Arnold, False
 sentencesArnold = [(Matthew, True), (Peter, True), (Jack, True), (Arnold, True), (Carl,False)]
 sentencesCarl = [(Matthew, False), (Peter, False), (Jack, False), (Arnold, False), (Carl,True)]
 
-f sentencesMatthew Matthew 
+sentences = [sentencesMatthew, sentencesPeter, sentencesJack, sentencesArnold, sentencesCarl]
 
-f :: [Sentence] -> Boy -> [Bool]
-f [] = []
-f xs Matthew,Peter,Jack,Arnold,Carl = map says xs
+--needed to have some readability in whatDoTheySayAbout and creates ownly one place with static 
+getSentence :: Boy -> Sentence
+getSentence Matthew = sentencesMatthew
+getSentence Peter = sentencesPeter
+getSentence Jack = sentencesJack
+getSentence Arnold = sentencesArnold
+getSentence Carl = sentencesCarl
 
---f :: [Sentence] -> Boy -> Bool
---f (x:xs) b = if fst x == b then snd x else f(xs ,b)
---f [] = false
+--Could be fixed with getsentence
+valueByKey :: Boy -> Sentence -> Bool
+valueByKey _ [] = False
+valueByKey b (x:xs) = if (fst x) == b then snd x else valueByKey b xs
+
+getTulpe :: Boy -> Sentence -> (Boy,Bool)
+getTulpe b (x:xs) = if (fst x) == b then x else getTulpe b xs
 
 --Encoding of each sentence
 says :: Boy -> Boy -> Bool
-says Matthew = f sentencesMatthew, b  
-
-
--- f matthew en zijn sentence
--- says aanroepen en zijn boy bijhouden
--- matrix uitlezen en alleen accusers (true) der uithalen
--- dan guily checken enzo
-
-
+says Matthew b = (valueByKey b sentencesMatthew)
+says Peter b = (valueByKey b sentencesPeter)
+says Jack b = (valueByKey b sentencesJack)
+says Arnold b = (valueByKey b sentencesArnold)
+says Carl b = (valueByKey b sentencesCarl)
 
 accusers :: Boy -> [Boy]
-accusers Matthew =  ( f om alles te bereken met die keys) says -de lijst van boys- matthew  
+accusers b = map fst (filter ((==True).snd) (whatDoTheySayAbout b)) 
 
+--Need to have similar like honest function but instead get JACK and not the 3 guys who told the truth
 guilty :: [Boy]
-guilty = []
+guilty = giveWhere (\x -> numberOfAccusers x >= 3) boys
+								
+giveWhere :: (a -> Bool) -> [a] -> [a]
+giveWhere _ [] = []
+giveWhere x (y:ys) | x y	= y : giveWhere x ys
+				   | otherwise = giveWhere x ys 
 
+numberOfAccusers :: Boy -> Int
+numberOfAccusers a = length (accusers a)
+
+--Returns the people who told the truth about the guilty guy
 honest :: [Boy]
-honest = []
+honest = concat (filter (\x -> length x == 3)(map accusers boys))
 
+--Returns a sentence of what other people say about the boy
+whatDoTheySayAbout :: Boy -> Sentence
+whatDoTheySayAbout a = map(\xs -> toTuple xs (valueByKey a (getSentence xs))) boys
 
---Old solution
-
-boysString = ["Carl", "Matthew", "Peter", "Jack", "Arnold", "Carl"]
-booleanString = ["didnt ", "did"] 
-
-filterSentence :: String -> [Bool]
-filterSentence s = filterX (filterWords s)
-
-filterX ::[String] -> [Bool]
-filterX [] = []
-filterX xs = map mapWord xs 
-
-filterWords :: String -> [String]
-filterWords str = filter acceptableWord (words str)
-  where
-    acceptableWord = all (`elem` "Carl and didnt neither did I")
-	
-mapWord x = mapWordToBool x -- if x elem boysString then mapWordToPerson else mapWordToBool 
-	
-mapWordToBool :: String -> Bool
-mapWordToBool "didnt" = False
-mapWordToBool "did" = True
-mapWordToBool x = True
-
-mapWordToPerson :: String -> Boy
-mapWordToPerson "Carl" = Carl
-
-
------ oplossing 2?
-
---matthew    
-    --Matthew false
-    --Peter true
-    --Jack true
-    --Arnold true
-    --Carl false
-
---Peter
-    -- Matthew true
-    --Peter false
-    --Jack true
-    -- Arnold false
-    --Carl false
-    
---Jack carl en matthew, matthew of jack
-    --Matthew true/false ? tegenstrijdig false
-    --Peter false/true ? tegenstrijdig`false
-    --Jack False
-    -- arnold false/true ? tegenstrijdig false
-    --carl true
-    
---Arnold
-    --matthew or Peter hoe te vergelijken? Moeten we dan 
-    --true
-    --true
-    -- true
-    -- true
-    -- false
-    
---Carl moet deze niet inverse van arnold zijn?
-    -- !matthew or !Peter hoe te vergelijken?
-    -- true    false true 
-    -- false true true
-    -- false false false
-    -- false true true
-    -- true true     true
+--needed to have some readability in whatDoTheySayAbout
+toTuple :: Boy -> Bool -> (Boy,Bool)
+toTuple a b = (a,b) 
