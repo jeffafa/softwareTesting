@@ -36,14 +36,16 @@ says Jack b = (valueByKey b sentencesJack)
 says Arnold b = (valueByKey b sentencesArnold)
 says Carl b = (valueByKey b sentencesCarl)
 
---accusers :: Boy -> [Boy]
---accusers b =  map (\x -> if (even x) then (x `div` 2) else x) [1,2,3,4]  
+accusers :: Boy -> [Boy]
+accusers b = map fst (filter ((==True).snd) (whatDoTheySayAbout b))   
 
+--Need to have similar like honest function but instead get JACK and not the 3 guys who told the truth
 guilty :: [Boy]
-guilty = []
+guilty = concat (filter (\x -> length x == 3)(map accusers boys))
 
+--Returns the people who told the truth about the guilty guy
 honest :: [Boy]
-honest = []
+honest = concat (filter (\x -> length x == 3)(map accusers boys))
 
 --Returns a sentence of what other people say about the boy
 whatDoTheySayAbout :: Boy -> Sentence
