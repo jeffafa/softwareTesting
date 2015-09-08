@@ -18,14 +18,14 @@ isDerangement x y =  if giveWhere (\a -> a == y) (deran x) == [] then False else
 
 deran :: Eq a => [a] -> [[a]]
 deran [] = [[]]
-deran x = removeDuplicates (perms x) x
+deran x = remove (perms x) x
 
 giveWhere :: (a -> Bool) -> [a] -> [a]
 giveWhere _ [] = []
 giveWhere x (y:ys) | x y	= y : giveWhere x ys
 				   | otherwise = giveWhere x ys 
 
-removeDuplicates :: Eq a => [[a]] -> [a] -> [[a]]
-removeDuplicates x [] = x
-removeDuplicates [[]] _ = [[]]
-removeDuplicates x y = giveWhere (\a -> a /= y) x  
+remove :: Eq a => [[a]] -> [a] -> [[a]]
+remove x [] = x
+remove [[]] _ = [[]]
+remove x y = giveWhere (\a -> a /= y) x  
