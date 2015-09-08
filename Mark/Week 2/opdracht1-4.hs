@@ -4,9 +4,9 @@ import Data.List
 import System.Random
 import Data.Char ( isLetter, isNumber )
 
-type Conversion = [([Char],[Char])]
+type Conversion = [(Char,String)]
 
-conversionTable = [("A", "10"), ("B", "11"), ("C", "12"), ("D", "13"), ("E","14"),("F", "15"), ("G", "16"), ("H", "17"), ("I", "18"), ("J","19"),("K","20"), ("L", "21"),("M", "22"), ("N", "23"), ("O","24"), ("P", "25"), ("Q", "26"), ("R", "27"), ("S", "28"),("T","29"), ("U", "30"), ("V", "31"), ("W", "32"), ("X","33"), ("Y", "34"), ("Z","35")]
+conversionTable = [('A', "10"), ('B', "11"), ('C', "12"), ('D', "13"), ('E',"14"),('F', "15"), ('G', "16"), ('H', "17"), ('I', "18"), ('J',"19"),('K',"20"), ('L', "21"),('M', "22"), ('N', "23"), ('O',"24"), ('P', "25"), ('Q', "26"), ('R', "27"), ('S', "28"),('T',"29"), ('U', "30"), ('V', "31"), ('W', "32"), ('X',"33"), ('Y', "34"), ('Z',"35")]
 
 --Question 1--
 
@@ -35,36 +35,30 @@ isTraingle a b c = if not (a + b > c && a + c > b && b + c > a) then True else F
 -- To Do -- 
 -- tests
 
---Question 2
-isPremutation :: Eq a => [a] -> [a] -> Bool
-isPremutation _ _ = False
-
 --Question 4
 iban :: String -> Bool
-iban _ = False
+iban [] = False
+iban xs = modDigits (digits (letterToNummeric (moveFirstFour (deleteAlpha xs))))
 
-deleteAlpha :: [Char] -> [Char]
+deleteAlpha :: String -> String
 deleteAlpha y = filter (\x -> isNumber x || isLetter x) y
 
 moveFirstFour :: [a] -> [a]
 moveFirstFour x = drop 4 x ++ (take 4 x)
 
---To finish 3
-letterToNummeric :: [Char] -> [Char]
-letterToNummeric (x:xs) = if (isLetter x) then (valueByKey x conversionTable) ++ letterToNummeric xs else letterToNummeric xs 
+letterToNummeric :: String -> String
+letterToNummeric [] = []
+letterToNummeric (x:xs) = if (isLetter x) then (valueByKey x conversionTable) ++ letterToNummeric xs else x : letterToNummeric xs 
 
-valueByKey :: Char -> Conversion -> [Char]
+valueByKey :: Char -> Conversion -> String
 valueByKey b (x:xs) = if (fst x) == b then snd x else valueByKey b xs
 
---4
-digits :: [Char] -> [Integer]
-digits = map (read . return) . show
+digits :: String -> Integer 
+digits xs = read xs :: Integer
 
 modDigits :: Integer -> Bool
 modDigits x = x `mod` 97 == 1
 
---3. convert letters into numeric 
---4. mod something
 
 
 
