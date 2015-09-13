@@ -9,12 +9,9 @@ type Conversion = [(Char,String)]
 conversionTable = [('A', "10"), ('B', "11"), ('C', "12"), ('D', "13"), ('E',"14"),('F', "15"), ('G', "16"), ('H', "17"), ('I', "18"), ('J',"19"),('K',"20"), ('L', "21"),('M', "22"), ('N', "23"), ('O',"24"), ('P', "25"), ('Q', "26"), ('R', "27"), ('S', "28"),('T',"29"), ('U', "30"), ('V', "31"), ('W', "32"), ('X',"33"), ('Y', "34"), ('Z',"35")]
 
 examples = ["AL47 2121 1009 0000 0002 3569 8741", "AD12 0001 2030 2003 5910 0100", "AT61 1904 3002 3457 3201", "AZ21 NABZ 0000 0000 1370 1000 1944", "BH67 BMAG 0000 1299 1234 56"]
+negativeExamples = ["AL47$$!! 2122 1009 0000 0002 3569 8741", "ADEEEE12 0001 2030 2003 5910 0100", "ATXXXAA61 1904 3002 3457 3201", "AZ11 NABZ 0000 0000 1370 1000 1944", "BH67"]
 
-import System.Random
-import Control.Monad
-import Language.Haskell.TH
-
---Question 1-- 1 hour time spend (most time on testing, tried to automate test but stuck around IO output)
+--Question 1-- Time indication: 1 hour time spend (most time on testing, tried to automate test but stuck around IO output)
 data Shape = NoTriangle | Equilateral
              | Isosceles  | Rectangular | Other deriving (Eq,Show)
 
@@ -79,8 +76,14 @@ testPositiveExamples (x:xs) = if iban x then
 						   testPositiveExamples xs
 					  else error ("failed test on" ++ show x) 
 					  
+testNegativeExamples :: [String] -> IO ()
+testNegativeExamples [] = print ("done with all tests")
+testNegativeExamples (x:xs) = if iban x then 
+						do print ("pass on: " ++ show x) 	
+						   testNegativeExamples xs
+					  else error ("failed test on" ++ show x) 				  
 
---Random Integer	
+--Automated testing question 4
 getRandomInt :: Int -> IO Int 
 getRandomInt n = getStdRandom (randomR (0,n))
 
@@ -102,8 +105,25 @@ getIntL k n = do
    y <- randomFlip x
    xs <- getIntL k (n-1)
    return (y:xs)
+  
+--Random char for creating iban  
+getRandomChar :: Char -> IO Char
+getRandomChar n = getStdRandom (randomR('a',n))
 
---f = triangle needs to be replaced by the genIntList but problem with IO versus Integer... :X   
+genCharList :: IO [Char]
+genCharList = do
+	k <- getRandomChar 'l'
+	n <- getRandomInt 10
+	getCharL k n
+	
+getCharL :: Char -> Integer -> IO [Char]
+getCharL _ 0 = return []
+getCharL k n = do
+	x <- getRandomChar k
+	xs <- getCharL k (n-1)
+	return (x:xs)	
+
+--f = triangle needs to be replaced by the genIntList but problem with IO versus Integer... :/ how to fix?   
 testR :: Int -> Int -> (Integer -> Integer -> Integer -> Shape) -> IO ()
 testR k n f = if k /= n then  
 						do print ("Result" ++ show(f 3 3 3)) 	
