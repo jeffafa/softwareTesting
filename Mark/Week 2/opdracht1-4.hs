@@ -10,8 +10,11 @@ conversionTable = [('A', "10"), ('B', "11"), ('C', "12"), ('D', "13"), ('E',"14"
 
 examples = ["AL47 2121 1009 0000 0002 3569 8741", "AD12 0001 2030 2003 5910 0100", "AT61 1904 3002 3457 3201", "AZ21 NABZ 0000 0000 1370 1000 1944", "BH67 BMAG 0000 1299 1234 56"]
 
---Question 1--
+import System.Random
+import Control.Monad
+import Language.Haskell.TH
 
+--Question 1-- 1 hour time spend (most time on testing, tried to automate test but stuck around IO output)
 data Shape = NoTriangle | Equilateral
              | Isosceles  | Rectangular | Other deriving (Eq,Show)
 
@@ -34,11 +37,15 @@ isIsosceles a b c = if a == b || b == c then True else False
 isTraingle :: Integer -> Integer -> Integer -> Bool
 isTraingle a b c = if not (a + b > c && a + c > b && b + c > a) then True else False
 
--- Test question 1 -- 
-  
-testQuestion1 :: [Integer] -> IO ()
-testQuestion1 x = print ("Test on: " ++ show x ++ "Result" ++ show(triangle (x !! 0) (x !! 1) (x !! 2))) 	
-					   					  
+--Test question 1--
+testSetQuestion1 = [[1,2,3],[3,3,3],[-1,-2,-3],[0,0,0],[2,2,0],[1,2,2],[2,2,8],[3,4,5]]
+				   
+testQuestion1 :: [[Integer]] -> IO ()
+testQuestion1 [[]] = print ("done with all tests")
+testQuestion1 (x:xs) = if True then 
+						do print ("pass on: " ++ show x ++ " Result: " ++ show(triangle (x !! 0) (x !! 1) (x !! 2))) 	
+						   testQuestion1 xs
+					  else error ("failed test on" ++ show x) 					  				   					  
 
 --Question 4
 iban :: String -> Bool
