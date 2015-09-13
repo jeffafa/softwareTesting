@@ -42,7 +42,52 @@ testQuestion1 [[]] = print ("done with all tests")
 testQuestion1 (x:xs) = if True then 
 						do print ("pass on: " ++ show x ++ " Result: " ++ show(triangle (x !! 0) (x !! 1) (x !! 2))) 	
 						   testQuestion1 xs
-					  else error ("failed test on" ++ show x) 					  				   					  
+					  else error ("failed test on" ++ show x) 
+
+--Assignment 2
+isPermutation :: Eq a => [a] -> [a] -> Bool
+isPermutation [] [] = True
+isPermutation x y =  if giveWhere (\a -> a == y) (perms x) == [] then False else True
+
+perms :: [a] ->[[a]]
+perms [] = [[]]
+perms (x:xs) = concat (map (insrt x) (perms xs)) where
+   insrt x [] = [[x]]
+   insrt x (y:ys) = (x:y:ys) : map (y:) (insrt x ys)
+   
+--Assignment 2 tests
+--Comparing it to the permutation function in Data.List
+testPerms :: (Eq a, Ord a) => [a]->Bool
+testPerms [] = True
+testPerms x = (sort(perms x)) == (sort(permutations x))
+
+--Testing isPermutation (remember it tests the function its result doesn't mean it is a permutation)
+testIsPerm :: Eq a => [a] -> [a] -> Bool
+testIsPerm [] [] = True
+testIsPerm x y = if (isPermutation x y) == (elem y (permutations x)) then True else False 
+
+--Assignment 3   
+isDerangement :: Eq a => [a] -> [a] -> Bool
+isDerangement [] [] = True
+isDerangement x y =  if giveWhere (\a -> a == y) (deran x) == [] then False else True
+
+deran :: Eq a => [a] -> [[a]]
+deran [] = [[]]
+deran x = remove (perms x) x
+
+--Assignment 3 Testing
+testDeran :: (Eq a, Ord a) => [a] -> Bool
+testDeran [] = True
+testDeran x = (sort(remove (permutations x) x)) == (sort(deran x))
+
+testDeran2 :: Eq a => [a] -> Bool
+testDeran2 [] = True
+testDeran2 x = elem x (deran x)
+
+--Remember this test the function. Doesn't tell if it is a derangement
+testIsDerangement :: Eq a => [a] -> [a] -> Bool
+testIsDerangement [] [] = True
+testIsDerangement x y = if (isDerangement x y) == (elem y (derangement x)) then True else False
 
 --Question 4
 iban :: String -> Bool
@@ -84,26 +129,26 @@ testNegativeExamples (x:xs) = if iban x then
 					  else error ("failed test on" ++ show x) 				  
 
 --Automated testing question 4
-getRandomInt :: Int -> IO Int 
-getRandomInt n = getStdRandom (randomR (0,n))
+getRandomInteger :: Integer -> IO Integer 
+getRandomInteger n = getStdRandom (randomR (0,n))
 
-randomFlip :: Int -> IO Int 
+randomFlip :: Integer -> IO Integer 
 randomFlip x = do 
-		b <- getRandomInt 1
+		b <- getRandomInteger 1
 		if b==0 then return x else return (-x)
 
-genIntList :: IO [Int]
-genIntList = do 
-  k <- getRandomInt 20
-  n <- getRandomInt 3
-  getIntL k n
+genIntegerList :: IO [Integer]
+genIntegerList = do 
+  k <- getRandomInteger 20
+  n <- getRandomInteger 3
+  getIntegerL k n
  
-getIntL :: Int -> Int -> IO [Int]
-getIntL _ 0 = return []
-getIntL k n = do 
-   x <-  getRandomInt k
+getIntegerL :: Integer -> Integer -> IO [Integer]
+getIntegerL _ 0 = return []
+getIntegerL k n = do 
+   x <-  getRandomInteger k
    y <- randomFlip x
-   xs <- getIntL k (n-1)
+   xs <- getIntegerL k (n-1)
    return (y:xs)
   
 --Random char for creating iban  
@@ -113,7 +158,7 @@ getRandomChar n = getStdRandom (randomR('a',n))
 genCharList :: IO [Char]
 genCharList = do
 	k <- getRandomChar 'l'
-	n <- getRandomInt 10
+	n <- getRandomInteger 10
 	getCharL k n
 	
 getCharL :: Char -> Integer -> IO [Char]
@@ -123,8 +168,8 @@ getCharL k n = do
 	xs <- getCharL k (n-1)
 	return (x:xs)	
 
---f = triangle needs to be replaced by the genIntList but problem with IO versus Integer... :/ how to fix?   
-testR :: Int -> Int -> (Integer -> Integer -> Integer -> Shape) -> IO ()
+--f = triangle needs to be replaced by the genIntegerList but problem with IO versus Integer... :/ how to fix?   
+testR :: Integer -> Integer -> (Integer -> Integer -> Integer -> Shape) -> IO ()
 testR k n f = if k /= n then  
 						do print ("Result" ++ show(f 3 3 3)) 	
 						   testR (k+1) n f
@@ -132,3 +177,22 @@ testR k n f = if k /= n then
                   				  
 testPost :: (Integer -> Integer -> Integer -> Shape) -> IO ()
 testPost f = testR 1 100 f
+
+--Helping functions
+giveWhere :: (a -> Bool) -> [a] -> [a]
+giveWhere _ [] = []
+giveWhere x (y:ys) | x y	= y : giveWhere x ys
+				   | otherwise = giveWhere x ys 
+
+remove :: Eq a => [[a]] -> [a] -> [[a]]
+remove x [] = x
+remove [[]] _ = [[]]
+remove x y = giveWhere (\a -> a /= y) x  
+
+--Different derangement function (found online to compare own Derangement function)
+derangement xs = drg xs xs
+
+drg [] ys = return []
+drg xs (y:ys) =
+  delete y xs >>=
+  \x -> map (x:) (drg (delete x xs) ys)
