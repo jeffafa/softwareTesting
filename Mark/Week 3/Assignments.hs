@@ -3,6 +3,7 @@ import Data.Char
 
 type Name = Int
 type Valuation = [(Name,Bool)]
+type ValFct = Name -> Bool
 
 data Form = Prop Name
           | Neg  Form
@@ -25,7 +26,12 @@ form5 = Cnj [p, Neg p]
 
 form6 = Neg (Cnj[p,q])
 form7 = Dsj[Neg p, Neg q]
-form8 = Equiv form6 form7
+
+update :: Eq a => (a -> b) -> (a,b) -> a -> b
+update f (x,y) = \ z -> if x == z then y else f z 
+
+updates :: Eq a => (a -> b) -> [(a,b)] -> a -> b
+updates = foldl update 
 
 instance Show Form where 
   show (Prop x)   = show x
@@ -53,6 +59,12 @@ genVals (name:names) =
 -- | generate all possible valuations for a formula
 allVals :: Form -> [Valuation]
 allVals = genVals . propNames
+
+val2fct :: Valuation -> ValFct
+val2fct = updates (\ _ -> undefined)
+
+fct2val :: [Name] -> ValFct -> Valuation
+fct2val domain f = map (\x -> (x,f x)) domain
 
 evl :: Valuation -> Form -> Bool
 evl [] (Prop c)    = error ("no info: " ++ show c)
@@ -85,8 +97,12 @@ tautology f = all (\ v -> evl v f) (allVals f)
 contradiction :: Form -> Bool
 contradiction f = all (\ v -> not (evl v f)) (allVals f)
 
+--In case there is a T from f1 to F in f2 then it entails
 entails :: Form -> Form -> Bool 
 entails f1 f2 = False
 
 equiv :: Form -> Form -> Bool
-equiv f1 f2 = False --the impl of f1 and f2 is a tautology, form8 is logical correct, how to eval each form?  allVals f1 && allVals f2
+equiv f1 f2 = f (allVals f1) (allVals f2)
+
+f :: [Valuation] -> [Valuation] -> Bool
+f f1 f2 = if f1 == f2 then True else False
