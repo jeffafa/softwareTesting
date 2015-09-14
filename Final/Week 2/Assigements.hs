@@ -128,56 +128,6 @@ testNegativeExamples (x:xs) = if iban x then
 						   testNegativeExamples xs
 					  else error ("failed test on" ++ show x) 				  
 
---Automated testing question 4
-getRandomInteger :: Integer -> IO Integer 
-getRandomInteger n = getStdRandom (randomR (0,n))
-
-randomFlip :: Integer -> IO Integer 
-randomFlip x = do 
-		b <- getRandomInteger 1
-		if b==0 then return x else return (-x)
-
-genIntegerList :: IO [Integer]
-genIntegerList = do 
-  k <- getRandomInteger 20
-  n <- getRandomInteger 3
-  getIntegerL k n
- 
-getIntegerL :: Integer -> Integer -> IO [Integer]
-getIntegerL _ 0 = return []
-getIntegerL k n = do 
-   x <-  getRandomInteger k
-   y <- randomFlip x
-   xs <- getIntegerL k (n-1)
-   return (y:xs)
-  
---Random char for creating iban  
-getRandomChar :: Char -> IO Char
-getRandomChar n = getStdRandom (randomR('a',n))
-
-genCharList :: IO [Char]
-genCharList = do
-	k <- getRandomChar 'l'
-	n <- getRandomInteger 10
-	getCharL k n
-	
-getCharL :: Char -> Integer -> IO [Char]
-getCharL _ 0 = return []
-getCharL k n = do
-	x <- getRandomChar k
-	xs <- getCharL k (n-1)
-	return (x:xs)	
-
---f = triangle needs to be replaced by the genIntegerList but problem with IO versus Integer... :/ how to fix?   
-testR :: Integer -> Integer -> (Integer -> Integer -> Integer -> Shape) -> IO ()
-testR k n f = if k /= n then  
-						do print ("Result" ++ show(f 3 3 3)) 	
-						   testR (k+1) n f
-					  else print (show n ++ " tests passed") 
-                  				  
-testPost :: (Integer -> Integer -> Integer -> Shape) -> IO ()
-testPost f = testR 1 100 f
-
 --Helping functions
 giveWhere :: (a -> Bool) -> [a] -> [a]
 giveWhere _ [] = []
