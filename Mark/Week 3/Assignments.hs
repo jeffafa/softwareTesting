@@ -33,6 +33,9 @@ form9 = Cnj[p,q]
 form10 = Dsj [Impl p q, Impl q p]
 form11 = Neg p
 
+--Assigement 3 forms
+form12 = Impl (Dsj [Impl p q, Impl q r]) (Impl p r)
+
 update :: Eq a => (a -> b) -> (a,b) -> a -> b
 update f (x,y) = \ z -> if x == z then y else f z 
 
@@ -107,8 +110,6 @@ entails :: Form -> Form -> Bool
 entails f1 f2 = compareLists (evlTruthtable f1) (evlTruthtable f2)
 
 compareLists :: [Bool] -> [Bool] -> Bool
-compareLists [] _ = True
-compareLists _ [] = True
 compareLists [] [] = True
 compareLists (x:xs) (y:ys) = if x == True && y == False then False else compareLists xs ys
 
@@ -124,4 +125,42 @@ evlTruthtable f = truthtable (allVals f) f
 truthtable :: [Valuation] -> Form -> [Bool]
 truthtable [] _ = []
 truthtable (x:xs) f = evl x f : truthtable xs f 
+
+--Opdracht 3--
+
+--Generate only the false outcomes of the complete truth table
+getFalseTruthTable :: [Valuation] -> Form -> [Valuation]
+getFalseTruthTable [] _ = []
+getFalseTruthTable (x:xs) f = if (evl x f) == False then x : getFalseTruthTable xs f else getFalseTruthTable xs f 
+
+--Swap each p r q etc. from t to f or f to t
+swapEachLiteral :: [Valuation] -> [Valuation]
+swapEachLiteral [] = []
+swapEachLiteral (x:xs) = swapEachAtom x : swapEachLiteral xs
+
+swapEachAtom :: Valuation -> Valuation
+swapEachAtom [] = []
+swapEachAtom (x:xs) = if snd x == True then (fst x,False) : swapEachAtom xs else (fst x, True) : swapEachAtom xs
+
+createForm :: [Valuation] -> [[Form]]
+createForm [] = []
+createForm (x:xs) = createFormVal x : createForm xs
+
+createFormVal :: Valuation -> [Form]
+createFormVal [] = []
+createFormVal (x:xs) = if snd x == True then (Prop (fst x)) : createFormVal xs else Neg (Prop (fst x)) : createFormVal xs
+
+--clause put the p q r in dsj 
+clause :: [[Form]] -> [Form]
+clause [] = []
+clause (x:xs) = Dsj x : clause xs
+
+--conjunction of clauses
+conjunctionClause :: [Form] -> Form
+conjunctionClause x = Cnj x
+
+--Final output CNF
+cnf :: Form -> Form 
+cnf f =  conjunctionClause(clause(createForm(swapEachLiteral(getFalseTruthTable(allVals f) f))))
+
 
