@@ -18,6 +18,7 @@ p = Prop 1
 q = Prop 2
 r = Prop 3 
 
+--Test data
 form1 = Equiv (Impl p q) (Impl (Neg q) (Neg p))
 form2 = Equiv (Impl p q) (Impl (Neg p) (Neg q))
 form3 = Impl (Cnj [Impl p q, Impl q r]) (Impl p r)
@@ -26,6 +27,11 @@ form5 = Cnj [p, Neg p]
 
 form6 = Neg (Cnj[p,q])
 form7 = Dsj[Neg p, Neg q]
+
+form8 = Neg (Dsj[p,q])  
+form9 = Cnj[p,q]
+form10 = Dsj [Impl p q, Impl q p]
+form11 = Neg p
 
 update :: Eq a => (a -> b) -> (a,b) -> a -> b
 update f (x,y) = \ z -> if x == z then y else f z 
@@ -97,12 +103,25 @@ tautology f = all (\ v -> evl v f) (allVals f)
 contradiction :: Form -> Bool
 contradiction f = all (\ v -> not (evl v f)) (allVals f)
 
---In case there is a T from f1 to F in f2 then it entails
 entails :: Form -> Form -> Bool 
-entails f1 f2 = False
+entails f1 f2 = compareLists (evlTruthtable f1) (evlTruthtable f2)
+
+compareLists :: [Bool] -> [Bool] -> Bool
+compareLists [] _ = True
+compareLists _ [] = True
+compareLists [] [] = True
+compareLists (x:xs) (y:ys) = if x == True && y == False then False else compareLists xs ys
 
 equiv :: Form -> Form -> Bool
 equiv f1 f2 = f (allVals f1) (allVals f2)
 
 f :: [Valuation] -> [Valuation] -> Bool
 f f1 f2 = if f1 == f2 then True else False
+
+evlTruthtable :: Form -> [Bool]
+evlTruthtable f = truthtable (allVals f) f
+
+truthtable :: [Valuation] -> Form -> [Bool]
+truthtable [] _ = []
+truthtable (x:xs) f = evl x f : truthtable xs f 
+
