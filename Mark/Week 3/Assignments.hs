@@ -5,6 +5,8 @@ type Name = Int
 type Valuation = [(Name,Bool)]
 type ValFct = Name -> Bool
 
+type Parser a b = [a] -> [(b,[a])]
+
 data Form = Prop Name
           | Neg  Form
           | Cnj [Form]
@@ -12,6 +14,17 @@ data Form = Prop Name
           | Impl Form Form 
           | Equiv Form Form 
           deriving Eq
+		  
+data Token 
+      = TokenNeg
+      | TokenCnj
+      | TokenDsj
+      | TokenImpl
+      | TokenEquiv 
+      | TokenInt Int 
+      | TokenOP
+      | TokenCP
+	  deriving (Show,Eq)
 
 --Example formulas--
 p = Prop 1
@@ -125,6 +138,73 @@ evlTruthtable f = truthtable (allVals f) f
 truthtable :: [Valuation] -> Form -> [Bool]
 truthtable [] _ = []
 truthtable (x:xs) f = evl x f : truthtable xs f 
+
+--Opdracht 2--
+lexer :: String -> [Token]
+lexer [] = []
+lexer (c:cs) | isSpace c = lexer cs
+             | isDigit c = lexNum (c:cs) 
+lexer ('(':cs) = TokenOP : lexer cs
+lexer (')':cs) = TokenCP : lexer cs
+lexer ('*':cs) = TokenCnj : lexer cs
+lexer ('+':cs) = TokenDsj : lexer cs
+lexer ('-':cs) = TokenNeg : lexer cs 
+lexer ('=':'=':'>':cs) = TokenImpl : lexer cs
+lexer ('<':'=':'>':cs) = TokenEquiv : lexer cs
+lexer (x:_) = error ("unknown token: " ++ [x])
+
+lexNum cs = TokenInt (read num) : lexer rest
+     where (num,rest) = span isDigit cs
+
+succeed :: b -> Parser a b
+succeed x xs = [(x,xs)]
+
+parseForm :: Parser Token Form 
+parseForm (TokenInt x: tokens) = [(Prop x,tokens)]
+parseForm (TokenNeg : tokens) =
+  [ (Neg f, rest) | (f,rest) <- parseForm tokens ]
+parseForm (TokenCnj : TokenOP : tokens) = 
+  [ (Cnj fs, rest) | (fs,rest) <- parseForms tokens ]
+parseForm (TokenDsj : TokenOP : tokens) = 
+  [ (Dsj fs, rest) | (fs,rest) <- parseForms tokens ]
+parseForm (TokenOP : tokens) = 
+  [ (Impl f1 f2, rest) | (f1,ys) <- parseForm tokens,
+                         (f2,rest) <- parseImpl ys ]
+   ++
+  [ (Equiv f1 f2, rest) | (f1,ys) <- parseForm tokens,
+                          (f2,rest) <- parseEquiv ys ] 
+parseForm tokens = []
+
+parseForms :: Parser Token [Form] 
+parseForms (TokenCP : tokens) = succeed [] tokens
+parseForms tokens = 
+   [(f:fs, rest) | (f,ys) <- parseForm tokens, 
+                   (fs,rest) <- parseForms ys ]
+				   
+parseImpl :: Parser Token Form
+parseImpl (TokenImpl : tokens) = 
+  [ (f,ys) | (f,y:ys) <- parseForm tokens, y == TokenCP ]
+parseImpl tokens = []
+
+parseEquiv :: Parser Token Form
+parseEquiv (TokenEquiv : tokens) = 
+  [ (f,ys) | (f,y:ys) <- parseForm tokens, y == TokenCP ]
+parseEquiv tokens = []
+
+parse :: String -> [Form]
+parse s = [ f | (f,_) <- parseForm (lexer s) ]
+
+--Opdracht 2 code--
+testdata = ["*(1 +(2 - 3))","*(1 +(2 - 3)","*(1 +(212312312- 3xx))"]
+
+testV :: [String] -> IO ()
+testV (x:xs) = if testX x == True then
+                    do print ("pass on: " ++ show x)
+                       testV xs
+                   else error ("failed test on: " ++ show x) 
+
+testX :: String -> Bool
+testX f = if [ v | v <- show (parse f) ] == "[]" then False else True
 
 --Opdracht 3--
 
