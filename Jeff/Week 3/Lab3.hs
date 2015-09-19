@@ -30,3 +30,42 @@ evlTruthtable f = truthtable (allVals f) f
 truthtable :: [Valuation] -> Form -> [Bool]
 truthtable [] _ = []
 truthtable (x:xs) f = evl x f : truthtable xs f 
+
+--For Assignment 2 please see tests.hs
+
+--Assignment 3--
+
+--Generate only the false outcomes of the complete truth table
+getFalseTruthTable :: [Valuation] -> Form -> [Valuation]
+getFalseTruthTable [] _ = []
+getFalseTruthTable (x:xs) f = if (evl x f) == False then x : getFalseTruthTable xs f else getFalseTruthTable xs f 
+
+--Swap each p r q etc. from t to f or f to t
+swapEachLiteral :: [Valuation] -> [Valuation]
+swapEachLiteral [] = []
+swapEachLiteral (x:xs) = swapEachAtom x : swapEachLiteral xs
+
+swapEachAtom :: Valuation -> Valuation
+swapEachAtom [] = []
+swapEachAtom (x:xs) = if snd x == True then (fst x,False) : swapEachAtom xs else (fst x, True) : swapEachAtom xs
+
+createForm :: [Valuation] -> [[Form]]
+createForm [] = []
+createForm (x:xs) = createFormVal x : createForm xs
+
+createFormVal :: Valuation -> [Form]
+createFormVal [] = []
+createFormVal (x:xs) = if snd x == True then (Prop (fst x)) : createFormVal xs else Neg (Prop (fst x)) : createFormVal xs
+
+--clause put the p q r in dsj 
+clause :: [[Form]] -> [Form]
+clause [] = []
+clause (x:xs) = Dsj x : clause xs
+
+--conjunction of clauses
+conjunctionClause :: [Form] -> Form
+conjunctionClause x = Cnj x
+
+--Final output CNF
+cnf :: Form -> Form 
+cnf f =  conjunctionClause(clause(createForm(swapEachLiteral(getFalseTruthTable(allVals f) f))))
