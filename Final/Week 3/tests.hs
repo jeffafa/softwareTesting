@@ -16,17 +16,16 @@ form8 = Neg (Dsj[p,q])
 form9 = Cnj[p,q]
 form10 = Dsj [Impl p q, Impl q p]
 form11 = Neg p
-
 --end TestData
 
---Test Functions (assignment 2)
+--Test Functions (assignment 2), Time spend: 5 hours
 --To run both test for assignment 2
 testAssignment2 :: IO()
 testAssignment2 = do 
                    runTestParse 100
                    runTestParseShow 100
                    
---Test for Assignment 2 To Check the logical equivelant of the form going in and comming out.
+--Test for Assignment 2 To Check the logical equivalent of the form going in and coming out.
 runTestParse :: Int -> IO ()
 runTestParse 0 = print ("Done")
 runTestParse x = 
@@ -82,7 +81,7 @@ randomInt x y = unsafePerformIO (randInRange x y)
 formWithoutIO :: IO Form -> Form
 formWithoutIO x = unsafePerformIO x
 
-  --Single test functions
+--Single test functions
 testV :: String -> IO ()
 testV x = if testX x == True then print ("pass on: " ++ show x) else print ("failed test on: " ++ show x) 
 
