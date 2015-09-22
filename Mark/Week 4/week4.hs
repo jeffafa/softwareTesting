@@ -28,16 +28,15 @@ getIntL k n = do
    xs <- getIntL k (n-1)
    return (x:xs)
 
-genSet :: IO [Int] 
-genSet = do 
-  x <- genIntList
-  --y <- list2set x
-  return x 
-
+genSet :: IO (Set Int)
+genSet = do
+		x <- genIntList
+		return (list2set x)
+    
 --Opdracht 3-- 1.5 hour
 union :: (Ord a) => Set a -> Set a -> Set a
 union (Set []) ys       = ys 
-union (Set (x:xs)) ys = insertSet x $ union (Set xs) (deleteSet x ys) --(delete x ys)  
+union (Set (x:xs)) ys = insertSet x $ union (Set xs) (deleteSet x ys) 
 
 intersection :: (Ord a) => Set a -> Set a -> Set a
 intersection (Set []) ys = (Set [])
@@ -57,7 +56,7 @@ difference (Set (x:xs)) ys  | not (inSet x ys) = insertSet x $ difference (Set x
 
 symClos :: Ord a => Rel a -> Rel a
 symClos (Set[]) = (Set[])
-symClos (Set(x:xs)) = union (Set [x,(snd x , fst x)]) (symClos (Set xs))  --insertSet [x,(snd x , fst x)] $ symClos xs 
+symClos (Set(x:xs)) = union (Set [x,(snd x , fst x)]) (symClos (Set xs)) 
 
 --Opdracht 6-- 3 hours
 
