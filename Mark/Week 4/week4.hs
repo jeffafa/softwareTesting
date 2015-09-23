@@ -11,7 +11,7 @@ type Rel a = Set (a,a)
 --halts/funny function 120-121
 --page 130 Ai ?
 
---Opdracht 2--
+--Opdracht 2-- 3 hours,  Only implemented my own generator, still need to do quickcheck
 getRandomInt :: Int -> IO Int
 getRandomInt n = getStdRandom (randomR (0,n))
 
