@@ -32,6 +32,9 @@ genSet :: IO (Set Int)
 genSet = do
 		x <- genIntList
 		return (list2set x)
+		
+--QuickCheck part--
+
     
 --Opdracht 3-- 1.5 hour
 union :: (Ord a) => Set a -> Set a -> Set a
@@ -48,9 +51,23 @@ difference (Set []) ys = (Set [])
 difference (Set (x:xs)) ys  | not (inSet x ys) = insertSet x $ difference (Set xs) ys
 							   | otherwise = difference (Set xs) ys
 							   
---Opdracht 4--
+--Tests Opdracht 3
+testAssignement3 :: (Set Int -> Set Int -> Set Int) -> IO (Set Int)
+testAssignement3 f   = do
+	x <- genSet
+	y <- genSet 
+	return (f x y)						   
+							   
+fx k n f = if k == n then print (show n ++ " tests passed")
+                else 
+				if 1 == 1 then
+                    do (testAssignement3 f)
+                       fx (k+1) n f
+                    else error ("failed test on: ")
 
 							   
+--Opdracht 4--
+					   
 							   
 --Opdracht 5 -- 1 hour
 
@@ -75,6 +92,22 @@ transR (Set []) = True
 transR (Set s) = and [trans pair (Set s) | pair <- s] where 
 		trans (x,y) (Set r) = 
 		 and [ inSet (x,v) (Set r) | (u,v) <- r, u == y] 
+		 	 
+--Opdracht 7--
+
+--Test symc closure, lenght must be double of orginal set--
+testR k n = if k == n then print (show n ++ " tests passed")
+                else do
+                  xs <- genSet
+                  if (length' xs) == length' (xs)  then
+                    do print ("pass on: " ++ show xs)
+                       testR (k+1) n 
+                  else error ("failed test on: " ++ show xs)
+		
+length' :: Set Int -> Int
+length' (Set[]) = 0
+length' (Set(x:xs)) = 1 + length' (Set xs)  
+		 
 
 {-- Sets implemented as ordered lists without duplicates --} 
 
