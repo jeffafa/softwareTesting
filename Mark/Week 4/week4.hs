@@ -73,7 +73,7 @@ fx k n f = if k == n then print (show n ++ " tests passed")
 
 symClos :: Ord a => Rel a -> Rel a
 symClos (Set[]) = (Set[])
-symClos (Set(x:xs)) = union (Set [x,(snd x , fst x)]) (symClos (Set xs)) 
+symClos (Set(x:xs)) = if snd x /= fst x then union (Set [x,(snd x , fst x)]) (symClos (Set xs)) else union (Set [x]) (symClos (Set xs))  
 
 --Opdracht 6-- 3 hours
 
@@ -107,7 +107,13 @@ testR k n = if k == n then print (show n ++ " tests passed")
 length' :: Set Int -> Int
 length' (Set[]) = 0
 length' (Set(x:xs)) = 1 + length' (Set xs)  
-		 
+
+--Opdracht 8--
+--Yes there is a difference between both let me explain why:
+
+--If we have the Set R1 = (1,2) then the symmetric of R1 is R2 = (2,1),then the transitive closure of R1 and R2 is R3 = (1,1),(2,2) so R1 + R2 + R3 = (1,2,(2,1),(1,1),(2,2)
+--In the other case: R1 = (1,2) then the transitive closure of R1 is R2 = (), then the symmetric closure of R1 and R2 is R3 = (2,1) so R1 + R2 + R3 = (1,2),(2,1)
+   
 
 {-- Sets implemented as ordered lists without duplicates --} 
 
