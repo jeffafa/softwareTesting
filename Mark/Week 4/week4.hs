@@ -60,7 +60,7 @@ testAssignement3 f   = do
 							   
 fx k n f = if k == n then print (show n ++ " tests passed")
                 else 
-				if 1 == 1 then
+				if True then
                     do (testAssignement3 f)
                        fx (k+1) n f
                     else error ("failed test on: ")
