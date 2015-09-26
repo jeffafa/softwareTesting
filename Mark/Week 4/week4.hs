@@ -36,7 +36,7 @@ genSet = do
 --QuickCheck part--
 
     
---Opdracht 3-- 1.5 hour
+--Opdracht 3-- 2.5 hour
 union :: (Ord a) => Set a -> Set a -> Set a
 union (Set []) ys       = ys 
 union (Set (x:xs)) ys = insertSet x $ union (Set xs) (deleteSet x ys) 
@@ -67,8 +67,9 @@ fx k n f = if k == n then print (show n ++ " tests passed")
                     else error ("failed test on: ")
 
 							   
---Opdracht 4--
-					   
+--Opdracht 4-- 2.5 hours
+--Identity the pyrimade symbol		
+--Equivalence classes, bit unclear...		
 							   
 --Opdracht 5 -- 1 hour
 
@@ -106,8 +107,6 @@ symTest xs = if lengthR (symClos xs) ==  2 * (lengthR xs) then True else False
 lengthR :: Ord a => Rel a -> Int
 lengthR (Set[]) = 0
 lengthR (Set(x:xs)) = 1 + lengthR (Set xs)  
-
-
 
 --Opdracht 8--
 --Yes there is a difference between both let me explain why:
