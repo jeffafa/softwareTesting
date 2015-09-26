@@ -96,18 +96,18 @@ transR (Set s) = and [trans pair (Set s) | pair <- s] where
 		 	 
 --Opdracht 7-- Still busy---- need to have different sets because it are relations.
 
---Test symc closure, lenght must be double of orginal set--
-testR k n = if k == n then print (show n ++ " tests passed")
-                else do
-                  xs <- genSet
-                  if (length' xs) == length' (xs)  then
-                    do print ("pass on: " ++ show xs)
-                       testR (k+1) n 
-                  else error ("failed test on: " ++ show xs)
-		
-length' :: Set Int -> Int
-length' (Set[]) = 0
-length' (Set(x:xs)) = 1 + length' (Set xs)  
+--Test set
+testSet1 = Set [(1,2),(2,3),(3,4)]
+
+--Length is 2 times the original
+symTest :: Ord a => Rel a -> Bool
+symTest xs = if lengthR (symClos xs) ==  2 * (lengthR xs) then True else False
+
+lengthR :: Ord a => Rel a -> Int
+lengthR (Set[]) = 0
+lengthR (Set(x:xs)) = 1 + lengthR (Set xs)  
+
+
 
 --Opdracht 8--
 --Yes there is a difference between both let me explain why:
