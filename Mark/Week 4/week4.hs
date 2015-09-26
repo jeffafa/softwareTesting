@@ -51,13 +51,14 @@ difference (Set []) ys = (Set [])
 difference (Set (x:xs)) ys  | not (inSet x ys) = insertSet x $ difference (Set xs) ys
 							   | otherwise = difference (Set xs) ys
 							   
---Tests Opdracht 3
+--Tests Opdracht 3, implemented own random generator, still need to do quickcheck
 testAssignement3 :: (Set Int -> Set Int -> Set Int) -> IO (Set Int)
 testAssignement3 f   = do
 	x <- genSet
 	y <- genSet 
 	return (f x y)						   
 							   
+--fx can be called by 1 100 union or intersection or difference
 fx k n f = if k == n then print (show n ++ " tests passed")
                 else 
 				if True then
@@ -93,7 +94,7 @@ transR (Set s) = and [trans pair (Set s) | pair <- s] where
 		trans (x,y) (Set r) = 
 		 and [ inSet (x,v) (Set r) | (u,v) <- r, u == y] 
 		 	 
---Opdracht 7--
+--Opdracht 7-- Still busy---- need to have different sets because it are relations.
 
 --Test symc closure, lenght must be double of orginal set--
 testR k n = if k == n then print (show n ++ " tests passed")
