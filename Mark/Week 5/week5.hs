@@ -3,6 +3,7 @@
   where 
   
   import Data.List
+  import Data.Ix
   import System.Random
 
   type Row    = Int 
@@ -21,7 +22,7 @@
   
   blocks :: [[Int]]
   blocks = [[1..3],[4..6],[7..9]]
-     
+       
   --Show values in sudoku
   showVal :: Value -> String
   showVal 0 = " "
@@ -53,6 +54,8 @@
       showRow gs; showRow hs; showRow is
       putStrLn ("+-------+-------+-------+")
 
+--Sudoku functions to show	  
+	  
   sud2grid :: Sudoku -> Grid
   sud2grid s = 
     [ [ s (r,c) | c <- [1..9] ] | r <- [1..9] ] 
@@ -66,13 +69,16 @@
   showSudoku :: Sudoku -> IO()
   showSudoku = showGrid . sud2grid
 
+--Internal structure sudoku  
+  
   bl :: Int -> [Int]
   bl x = concat $ filter (elem x) blocks 
 
   subGrid :: Sudoku -> (Row,Column) -> [Value]
-  subGrid s (r,c) = 
-    [ s (r',c') | r' <- bl r, c' <- bl c ]
+  subGrid s (r,c) = [ s (r',c') | r' <- bl r, c' <- bl c ]
 	
+	
+--Assignment 1 --Time spend: 7 hours	
 --2,2, 2,3, 2,4  6,2, 6,3, 6,4
 --3,2, 3,3, 3,4  7,2, 7,3, 7,4
 --4,2, 4,3, 4,4  8,2, 8,3, 8,4
@@ -89,16 +95,39 @@
 				  | r `elem` [1,5,9] = []
 				  | c `elem` [1,5,9] = []
 
+--Assignment 2 --Time spend: 4 hours, for NRC this solution is more easier to implement since it works which positions instead of static blocks
+
+  rowConstrnt :: Constrnt
+  rowConstrnt = [[(r,c)| c <- values ] | r <- values ]
+  
+  columnConstrnt :: Constrnt
+  columnConstrnt = [[(r,c)| r <- values ] | c <- values ]
+  
+  blockConstrnt :: Constrnt
+  blockConstrnt = [[(r,c)| r <- b1, c <- b2 ] | b1 <- blocks, b2 <- blocks ]
+  
+  freeAtPos' :: Sudoku -> Position -> Constrnt -> [Value]
+  freeAtPos' s (r,c) xs = let 
+     ys = filter (elem (r,c)) xs 
+   in 
+     foldl1 intersect (map ((values \\) . map s) ys)
+	 
+  freeAtPosition' :: Sudoku -> Position -> [Value]
+  freeAtPosition' s (r,c) = 
+   (freeAtPos' s (r,c) rowConstrnt) 
+	`intersect` (freeAtPos' s (r,c) columnConstrnt) 
+	`intersect` (freeAtPos' s (r,c) blockConstrnt) 	  
+  
+--Original code continue  
+  
   freeInSeq :: [Value] -> [Value]
   freeInSeq seq = values \\ seq 
 
   freeInRow :: Sudoku -> Row -> [Value]
-  freeInRow s r = 
-    freeInSeq [ s (r,i) | i <- positions  ]
+  freeInRow s r = freeInSeq [ s (r,i) | i <- positions  ]
 
   freeInColumn :: Sudoku -> Column -> [Value]
-  freeInColumn s c = 
-    freeInSeq [ s (i,c) | i <- positions ]
+  freeInColumn s c = freeInSeq [ s (i,c) | i <- positions ]
 
   freeInSubgrid :: Sudoku -> (Row,Column) -> [Value]
   freeInSubgrid s (r,c) = freeInSeq (subGrid s (r,c))
@@ -112,10 +141,12 @@
      `intersect` (freeInColumn s c) 
      `intersect` (freeInSubgrid s (r,c)) 
 	 `intersect` (freeInNrcgrid s (r,c))
+	 
+--Check for consistent between rows, columns etc.
 
   injective :: Eq a => [a] -> Bool
   injective xs = nub xs == xs
-  
+    
   rowInjective :: Sudoku -> Row -> Bool
   rowInjective s r = injective vs where 
      vs = filter (/= 0) [ s (r,i) | i <- positions ]
@@ -193,12 +224,19 @@
                               c <- positions, 
                               s (r,c) == 0 ]
 
+--Orginal
   constraints :: Sudoku -> [Constraint] 
   constraints s = sortBy length3rd 
       [(r,c, freeAtPos s (r,c)) | 
                          (r,c) <- openPositions s ]
 
-  
+--Code for assignment 2	
+					 
+--  constraints :: Sudoku -> [Constraint] 
+--  constraints s = sortBy length3rd 
+--      [(r,c, freeAtPosition' s (r,c)) | 
+--                         (r,c) <- openPositions s ]
+
   
   data Tree a = T a [Tree a] deriving (Eq,Ord,Show)
 
@@ -296,6 +334,28 @@
               [0,0,0,0,0,0,0,3,1],
               [0,8,0,0,4,0,0,0,0],
               [0,0,2,0,0,0,0,0,0]]
+			  
+  nrcExample2 :: Grid
+  nrcExample2 = [[0,0,3,0,0,0,0,8,0],
+                 [0,0,0,5,0,0,0,0,0],
+                 [0,0,6,0,0,0,0,0,0],
+                 [0,4,0,0,2,0,0,0,0],
+                 [0,0,0,0,4,6,0,0,0],
+                 [1,0,0,0,0,0,0,3,0],
+                 [0,0,0,8,0,0,4,9,2],
+                 [0,0,0,0,0,0,0,0,0],
+                 [5,6,0,0,0,0,0,0,0]]
+				 
+  nrcExample3 :: Grid
+  nrcExample3 = [[8,3,2,0,0,0,1,4,5],
+                 [7,6,4,0,8,0,9,0,0],
+                 [9,0,0,3,0,0,0,0,0],
+                 [3,0,0,0,0,5,4,0,1],
+                 [1,0,0,0,0,0,0,0,0],
+                 [5,0,0,2,0,0,0,0,8],
+                 [4,0,0,0,0,6,0,7,0],
+                 [6,5,0,0,0,0,0,0,0],
+                 [2,0,0,0,3,0,0,1,0]]
 
   emptyN :: Node
   emptyN = (\ _ -> 0,constraints (\ _ -> 0))
