@@ -225,17 +225,17 @@
                               s (r,c) == 0 ]
 
 --Orginal
-  constraints :: Sudoku -> [Constraint] 
-  constraints s = sortBy length3rd 
-      [(r,c, freeAtPos s (r,c)) | 
-                         (r,c) <- openPositions s ]
+--  constraints :: Sudoku -> [Constraint] 
+--  constraints s = sortBy length3rd 
+--      [(r,c, freeAtPos s (r,c)) | 
+--                         (r,c) <- openPositions s ]
 
 --Code for assignment 2	
 					 
---  constraints :: Sudoku -> [Constraint] 
---  constraints s = sortBy length3rd 
---      [(r,c, freeAtPosition' s (r,c)) | 
---                         (r,c) <- openPositions s ]
+  constraints :: Sudoku -> [Constraint] 
+  constraints s = sortBy length3rd 
+      [(r,c, freeAtPosition' s (r,c)) | 
+                         (r,c) <- openPositions s ]
 
   
   data Tree a = T a [Tree a] deriving (Eq,Ord,Show)
@@ -445,4 +445,27 @@
   genProblem n = do ys <- randomize xs
                     return (minimalize n ys)
      where xs = filledPositions (fst n)
+
+   --Assigement 4-- First idea:  Erase the blocks then soduko is there, then need to transform into a problem..
+   
+  --1,1 1,2 1,3
+  --2,1 2,2 2,3
+  --3,1 3,2 3,3 
+
+  emptyColumns1 = [(1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(3,2),(3,3)]
+  
+  eraseX :: Node -> (Row,Column) -> Node
+  eraseX n (r,c) = (s, constraints s) 
+    where s = eraseS (fst n) (r,c) 
+	
+  eraseXY :: Node -> [(Row,Column)] -> Node
+  eraseXY n [] = n
+  eraseXY n ((r,c):rcs) | erasX n (r,c) = minimalize n' rcs  
+  
+  f :: IO Node
+  f = do x <- genRandomSudoku 
+         return (eraseX x (1,1)) 
+  
+  randomX = f >>= showNode	 
+	 
 
