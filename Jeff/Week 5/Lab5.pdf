@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="../buttondown.css" type="text/css" />
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+<h1 id="lab-5-software-specification-and-testing">Lab 5 Software Specification and Testing</h1>
+<hr />
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">module</span> <span class="dt">Lab5</span> <span class="kw">where</span>
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">Data.List</span>
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">System.Random</span>
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">Lecture5</span></code></pre></div>
+<hr />
+<p><strong>Exercise 1</strong></p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell">             <span class="fu">+---------+---------+---------+</span>
+             <span class="fu">|</span>         <span class="fu">|</span> <span class="dv">3</span>       <span class="fu">|</span>         <span class="fu">|</span>
+             <span class="fu">|</span>   <span class="fu">+-----|--+</span>   <span class="fu">+--|-----+</span>   <span class="fu">|</span>
+             <span class="fu">|</span>   <span class="fu">|</span>     <span class="fu">|</span> <span class="dv">7</span><span class="fu">|</span>   <span class="fu">|</span>  <span class="fu">|</span> <span class="dv">3</span>   <span class="fu">|</span>   <span class="fu">|</span>
+             <span class="fu">|</span> <span class="dv">2</span> <span class="fu">|</span>     <span class="fu">|</span>  <span class="fu">|</span>   <span class="fu">|</span>  <span class="fu">|</span>     <span class="fu">|</span> <span class="dv">8</span> <span class="fu">|</span>
+             <span class="fu">+---------+---------+---------+</span>
+             <span class="fu">|</span>   <span class="fu">|</span>   <span class="dv">6</span> <span class="fu">|</span>  <span class="fu">|</span>   <span class="fu">|</span><span class="dv">5</span> <span class="fu">|</span>     <span class="fu">|</span>   <span class="fu">|</span>
+             <span class="fu">|</span>   <span class="fu">+-----|--+</span>   <span class="fu">+--|-----+</span>   <span class="fu">|</span>
+             <span class="fu">|</span>    <span class="dv">9</span>  <span class="dv">1</span> <span class="fu">|</span> <span class="dv">6</span>       <span class="fu">|</span>         <span class="fu">|</span>
+             <span class="fu">|</span>   <span class="fu">+-----|--+</span>   <span class="fu">+--|-----+</span>   <span class="fu">|</span>
+             <span class="fu">|</span> <span class="dv">3</span> <span class="fu">|</span>     <span class="fu">|</span>  <span class="fu">|</span> <span class="dv">7</span> <span class="fu">|</span><span class="dv">1</span> <span class="fu">|</span> <span class="dv">2</span>   <span class="fu">|</span>   <span class="fu">|</span>
+             <span class="fu">+---------+---------+---------+</span>
+             <span class="fu">|</span>   <span class="fu">|</span>     <span class="fu">|</span>  <span class="fu">|</span>   <span class="fu">|</span>  <span class="fu">|</span>    <span class="dv">3</span><span class="fu">|</span> <span class="dv">1</span> <span class="fu">|</span>
+             <span class="fu">|</span>   <span class="fu">|</span><span class="dv">8</span>    <span class="fu">|</span>  <span class="fu">|</span> <span class="dv">4</span> <span class="fu">|</span>  <span class="fu">|</span>     <span class="fu">|</span>   <span class="fu">|</span>
+             <span class="fu">|</span>   <span class="fu">+-----|--+</span>   <span class="fu">+--|-----+</span>   <span class="fu">|</span>
+             <span class="fu">|</span>       <span class="dv">2</span> <span class="fu">|</span>         <span class="fu">|</span>         <span class="fu">|</span>
+             <span class="fu">+---------+---------+---------+</span></code></pre></div>
+<p>The goal of this exercise is to extend the Sudoku program described in the lecture of this week with functions that can also handle Sudokus of a special kind: the Sudokus that appear in the Dutch evening newspaper NRC-Handelsblad each week (designed by Peter Ritmeester, from Oct 8, 2005 onward). These NRC Sudokus are special in that they have to satisfy a few extra constraints: in addition to the usual Sudoku constraints, each of the <span class="math inline">\(3 \times 3\)</span> subgrids with left-top corner (2,2), (2,6), (6,2), and (6,6) should also yield a surjective function. The above figure gives an example (this is the NRC sudoku that appeared Saturday Nov 26, 2005).</p>
+<p>Your task is to formalize this extra constraint, and to use your formalization in a program that can solve this Sudoku. See also the <a href="http://homepages.cwi.nl/~aeb/games/sudoku/nrc.html">webpage of Andries Brouwer</a>.</p>
+<p>Deliverables: modified Sudoku solver, solution to the above puzzle, indication of time spent.</p>
+<hr />
+<p><strong>Exercise 2</strong></p>
+<p>When the Sudoku code was presented to an audience of Master of Logic students, a proposal emerged to refacture the code to make the formulation of constraints more uniform. The following definitions were proposed:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">type</span> <span class="dt">Position</span> <span class="fu">=</span> (<span class="dt">Row</span>,<span class="dt">Column</span>)
+<span class="ot">&gt;</span> <span class="kw">type</span> <span class="dt">Constrnt</span> <span class="fu">=</span> [[<span class="dt">Position</span>]]</code></pre></div>
+<p>The regular constraints for Sudoku can now be stated as:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> rowConstrnt <span class="fu">=</span> [[(r,c)<span class="fu">|</span> c <span class="ot">&lt;-</span> values ] <span class="fu">|</span> r <span class="ot">&lt;-</span> values ]
+<span class="ot">&gt;</span> columnConstrnt <span class="fu">=</span> [[(r,c)<span class="fu">|</span> r <span class="ot">&lt;-</span> values ] <span class="fu">|</span> c <span class="ot">&lt;-</span> values ]
+<span class="ot">&gt;</span> blockConstrnt <span class="fu">=</span> [[(r,c)<span class="fu">|</span> r <span class="ot">&lt;-</span> b1, c <span class="ot">&lt;-</span> b2 ] <span class="fu">|</span> b1 <span class="ot">&lt;-</span> blocks, b2 <span class="ot">&lt;-</span> blocks ]</code></pre></div>
+<p>The generation of the values that are still possible at a given position now takes the following shape:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; freeAtPos&#39; ::</span> <span class="dt">Sudoku</span> <span class="ot">-&gt;</span> <span class="dt">Position</span> <span class="ot">-&gt;</span> <span class="dt">Constrnt</span> <span class="ot">-&gt;</span> [<span class="dt">Value</span>]
+<span class="ot">&gt;</span> freeAtPos&#39; s (r,c) xs <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>    ys <span class="fu">=</span> filter (elem (r,c)) xs 
+<span class="ot">&gt;</span>  <span class="kw">in</span> 
+<span class="ot">&gt;</span>    foldl1 intersect (map ((values \\) <span class="fu">.</span> map s) ys)</code></pre></div>
+<p>Refactor the code along the lines of this proposal, and next compare the two versions for extendability and efficiency. Which of the two versions is easier to modify for NRC sudokus, and why? Which of the two versions is more efficient? Devise your own testing method for this, and write a short test report.</p>
+<p>Deliverables: Refactored code, test report, indication of time spent.</p>
+<hr />
+<p><strong>Exercise 3</strong></p>
+<p>A Sudoku problem P is <em>minimal</em> if it admits a unique solution, and every problem P' you can get from P by erasing one of the hints admits more than one solution. How can you test whether the problems generated by the code given in the lecture notes are minimal?</p>
+<p>Deliverables: testing code, test report, indication of time spent.</p>
+<hr />
+<p><strong>Exercise 4</strong></p>
+<p>Write a program that generates Sudoku problems with three empty blocks. Is it also possible to generate Sudoku problems with four empty blocks? Five? How can you check this?</p>
+<p>Deliverables: generator, short report on findings, indication of time spent.</p>
+<hr />
+<p><strong>Exercise 5</strong></p>
+<p>Extend the code of the lectures to create a program that generates NRC Sudoku problems, that is, Sudoku problems satisfying the extra constraint explained in the NRC exercise above.</p>
+<p>Deliverables: NRC Sudoku generator, indication of time spent.</p>
+<hr />
+<p><strong>Exercise 6 (Bonus)</strong></p>
+<p>Can you find a way of classifying the difficulty of a Sudoku problem? Can you modify the Sudoku problem generator so that it can generate problems that are minimal, but easy to solve by hand? Problems that are minimal but hard to solve by hand? How can you test whether the problems your program generates satisfy these properties? Consult <span class="citation">(Pelánek 2014)</span>.</p>
+<hr />
+<p><strong>Exercise 7 (Bonus)</strong></p>
+<p>Minimal problems for NRC Sudokus need fewer hints than standard Sudoku problems. Investigate the difference. What is the average number of hints in a minimal standard Sudoku problem? What is the average number of hints in a minimal NRC Sudoku problem?</p>
+<hr />
+<p><strong>Submission deadline</strong> is Sunday evening, October 4th, at midnight.</p>
+<hr />
+<div id="references" class="references">
+<div id="ref-Pelanek_difficultyrating">
+<p>Pelánek, Radek. 2014. “Difficulty Rating of Sudoku Puzzles: An Overview and Evaluation.” arXiv:1403.7373.</p>
+</div>
+</div>
+</body>
+</html>
