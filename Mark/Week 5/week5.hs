@@ -446,26 +446,29 @@
                     return (minimalize n ys)
      where xs = filledPositions (fst n)
 
-   --Assigement 4-- First idea:  Erase the blocks then soduko is there, then need to transform into a problem..
+  --Assigement 4-- First idea: Generate random sudoko, then erase 3 blocks, bit static but its working
+  -- Depending if the sudoku needs have an unique solution or not: If it needs to have a unique solution 5 blocks are impossible because 
+  -- it is either 3 in a row or the one in the middle and the corners. With 4 it depends on other empty blocks positions. If it does not need to have an unique solution then
+  -- 4 and 5 empty blocks are possible.
    
-  --1,1 1,2 1,3
-  --2,1 2,2 2,3
-  --3,1 3,2 3,3 
-
+  --Time spend: 6 hours
+   
+  --The top 3 blocks
   emptyColumns1 = [(1,1),(1,2),(1,3),(2,1),(2,2),(2,3),(3,1),(3,2),(3,3)]
+  emptyColumns2 = [(1,4),(1,5),(1,6),(2,4),(2,5),(2,6),(3,4),(3,5),(3,6)]
+  emptyColumns3 = [(1,7),(1,8),(1,9),(2,7),(2,8),(2,9),(3,7),(3,8),(3,9)]
+  emptyColums = [emptyColumns1,emptyColumns2,emptyColumns3]
   
-  eraseX :: Node -> (Row,Column) -> Node
-  eraseX n (r,c) = (s, constraints s) 
+  erasePosition :: Node -> (Row,Column) -> Node
+  erasePosition n (r,c) = (s, constraints s) 
     where s = eraseS (fst n) (r,c) 
 	
-  eraseXY :: Node -> [(Row,Column)] -> Node
-  eraseXY n [] = n
-  eraseXY n ((r,c):rcs) | erasX n (r,c) = minimalize n' rcs  
+  eraseBlock :: Node -> [(Row,Column)] -> Node
+  eraseBlock n [] = n
+  eraseBlock n ((r,c):rcs) = eraseBlock (erasePosition n (r,c)) rcs 
   
-  f :: IO Node
-  f = do x <- genRandomSudoku 
-         return (eraseX x (1,1)) 
-  
-  randomX = f >>= showNode	 
-	 
-
+  assignment4' :: IO ()
+  assignment4' =  do [r] <- rsolveNs [emptyN]
+                     showNode r
+                     let s = (eraseBlock r (concat (emptyColums))) 
+                     showNode s  
