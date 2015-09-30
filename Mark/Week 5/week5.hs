@@ -474,6 +474,7 @@
                      showNode s  
 					 
   --Assignment 5
+  --Time spend: 1/2 Hour
   assignment5 = do
                 showSudoku (grid2sud nrcExample3)
                 [t] <- rsolveNs [((grid2sud nrcExample3), constraints (grid2sud nrcExample3))]	
