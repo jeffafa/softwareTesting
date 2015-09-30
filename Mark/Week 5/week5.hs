@@ -472,3 +472,9 @@
                      showNode r
                      let s = (eraseBlock r (concat (emptyColums))) 
                      showNode s  
+					 
+  --Assignment 5
+  assignment5 = do
+                showSudoku (grid2sud nrcExample3)
+                [t] <- rsolveNs [((grid2sud nrcExample3), constraints (grid2sud nrcExample3))]	
+                showNode t  
