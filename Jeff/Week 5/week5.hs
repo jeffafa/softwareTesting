@@ -124,7 +124,7 @@
 					  if isMinimal x then print ("passed") else print ("Failed")
 
   
-  --QuickCheck
+  --QuickCheck -- 6 hours !!
   -- I just couldn't get it to work with quickcheck. 
   
   --genSet :: IO (Sudoku)
@@ -148,7 +148,7 @@
 --positiveIntGen :: Gen (Positive Int)
 --positiveIntGen = arbitrary
 
---assignment 5   		
+--assignment 5 -- 3 hours   		
   genRandomNRCSudoku :: IO Node
   genRandomNRCSudoku = do [r] <- nrcRsolveNs [emptyN]
                           return r
