@@ -35,16 +35,17 @@ composites = 1 : filter isComposite [4..]
 isComposite n = not (isPrime n)
 
 --Assignment 4
-testComps :: Int -> [(Integer,Bool)]
-testComps x = take x (testCompsList composites) 
+printResult :: [IO Integer]
+printResult = testCF composites
 
-testCompsList :: [Integer] -> [(Integer,Bool)]
-testCompsList (x:xs) = ((x, True) : testCompsList xs)
+testCF :: [Integer] -> [IO Integer]
+testCF (x:xs) = testCompsList' x : testCF xs
 
-testCompsList' :: [Integer] -> [(Integer,Bool)]
-testCompsList' (x:xs) = do 
-   return ((x, True) : testCompsList xs)
-   --a <- prime_test_F x
+testCompsList' :: Integer -> IO Integer
+testCompsList' x = do 
+   a <- prime_test_F x
+   return (if a then x else x)
+   
 prime_test_F :: Integer -> IO Bool
 prime_test_F n = do 
    a <- randomRIO (1, n-1) :: IO Integer
@@ -62,11 +63,7 @@ carmichael = [ (6*k+1)*(12*k+1)*(18*k+1) |
 				 
 --testCarmF :: Int -> IO()
 --testCarmF k = printList $ getListF 0 100 k carmichael []
-				 
-printList :: IO [Integer] -> IO()
-printList xs = xs >>= print
-							  
-   
+				    
 --Week6 code
 expM ::  Integer -> Integer -> Integer -> Integer
 expM x y = rem (x^y)
