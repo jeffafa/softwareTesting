@@ -35,16 +35,41 @@ composites = 1 : filter isComposite [4..]
 isComposite n = not (isPrime n)
 
 --Assignment 4
-					  
-					  
---Week6 code
-expM ::  Integer -> Integer -> Integer -> Integer
-expM x y = rem (x^y)
+testComps :: Int -> [(Integer,Bool)]
+testComps x = take x (testCompsList composites) 
 
+testCompsList :: [Integer] -> [(Integer,Bool)]
+testCompsList (x:xs) = ((x, True) : testCompsList xs)
+
+testCompsList' :: [Integer] -> [(Integer,Bool)]
+testCompsList' (x:xs) = do 
+   return ((x, True) : testCompsList xs)
+   --a <- prime_test_F x
 prime_test_F :: Integer -> IO Bool
 prime_test_F n = do 
    a <- randomRIO (1, n-1) :: IO Integer
-   return (exM a (n-1) n == 1)
+   return (exM a (n-1) n == 1)		
+
+--Assignment 5
+
+--show list of primes in carmichaeal list using Fermat
+carmichael :: [Integer]
+carmichael = [ (6*k+1)*(12*k+1)*(18*k+1) | 
+      k <- [2..], 
+      isPrime (6*k+1), 
+      isPrime (12*k+1), 
+      isPrime (18*k+1) ]
+				 
+--testCarmF :: Int -> IO()
+--testCarmF k = printList $ getListF 0 100 k carmichael []
+				 
+printList :: IO [Integer] -> IO()
+printList xs = xs >>= print
+							  
+   
+--Week6 code
+expM ::  Integer -> Integer -> Integer -> Integer
+expM x y = rem (x^y)
    
 decomp :: Integer -> (Integer,Integer)
 decomp n = decomp' (0,n) where
