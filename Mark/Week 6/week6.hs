@@ -63,6 +63,18 @@ carmichael = [ (6*k+1)*(12*k+1)*(18*k+1) |
 				 
 --testCarmF :: Int -> IO()
 --testCarmF k = printList $ getListF 0 100 k carmichael []
+
+
+--Assignment 7
+findMersenne  :: Int -> IO [Integer]
+findMersenne  n = findMersenne' n primes []
+
+findMersenne' :: Int -> [Integer] -> [Integer] -> IO [Integer]
+findMersenne' 0 ps ms = return ms
+findMersenne' n (p:ps) ms = do
+						isM <- primeMR 10 recipe
+						if isM then findMersenne' (n-1) ps (recipe:ms)	else findMersenne' n ps ms
+						where recipe = (2^p - 1)
 				    
 --Week6 code
 expM ::  Integer -> Integer -> Integer -> Integer
@@ -101,3 +113,7 @@ factors n = let
 
 isPrime n = factors n == [n]
 primes = 2 : filter isPrime [3..]
+
+primes' = sieve [2..]
+sieve (n:ns) = n : sieve 
+   (filter (\ m -> rem m n /= 0) ns)
