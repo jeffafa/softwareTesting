@@ -61,8 +61,6 @@ carmichael = [ (6*k+1)*(12*k+1)*(18*k+1) |
       isPrime (12*k+1), 
       isPrime (18*k+1) ]
 				 
---testCarmF :: Int -> IO()
---testCarmF k = printList $ getListF 0 100 k carmichael []
 
 
 --Assignment 7
@@ -71,11 +69,13 @@ findMersenne  n = findMersenne' n primes []
 
 findMersenne' :: Int -> [Integer] -> [Integer] -> IO [Integer]
 findMersenne' 0 ps ms = return ms
-findMersenne' n (p:ps) ms = do
-						isM <- primeMR 10 recipe
-						if isM then findMersenne' (n-1) ps (recipe:ms)	else findMersenne' n ps ms
-						where recipe = (2^p - 1)
-				    
+findMersenne' n (p:ps) ms = do 
+							 isM <- primeMR 10 (2^p - 1)
+							 if isM
+							    then findMersenne' (n-1) ps ((2^p - 1):ms)
+								else 
+									findMersenne' n ps ms
+													    
 --Week6 code
 expM ::  Integer -> Integer -> Integer -> Integer
 expM x y = rem (x^y)
@@ -90,14 +90,14 @@ primeMR 0 _ = return True
 primeMR k n = let 
    (r,s) = decomp (n-1) 
    f = \ x -> takeWhile (/= 1) 
-       (map (\ j -> exM x (2^j*s) n)  [0..r])
+       (map (\ j -> expM x (2^j*s) n)  [0..r])
   in 
    do 
     a <- randomRIO (1, n-1) :: IO Integer
-    if exM a (n-1) n /= 1 
+    if expM a (n-1) n /= 1 
       then return False 
       else 
-        if exM a s n /= 1 && last (f a) /= (n-1) 
+        if expM a s n /= 1 && last (f a) /= (n-1) 
           then return False
           else primeMR (k-1) n
 
