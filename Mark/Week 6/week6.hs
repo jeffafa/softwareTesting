@@ -34,7 +34,7 @@ testEx f1 f2 = do
 composites = 1 : filter isComposite [4..]
 isComposite n = not (isPrime n)
 
---Assignment 4
+--Assignment 4 Stuck on IO
 printResult :: [IO Integer]
 printResult = testCF composites
 
@@ -60,10 +60,22 @@ carmichael = [ (6*k+1)*(12*k+1)*(18*k+1) |
       isPrime (6*k+1), 
       isPrime (12*k+1), 
       isPrime (18*k+1) ]
-				 
+	  
+	  
+--Assignment 6 -- Started... similar implementation as assignment 7
+testMR  :: Int -> IO [Integer]
+testMR  n = listMR n carmichael []
 
+listMR :: Int -> [Integer] -> [Integer] -> IO [Integer]
+listMR 0 car ms = return ms
+listMR n (c:car) ms = do 
+							 isM <- primeMR 10 c
+							 if isM
+							    then listMR (n-1) car (c:ms)
+								else 
+									listMR n car ms  
 
---Assignment 7
+--Assignment 7 -- Working but needed to change primeMR exM to expM because there is a bug in exM (assignment 1)
 findMersenne  :: Int -> IO [Integer]
 findMersenne  n = findMersenne' n primes []
 
