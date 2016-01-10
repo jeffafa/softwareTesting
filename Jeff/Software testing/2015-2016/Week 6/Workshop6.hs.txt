@@ -1,0 +1,25 @@
+module Workshop6
+
+where
+import Data.List
+
+data Expr = I Int | V String 
+          | Add Expr Expr 
+          | Subtr Expr Expr 
+          | Mult Expr Expr 
+
+s :: [Int] -> [Int]
+s [] = []
+s (0:xs) = 0:1:s xs
+s (1:xs) = 0:  s xs
+
+proc = iterate s [0]
+
+data Btree a = Leaf | B a (Btree a) (Btree a) 
+
+insertT :: Ord a => a -> Btree a -> Btree a
+insertT x Leaf = B x Leaf Leaf
+insertT x (B y left right) 
+  | x < y     = B y (insertT x left) right
+  | otherwise = B y left (insertT x right) 
+

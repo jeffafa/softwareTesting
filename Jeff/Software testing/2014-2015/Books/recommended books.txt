@@ -1,0 +1,7 @@
+Recommended books
+
+Jan van Eijck en Elias Thijsse, Logica voor alfa's en informatici, available online (but in Dutch only): lai.pdf.
+Andreas Zeller, Why Programs Fail, Second Edition: A Guide to Systematic Debugging (Paperback), Morgan Kaufmann, 2009.
+M. Huth and M. Ryan, Logic in Computer Science: Modelling and Reasoning about Systems, Cambridge University Press 2004 (Second Edition).
+Daniel Jackson, Software Abstractions; Logic, Language and Analysis, MIT Press, 2006.
+Bryan O'Sullivan, John Goerzen, Don Stewart, Real World Haskell. See here.

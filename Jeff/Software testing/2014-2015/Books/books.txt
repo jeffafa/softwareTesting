@@ -1,0 +1,4 @@
+Books (required)
+
+Kees Doets and Jan van Eijck, The Haskell Road to Logic, Maths and Programming (second edition). Also see here.
+Johan van Benthem, Hans van Ditmarsch, Jan van Eijck, Jan Jaspars, Logic in Action . This book is available on-line at www.logicinaction.org.

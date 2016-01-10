@@ -1,0 +1,198 @@
+  module Lab3Answers where
+ 
+  import Data.List
+  import Lecture3
+  import System.Random
+  import Test.QuickCheck
+  import Control.Monad (liftM,liftM2)
+
+  contradiction :: Form -> Bool
+  contradiction f = all (\ v -> not (evl v f)) (allVals f)
+ 
+  tautology :: Form -> Bool
+  tautology f = all (\ v -> evl v f) (allVals f)
+ 
+  -- | logical entailment 
+  entails :: Form -> Form -> Bool
+  entails f1 f2 = tautology (Impl f1 f2)
+ 
+  -- | logical equivalence
+  equiv :: Form -> Form -> Bool
+  equiv f1 f2 = tautology (Equiv f1 f2)
+
+  tests = and [tautology form1, tautology form3,
+               contradiction (Neg form1), contradiction (Neg form3),
+               entails form2 form3, not (entails form1 form2),
+               equiv (Impl p q) (Impl (Neg q) (Neg p))]
+
+  testParse :: Form -> Bool
+  testParse f = parse (show f) == [f]
+ 
+  parseTests = all testParse [form1,form2,form3,Cnj[form1,form2,form3]]
+
+  cf :: Form -> Form
+  cf f@(Prop x) = f
+  cf f@(Neg (Prop x)) = f 
+  cf (Cnj fs) = Cnj (map cf fs)
+  cf (Dsj []) = Dsj []
+  cf (Dsj [f]) = cf f
+  cf (Dsj (f:fs)) = dist (cf f) (cf (Dsj fs))
+
+  dist :: Form -> Form -> Form
+  dist (Cnj []) _     = Cnj []
+  dist (Cnj [f]) g    = dist f g
+  dist (Cnj (f:fs)) g = Cnj [dist f g, dist (Cnj fs) g]
+  dist _ (Cnj [])     = Cnj []
+  dist f (Cnj [g])    = dist f g
+  dist f (Cnj (g:gs)) = Cnj [dist f g, dist f (Cnj gs)]
+  dist f g            = Dsj [f,g]
+
+  cn = cf .  nnf . arrowfree   
+
+  flat :: Form -> Form
+  flat (Cnj fs) = Cnj (flatC fs)
+  flat (Dsj fs) = Dsj (flatD fs)
+  flat f = f
+
+  flatC :: [Form] -> [Form]
+  flatC [] = []
+  flatC (Cnj fs:gs) = flatC (fs++gs)
+  flatC (f:fs) = flat f : flatC fs
+
+  flatD :: [Form] -> [Form]
+  flatD [] = []
+  flatD (Dsj fs:gs) = flatD (fs++gs)
+  flatD (f:fs) = f : flatD fs                   
+
+  nubF :: Form -> Form
+  nubF (Cnj fs) = Cnj (map nubF fs)
+  nubF (Dsj fs) = Dsj (nub (sort fs))
+  nubF f      = f 
+
+  cnf :: Form -> Form
+  cnf =  nubF . flat . cf . nnf . arrowfree    
+
+  falsifyingVals :: Form -> [Valuation]
+  falsifyingVals f = filter (\ v -> not (evl v f)) (allVals f)
+
+  fval2disj :: Valuation -> Form
+  fval2disj = Dsj . map (\ (n,b) -> if b then Neg (Prop n) else Prop n)
+            
+  fvals2cnf :: [Valuation] -> Form
+  fvals2cnf =  Cnj . map fval2disj          
+ 
+  cnf' :: Form -> Form
+  cnf' f = if contradiction f then Dsj []
+          else fvals2cnf $ falsifyingVals f
+
+  exampleCNF = cnf (Dsj [Cnj [Prop 1, Prop 2],Cnj [Prop 3, Prop 4]])
+ 
+  exampleCNF' = cnf' (Dsj [Cnj [Prop 1, Prop 2],Cnj [Prop 3, Prop 4]])
+
+  getRandomInt :: Int -> IO Int
+  getRandomInt n = getStdRandom (randomR (0,n))
+  
+  getRandomF :: IO Form
+  getRandomF = do d <- getRandomInt 4
+                  getRandomForm d
+              
+  getRandomForm :: Int -> IO Form 
+  getRandomForm 0 = do m <- getRandomInt 20
+                       return (Prop (m+1))
+  
+  getRandomForm d = do n <- getRandomInt 3
+                       case n of 
+                         0 -> do m <- getRandomInt 20
+                                 return (Prop (m+1))
+                         1 -> do f <- getRandomForm (d-1)
+                                 return (Neg f) 
+                         2 -> do m  <- getRandomInt 5 
+                                 fs <- getRandomForms (d-1) m
+                                 return (Cnj fs)
+                         3 -> do m  <- getRandomInt 5 
+                                 fs <- getRandomForms (d-1) m
+                                 return (Dsj fs)
+  
+  getRandomFs :: Int ->  IO [Form]
+  getRandomFs n = do d <- getRandomInt 3
+                     getRandomForms d n     
+  
+  getRandomForms :: Int -> Int -> IO [Form]
+  getRandomForms _ 0 = return []
+  getRandomForms d n = do 
+                       f <- getRandomForm d
+                       fs <- getRandomForms d (n-1) 
+                       return (f:fs)
+
+  test n _ [] = print (show n ++ " tests passed")
+  test n p (f:fs) = 
+    if p f 
+    then do print ("pass on:" ++ show f)
+            test n p fs
+    else error ("failed test on:" ++ show f)
+  
+  testForms :: Int -> (Form -> Bool) -> IO ()
+  testForms n prop = do 
+    fs <- getRandomFs n
+    test n prop fs
+
+  testCnf = testForms 100 (\ f -> equiv f (cnf f))
+
+  testCnf' = testForms 100 (\ f -> equiv f (cnf' f))
+
+  instance Arbitrary Form where
+      arbitrary = gform 
+
+  gform = sized gform'
+  gform' 0 = liftM Prop (choose (1,15))
+  gform' n | n > 15 = gform' (n `div` 2)           
+  gform' n | n > 0 =
+             oneof [liftM Prop (choose (1,15)),
+                    liftM Neg subform,
+                    liftM Cnj subforms,
+                    liftM Dsj subforms,
+                    liftM2 Impl subform subform,
+                    liftM2 Equiv subform subform]
+             where subform = gform' (n `div` 2)
+                   subforms = resize (n `div` 2) (vector (n `div` 2))
+
+  prop_cnf = \ f -> equiv f (cnf f)
+
+  prop_parse = \ f -> parse (show f) == [f]
+
+  type Clause  = [Int]
+  type Clauses = [Clause]
+
+  lit2int :: Form -> Int
+  lit2int (Prop n) | n < 1 = error "index not positive"
+                   | otherwise = n 
+  lit2int (Neg (Prop n)) = -n       
+
+  dsj2cl :: Form -> Clause 
+  dsj2cl (Dsj lits) = map lit2int lits
+  dsj2cl lit = dsj2cl (Dsj [lit])
+
+  cnf2cls :: Form -> Clauses
+  cnf2cls (Cnj fs) = map dsj2cl fs
+  cnf2cls f = cnf2cls (Cnj [f])
+
+  nonTriv :: Clause -> Bool
+  nonTriv [] = True 
+  nonTriv (lit:lits) = notElem (-lit) lits && nonTriv lits
+
+  cls :: Form -> Clauses
+  cls = nub . map nub . sort . map sort . filter nonTriv . cnf2cls . cnf
+
+  cls2cnf :: Clauses -> Form
+  cls2cnf cs = Cnj (map cl2dnf cs)
+ 
+  cl2dnf :: Clause -> Form             
+  cl2dnf is = Dsj (map i2lit is)
+ 
+  i2lit :: Int -> Form            
+  i2lit  i  = if i < 0 then Neg (Prop (abs i)) else Prop i
+
+  testCls = testForms 100 (\ f -> equiv f (cls2cnf $ cls f))
+
+  qcTestCls = quickCheck (\ f -> equiv f (cls2cnf $ cls f))
+

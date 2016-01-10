@@ -1,0 +1,106 @@
+  module Lab6Answers where
+ 
+  import Data.List
+  import Data.Char
+  import Data.Bits
+  import System.Random
+  import Lecture6 
+
+  exMfast :: Integer -> Integer -> Integer -> Integer
+  exMfast b e m = exM' b e m 1 where
+    exM' _ 0 _ r = r
+    exM' b e m r | odd e     = 
+                   exM' (b*b `mod` m) 
+                        (Data.Bits.shiftR e 1) m (r*b `mod` m)
+                 | otherwise = 
+                   exM' (b*b `mod` m) 
+                        (Data.Bits.shiftR e 1) m r
+
+  composites :: [Integer]
+  composites = filter (not.isPrime) [4..]
+
+  testF k n = test prime_tests_F k 0 (take n composites)
+  
+  test :: (Int -> Integer -> IO Bool) 
+       -> Int -> Int -> [Integer] -> IO()
+  test primetest k m [] = print $ show m ++ " false positives"
+  test primetest k m (n:ns) = 
+    do verdict  <- primetest k n
+       if verdict 
+           then do 
+                print ("false positive on " ++ show n)
+                test primetest k (m+1) ns
+           else test primetest k m ns
+
+  carmichael :: [Integer]
+  carmichael = [ (6*k+1)*(12*k+1)*(18*k+1) | 
+        k <- [2..], 
+        isPrime (6*k+1), 
+        isPrime (12*k+1), 
+        isPrime (18*k+1) ]
+
+  carmichaelTest k n = test prime_tests_F k 0 (take n carmichael) 
+
+  testM k n = test primeMR k 0 (take n carmichael)
+
+  findMersennes k n = findM k 0 (take n primes)
+  
+  findM k m [] = print $ show m ++ " Mersenne primes found "
+  findM k m (n:ns) = 
+    do ok <- primeMR k (2^n -1)
+       if ok 
+         then do 
+           print ("Mersenne prime found for " ++ show n)
+           findM k (m+1) ns
+         else findM k m ns
+
+  primesFrom :: Integer -> [Integer]
+  primesFrom n = skipBelow n primes where 
+    skipBelow n (p:ps) = if n <= p then (p:ps) else skipBelow n ps 
+
+  lookForMersenne k n bound = findM k 0 (take n $ primesFrom bound)
+
+  findPrime :: Int -> IO Integer 
+  findPrime k = do 
+     p  <- getStdRandom (randomR (2^(k-1), 2^k - 1))
+     ok <- primeMR 10 p 
+     if ok then return p else findPrime k
+
+  findPair :: Int -> IO (Integer,Integer)
+  findPair k = do 
+     p <- findPrime k
+     q <- findPrime k
+     if p /= q then return (p,q) else findPair k
+
+  rsaKeyGen :: Int -> IO ((Integer,Integer),(Integer,Integer))
+  rsaKeyGen k = do 
+      (p,q)  <- findPair k
+      return (rsa_public p q, rsa_private p q)
+
+  str2int :: String -> Integer
+  str2int [] = 0
+  str2int (c : cs) = 
+    shift (toInteger (ord c)) (8 * (length cs)) .|. str2int cs
+  
+  -- Get the last n bits of an integer x
+  lastNBits :: Integer -> Int -> Integer
+  lastNBits x n = xor (shiftL (shiftR x n) n) x
+  
+  int2str :: Integer -> String
+  int2str 0 = ""
+  int2str x = int2str (shiftR x 8) 
+              ++ [chr (fromInteger (lastNBits x 8))]
+
+  rsaDemo :: String -> IO ()
+  rsaDemo message = do 
+     let x = str2int message
+     ((e,n),(d,_)) <- rsaKeyGen 300
+     let c = rsa_encode (e,n) x
+     let m = rsa_decode (d,n) c
+     let transcript = int2str m
+     putStr $ show message ++ "\n\n"
+     putStr $ show x ++ "\n\n"
+     putStr $ show c ++ "\n\n"
+     putStr $ show m ++ "\n\n"
+     putStr $ show transcript ++ "\n\n"
+

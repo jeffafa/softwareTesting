@@ -1,0 +1,9 @@
+Week 6
+
+Topic: fast modular arithmetic and public key encryption. Slides: here. Code for the slides: Week6.hs.
+Workshop problems: here. The topic is trees, search, tree properties, working with trees, reasoning about trees.
+Workshop answers: here. Code to illustrate the workshop answers: Workshop6Answers.hs.
+Lab problems: here.
+Code for the lab problems: Lab6.hs.
+Deadline for solutions to the lab problems: Tuesday Oct 13, 24.00 h.
+Reading assignment: reread chapters in The Haskell Road that are relevant for you. Make sure to digest Chapter 7.

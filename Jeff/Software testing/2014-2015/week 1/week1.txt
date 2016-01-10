@@ -1,0 +1,15 @@
+Week 1
+
+Course book on sale: please bring 15 euros in cash for your copy of The Haskell Road. Receipts are available upon request.
+Slides of this week: here.
+Code from the slides of this week: Week1.hs.
+Computer lab assignment for this week: teach yourself Haskell. Use the tutorials at www.haskell.org.
+Read Chapters 1 and 2 of "The Haskell Road", and make notes of everything that you do not understand. Are you able to carry out the pen and paper exercises in the book?
+You can find chapters 1 and 2 of the book here.
+Homework: Hand in all implementation exercises in Chapters 1 and 2 of "The Haskell Road". Check the book website (see below)! Further details are here.
+Deadline for handing in the homework: Tuesday September 9, 24.00 h.
+If you need extra challenge, you can try your hand at the bonus exercises: here. The code that goes with this is Lab1Bonus.hs
+You should all make a personal attempt to do the exercises, and next discuss in your group. Please hand in only one solution per group.
+Testing and Formal Methods Quiz: Workshop1.pdf.
+Testing and Formal Methods Quiz, with some answers: Workshop1Answers.pdf.
+Instead of the Hugs interpreter mentioned in the book, we will use the GHC interpreter, ghci. This interpreter comes with the Haskell platform.

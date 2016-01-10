@@ -1,0 +1,57 @@
+  module Lab1Answers where
+  import Data.List
+
+  toRevDigits :: Integer -> [Integer]
+  toRevDigits n = if n < 10 then [n] else mod n 10 : toRevDigits (div n 10)
+  
+  doubleEveryOther :: [Integer] -> [Integer]
+  doubleEveryOther [] = []
+  doubleEveryOther [x] = [x]
+  doubleEveryOther (x:y:zs) = x:2*y:doubleEveryOther zs
+  
+  sumDigits :: Integer -> Integer 
+  sumDigits = sum . toRevDigits
+  
+  luhn :: Integer -> Bool
+  luhn = (\n -> mod n 10 == 0) . sum . (map sumDigits) . 
+            doubleEveryOther . toRevDigits
+
+  testLuhn :: Integer -> Bool
+  testLuhn x = let 
+    xs = [ 10*x + y | y <- [0..9] ]
+    ys = filter luhn xs 
+   in length ys == 1
+
+  data Boy = Matthew | Peter | Jack | Arnold | Carl 
+             deriving (Eq,Show)
+ 
+  boys = [Matthew, Peter, Jack, Arnold, Carl]
+
+  says :: Boy -> Boy -> Bool
+
+  says Matthew x = not (x==Matthew) && not (x==Carl)
+
+  says Peter   x = x==Matthew || x==Jack
+
+  says Jack    x = not (says Matthew x) && not (says Peter x)
+
+  says Arnold  x = says Matthew x /= says Peter x
+
+  says Carl    x = not (says Arnold x)
+
+  accusers :: Boy -> [Boy]
+  accusers x = [ y | y <- boys, says y x ]            
+
+  guilty :: [Boy]
+  guilty = [ x | x <- boys, length (accusers x) == 3 ]
+
+  honest :: [Boy]
+  honest =  [ x | x <- boys, y <- guilty, says x y ]
+
+  triplets n = [ (a,b,c) | c <-[1..n], a <- [1..c], b <- [1..c], a < b, 
+                 a^2 + b^2 == c^2 ]
+  
+  triple = head $ filter (\ (x,y,z) -> x+y+z == 1000) $ triplets 1000
+  
+  solution = let (x,y,z) = triple in x*y*z  -- 31875000
+

@@ -1,0 +1,491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0071)http://homepages.cwi.nl/~jve/courses/15/testing/lab/LabExamAnswers.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="./LabExamAnswers_files/buttondown.css" type="text/css">
+  <script src="./LabExamAnswers_files/MathJax.js" type="text/javascript"></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?rev=2.6.0') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">@font-face {font-family: MathJax_AMS; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_AMS-Regular.otf?rev=2.6.0') format('opentype')}
+</style></head>
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+<h1 id="lab-exam-software-specification-and-testing-with-answers">Lab Exam Software Specification and Testing, with Answers</h1>
+<h1 id="october-19-2015">October 19, 2015</h1>
+<hr>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">module</span> <span class="dt">LabExamAnswers</span> <span class="kw">where</span>
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">Data.List</span>
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">Data.Ord</span>
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">Test.QuickCheck</span></code></pre></div>
+<p>There are 6 problems plus a bonus problem. If you manage to solve the bonus problem you earn compensation for errors in your answers to the regular problems.</p>
+<hr>
+<p><strong>Problem 1</strong></p>
+<p>Codes are lists of zeros and ones. For convenience we use the datatype <code>[Int]</code> for codes.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">type</span> <span class="dt">Code</span> <span class="fu">=</span> [<span class="dt">Int</span>]</code></pre></div>
+<p>Examples are <code>[1,0]</code> and <code>[0,1]</code> and <code>[1,0,1,1]</code>. Think of these as lists of bits.</p>
+<p>Now assume that these codes represent non-negative integers in binary, with the bits in reverse order of significance: least significant bit first. Thus <code>[1,0]</code> represents 1, <code>[0,1]</code> represents 2, and <code>[1,0,1,1]</code> represents 13.</p>
+<p>Write translation functions <code>bits2integer :: [Int] -&gt; Integer</code> and <code>integer2bits :: Integer -&gt; [Int]</code> that efficiently translate bit lists to the corresponding (non-negative) integers, and back.</p>
+<p>Next, test your code for correctness with QuickCheck (the two translations have to be inverses of each other) and for efficiency (the code has to be fast; you have to devise your own method for establishing this).</p>
+<hr>
+<p><strong>Answer</strong></p>
+<p>We can translate from binary representation in reverse order to the integer they represent by means of:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; bits2integer ::</span>  [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">Integer</span>
+<span class="ot">&gt;</span> bits2integer [] <span class="fu">=</span> <span class="dv">0</span>
+<span class="ot">&gt;</span> bits2integer (<span class="dv">1</span><span class="fu">:</span>bs) <span class="fu">=</span> <span class="dv">1</span> <span class="fu">+</span> <span class="dv">2</span> <span class="fu">*</span> (bits2integer bs)
+<span class="ot">&gt;</span> bits2integer (<span class="dv">0</span><span class="fu">:</span>bs) <span class="fu">=</span> <span class="dv">2</span> <span class="fu">*</span> (bits2integer bs)
+<span class="ot">&gt;</span> bits2integer (n<span class="fu">:</span>_)  <span class="fu">=</span> error (show n <span class="fu">++</span> <span class="st">" is not a bit"</span>)</code></pre></div>
+<p>The translation in the other direction produces a binary encoding:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; integer2bits ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> [<span class="dt">Int</span>]
+<span class="ot">&gt;</span> integer2bits <span class="dv">0</span> <span class="fu">=</span> [<span class="dv">0</span>]
+<span class="ot">&gt;</span> integer2bits <span class="dv">1</span> <span class="fu">=</span> [<span class="dv">1</span>]
+<span class="ot">&gt;</span> integer2bits n <span class="fu">=</span> fromInteger (n <span class="ot">`mod`</span> <span class="dv">2</span>) <span class="fu">:</span> integer2bits (n <span class="ot">`div`</span> <span class="dv">2</span>)</code></pre></div>
+<p>Testing that these are inverses of each other:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_inverses ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_inverses n <span class="fu">=</span> <span class="kw">let</span>
+<span class="ot">&gt;</span>     an <span class="fu">=</span> abs n
+<span class="ot">&gt;</span>   <span class="kw">in</span> (bits2integer <span class="fu">$</span> integer2bits <span class="fu">$</span> an) <span class="fu">==</span> an</code></pre></div>
+<p>QuickChecks on this property succeed.</p>
+<p>To check that this code is fast, try:</p>
+<pre><code> bits2integer $ integer2bits (2^100000)</code></pre>
+<hr>
+<p><strong>Problem 2</strong></p>
+<p>A function <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;double-struck&quot;&gt;R&lt;/mi&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;&amp;#x2192;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;double-struck&quot;&gt;R&lt;/mi&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" role="math" style="width: 4.615em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.493em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.581em 1004.49em 2.855em -999.997em); top: -2.485em; left: 0.003em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math-italic;">f<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.064em;"></span></span><span class="mo" id="MathJax-Span-4" style="font-family: MathJax_Main; padding-left: 0.306em;">:</span><span class="texatom" id="MathJax-Span-5" style="padding-left: 0.306em;"><span class="mrow" id="MathJax-Span-6"><span class="texatom" id="MathJax-Span-7"><span class="mrow" id="MathJax-Span-8"><span class="mi" id="MathJax-Span-9" style="font-family: MathJax_AMS;">R</span></span></span></span></span><span class="mo" id="MathJax-Span-10" style="font-family: MathJax_Main; padding-left: 0.306em;">→</span><span class="texatom" id="MathJax-Span-11" style="padding-left: 0.306em;"><span class="mrow" id="MathJax-Span-12"><span class="texatom" id="MathJax-Span-13"><span class="mrow" id="MathJax-Span-14"><span class="mi" id="MathJax-Span-15" style="font-family: MathJax_AMS;">R</span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.491em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.247em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.066em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo>:</mo><mrow class="MJX-TeXAtom-ORD"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="double-struck">R</mi></mrow></mrow><mo stretchy="false">→</mo><mrow class="MJX-TeXAtom-ORD"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="double-struck">R</mi></mrow></mrow></math></span></span><script type="math/tex" id="MathJax-Element-1">f: {\mathbb R} \to {\mathbb R}</script></span> (a function on the real numbers) is called <em>even</em> if it holds for all <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;#x2208;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;double-struck&quot;&gt;R&lt;/mi&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-16" role="math" style="width: 2.734em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.612em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.641em 1002.61em 2.734em -999.997em); top: -2.485em; left: 0.003em;"><span class="mrow" id="MathJax-Span-17"><span class="mi" id="MathJax-Span-18" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-19" style="font-family: MathJax_Main; padding-left: 0.306em;">∈</span><span class="texatom" id="MathJax-Span-20" style="padding-left: 0.306em;"><span class="mrow" id="MathJax-Span-21"><span class="texatom" id="MathJax-Span-22"><span class="mrow" id="MathJax-Span-23"><span class="mi" id="MathJax-Span-24" style="font-family: MathJax_AMS;">R</span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.491em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.122em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.878em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>∈</mo><mrow class="MJX-TeXAtom-ORD"><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="double-struck">R</mi></mrow></mrow></math></span></span><script type="math/tex" id="MathJax-Element-2">x \in {\mathbb R}</script></span> that <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;f&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-25" role="math" style="width: 6.192em; display: inline-block;"><span style="display: inline-block; position: relative; width: 6.01em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.217em 1005.89em 2.552em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-26"><span class="mi" id="MathJax-Span-27" style="font-family: MathJax_Math-italic;">f<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.064em;"></span></span><span class="mo" id="MathJax-Span-28" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-29" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-30" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-31" style="font-family: MathJax_Main; padding-left: 0.306em;">=</span><span class="mi" id="MathJax-Span-32" style="font-family: MathJax_Math-italic; padding-left: 0.306em;">f<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.064em;"></span></span><span class="mo" id="MathJax-Span-33" style="font-family: MathJax_Main;">(</span><span class="mo" id="MathJax-Span-34" style="font-family: MathJax_Main;">−</span><span class="mi" id="MathJax-Span-35" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-36" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mo>−</mo><mi>x</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-3">f(x) =  f(-x)</script></span>. An example of an even function is the squaring function (the function <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;&amp;#x03BB;&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;&amp;#x21A6;&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-37" role="math" style="width: 3.887em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.765em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.156em 1003.77em 2.37em -999.997em); top: -2.181em; left: 0.003em;"><span class="mrow" id="MathJax-Span-38"><span class="mi" id="MathJax-Span-39" style="font-family: MathJax_Math-italic;">λ</span><span class="mi" id="MathJax-Span-40" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-41" style="font-family: MathJax_Main; padding-left: 0.306em;">↦</span><span class="msubsup" id="MathJax-Span-42" style="padding-left: 0.306em;"><span style="display: inline-block; position: relative; width: 0.974em; height: 0px;"><span style="position: absolute; clip: rect(3.401em 1000.55em 4.19em -999.997em); top: -4.002em; left: 0.003em;"><span class="mi" id="MathJax-Span-43" style="font-family: MathJax_Math-italic;">x</span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span><span style="position: absolute; top: -4.366em; left: 0.549em;"><span class="mn" id="MathJax-Span-44" style="font-size: 70.7%; font-family: MathJax_Main;">2</span><span style="display: inline-block; width: 0px; height: 4.008em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.187em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>λ</mi><mi>x</mi><mo stretchy="false">↦</mo><msup><mi>x</mi><mn>2</mn></msup></math></span></span><script type="math/tex" id="MathJax-Element-4">\lambda x \mapsto x^2</script></span>).</p>
+<p>Please note that this notion of <em>even</em> is different from the well-known property of integer numbers. We are talking about a property of <em>functions</em> here.</p>
+<ul>
+<li><p>Give one more example of an even function on the real numbers.</p></li>
+<li><p>Explain why it is impossible to write an algorithm that checks whether a function of type <code>Float -&gt; Float</code> is even.</p></li>
+<li><p>Implement a test <code>maybeEven</code> for evenness of functions, and explain why the outcome <code>False</code> of this test is more reliable than the outcome <code>True</code>.</p>
+<p>maybeEven :: (Float -&gt; Float) -&gt; Bool maybeEven f = ...</p></li>
+</ul>
+<hr>
+<p><strong>Answer</strong></p>
+<p>Another example of an even function on the reals is the absolute value function: <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;&amp;#x03BB;&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;&amp;#x21A6;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-45" role="math" style="width: 4.069em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.947em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.277em 1003.83em 2.612em -999.997em); top: -2.181em; left: 0.003em;"><span class="mrow" id="MathJax-Span-46"><span class="mi" id="MathJax-Span-47" style="font-family: MathJax_Math-italic;">λ</span><span class="mi" id="MathJax-Span-48" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-49" style="font-family: MathJax_Main; padding-left: 0.306em;">↦</span><span class="texatom" id="MathJax-Span-50" style="padding-left: 0.306em;"><span class="mrow" id="MathJax-Span-51"><span class="mo" id="MathJax-Span-52" style="font-family: MathJax_Main;">|</span></span></span><span class="mi" id="MathJax-Span-53" style="font-family: MathJax_Math-italic;">x</span><span class="texatom" id="MathJax-Span-54"><span class="mrow" id="MathJax-Span-55"><span class="mo" id="MathJax-Span-56" style="font-family: MathJax_Main;">|</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.187em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>λ</mi><mi>x</mi><mo stretchy="false">↦</mo><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><mi>x</mi><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow></math></span></span><script type="math/tex" id="MathJax-Element-5">\lambda x \mapsto |x|</script></span>. for <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;|&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-57" role="math" style="width: 5.1em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.918em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.277em 1004.8em 2.612em -999.997em); top: -2.181em; left: 0.003em;"><span class="mrow" id="MathJax-Span-58"><span class="texatom" id="MathJax-Span-59"><span class="mrow" id="MathJax-Span-60"><span class="mo" id="MathJax-Span-61" style="font-family: MathJax_Main;">|</span></span></span><span class="mi" id="MathJax-Span-62" style="font-family: MathJax_Math-italic;">x</span><span class="texatom" id="MathJax-Span-63"><span class="mrow" id="MathJax-Span-64"><span class="mo" id="MathJax-Span-65" style="font-family: MathJax_Main;">|</span></span></span><span class="mo" id="MathJax-Span-66" style="font-family: MathJax_Main; padding-left: 0.306em;">=</span><span class="texatom" id="MathJax-Span-67" style="padding-left: 0.306em;"><span class="mrow" id="MathJax-Span-68"><span class="mo" id="MathJax-Span-69" style="font-family: MathJax_Main;">|</span></span></span><span class="mo" id="MathJax-Span-70" style="font-family: MathJax_Main; padding-left: 0.246em;">−</span><span class="mi" id="MathJax-Span-71" style="font-family: MathJax_Math-italic; padding-left: 0.246em;">x</span><span class="texatom" id="MathJax-Span-72"><span class="mrow" id="MathJax-Span-73"><span class="mo" id="MathJax-Span-74" style="font-family: MathJax_Main;">|</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.187em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><mi>x</mi><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow><mo>−</mo><mi>x</mi><mrow class="MJX-TeXAtom-ORD"><mo stretchy="false">|</mo></mrow></math></span></span><script type="math/tex" id="MathJax-Element-6">|x| = |-x|</script></span>, for all <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;#x2208;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mtext mathcolor=&quot;red&quot;&gt;\Ree&lt;/mtext&gt;&lt;/mrow&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-75" role="math" style="width: 4.129em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.008em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.277em 1004.01em 2.612em -999.997em); top: -2.181em; left: 0.003em;"><span class="mrow" id="MathJax-Span-76"><span class="mi" id="MathJax-Span-77" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-78" style="font-family: MathJax_Main; padding-left: 0.306em;">∈</span><span class="texatom" id="MathJax-Span-79" style="padding-left: 0.306em;"><span class="mrow" id="MathJax-Span-80"><span class="texatom" id="MathJax-Span-81"><span class="mrow" id="MathJax-Span-82"><span class="mtext" id="MathJax-Span-83" style="font-family: MathJax_Main; color: red;">\Ree</span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.187em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>∈</mo><mrow class="MJX-TeXAtom-ORD"><mrow class="MJX-TeXAtom-ORD"><mtext mathcolor="red">\Ree</mtext></mrow></mrow></math></span></span><script type="math/tex" id="MathJax-Element-7">x \in {\mathbb \Ree}</script></span>.</p>
+<p>So why is evenness hard to test? Because we would have to check for an <em>infinite number of cases</em>.</p>
+<p>The following test checks on a finite list of values around <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-84" role="math" style="width: 0.61em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.549em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.277em 1000.49em 2.309em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-85"><span class="mn" id="MathJax-Span-86" style="font-family: MathJax_Main;">0</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.816em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn></math></span></span><script type="math/tex" id="MathJax-Element-8">0</script></span>:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; maybeEven ::</span>  (<span class="dt">Float</span> <span class="ot">-&gt;</span> <span class="dt">Float</span>) <span class="ot">-&gt;</span> <span class="dt">Bool</span> 
+<span class="ot">&gt;</span> maybeEven f <span class="fu">=</span> all (\ x <span class="ot">-&gt;</span> f x <span class="fu">==</span> f (<span class="fu">-</span>x)) 
+<span class="ot">&gt;</span>                   [ <span class="dv">1</span><span class="fu">/</span>n <span class="fu">|</span> n <span class="ot">&lt;-</span> [<span class="dv">1</span><span class="fu">..</span><span class="dv">1000</span>] ]</code></pre></div>
+<p>This handles some cases correctly:</p>
+<pre><code> *LabExamAnswers&gt; maybeEven (^2)
+ True
+ *LabExamAnswers&gt; maybeEven (^3)
+ False</code></pre>
+<p>But it may classify functions that are not even as even:</p>
+<pre><code> *LabExam2Answers&gt; maybeEven (\x -&gt; if x &lt; 1 then x^2 else x)
+ True</code></pre>
+<hr>
+<p><strong>Problem 3</strong></p>
+<p>Give code for constructing a frequency list from a string. The input is a string, the output is a list of pairs <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-87" role="math" style="width: 2.127em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.066em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.217em 1001.95em 2.552em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-88"><span class="mo" id="MathJax-Span-89" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-90" style="font-family: MathJax_Math-italic;">c</span><span class="mo" id="MathJax-Span-91" style="font-family: MathJax_Main;">,</span><span class="mi" id="MathJax-Span-92" style="font-family: MathJax_Math-italic; padding-left: 0.185em;">i</span><span class="mo" id="MathJax-Span-93" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">(</mo><mi>c</mi><mo>,</mo><mi>i</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-9">(c,i)</script></span> where <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-10-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-94" role="math" style="width: 0.488em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.488em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.49em 2.127em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-95"><span class="mi" id="MathJax-Span-96" style="font-family: MathJax_Math-italic;">c</span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math></span></span><script type="math/tex" id="MathJax-Element-10">c</script></span> is a character and <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-11-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-97" role="math" style="width: 0.367em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.367em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.095em 1000.31em 2.127em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-98"><span class="mi" id="MathJax-Span-99" style="font-family: MathJax_Math-italic;">i</span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.816em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>i</mi></math></span></span><script type="math/tex" id="MathJax-Element-11">i</script></span> gives the number of occurrences of <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-12-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-100" role="math" style="width: 0.488em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.488em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.49em 2.127em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-101"><span class="mi" id="MathJax-Span-102" style="font-family: MathJax_Math-italic;">c</span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math></span></span><script type="math/tex" id="MathJax-Element-12">c</script></span> in the input string. The type is:</p>
+<pre><code> freqList :: String -&gt; [(Char,Int)]
+ freqList s = [] -- replace by your own code</code></pre>
+<p>This should give, e.g.:</p>
+<pre><code> *LabExam&gt; freqList "Lab Exam"
+ [(' ',1),('E',1),('L',1),('a',2),('b',1),('m',1),('x',1)]</code></pre>
+<p>Include a test for checking that your implementation is correct.</p>
+<hr>
+<p><strong>Answer</strong></p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; freqList ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> [(<span class="dt">Char</span>,<span class="dt">Int</span>)]
+<span class="ot">&gt;</span> freqList s <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>    init <span class="fu">=</span> map (\ x <span class="ot">-&gt;</span> (x,<span class="dv">1</span>)) (sort s)
+<span class="ot">&gt;    f  ::</span> [(<span class="dt">Char</span>,<span class="dt">Int</span>)] <span class="ot">-&gt;</span> [(<span class="dt">Char</span>,<span class="dt">Int</span>)]
+<span class="ot">&gt;</span>    f [] <span class="fu">=</span> []
+<span class="ot">&gt;</span>    f [(x,m)] <span class="fu">=</span> [(x,m)]
+<span class="ot">&gt;</span>    f ((x,m)<span class="fu">:</span>(y,n)<span class="fu">:</span>zs) <span class="fu">|</span> x <span class="fu">==</span> y    <span class="fu">=</span> f ((x,m<span class="fu">+</span>n)<span class="fu">:</span>zs)
+<span class="ot">&gt;</span>                       <span class="fu">|</span> otherwise <span class="fu">=</span> (x,m)<span class="fu">:</span> f ((y,n)<span class="fu">:</span>zs)
+<span class="ot">&gt;</span>  <span class="kw">in</span> 
+<span class="ot">&gt;</span>    f init</code></pre></div>
+<p>An easy way to test this is by generating a string from a frequency table, and use this to construct a new frequency table. The two tables should be identical.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; ft2string ::</span> [(<span class="dt">Char</span>,<span class="dt">Int</span>)] <span class="ot">-&gt;</span> <span class="dt">String</span>
+<span class="ot">&gt;</span> ft2string <span class="fu">=</span> concatMap (\ (c,n) <span class="ot">-&gt;</span> take n (repeat c))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_table ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_table s <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>   lst <span class="fu">=</span> freqList s 
+<span class="ot">&gt;</span>  <span class="kw">in</span> lst <span class="fu">==</span> freqList (ft2string lst)</code></pre></div>
+<p>Next, test with Quickcheck:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test1 <span class="fu">=</span> quickCheck prop_table</code></pre></div>
+<p>This test succeeds.</p>
+<hr>
+<p><strong>Problem 4</strong></p>
+<p>A <em>Huffman tree</em> is a binary tree with characters at the leaf nodes, and weight information (given by an integer) at every node.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">data</span> <span class="dt">HTree</span>  <span class="fu">=</span> <span class="dt">Leaf</span> <span class="dt">Char</span> <span class="dt">Int</span>
+<span class="ot">&gt;</span>             <span class="fu">|</span> <span class="dt">Fork</span> <span class="dt">HTree</span> <span class="dt">HTree</span> <span class="dt">Int</span>
+<span class="ot">&gt;</span>             <span class="kw">deriving</span> (<span class="dt">Show</span>)</code></pre></div>
+<p>The weight of a tree is given by:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; weight ::</span> <span class="dt">HTree</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>
+<span class="ot">&gt;</span> weight (<span class="dt">Leaf</span> _ w)    <span class="fu">=</span> w
+<span class="ot">&gt;</span> weight (<span class="dt">Fork</span> _ _ w)  <span class="fu">=</span> w</code></pre></div>
+<p>Call the following property the <em>Huffman property</em>:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_huffman ::</span> <span class="dt">HTree</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_huffman (<span class="dt">Leaf</span> _ _) <span class="fu">=</span> <span class="dt">True</span>
+<span class="ot">&gt;</span> prop_huffman (<span class="dt">Fork</span> t1 t2 w) <span class="fu">=</span> prop_huffman t1 <span class="fu">&amp;&amp;</span> prop_huffman t2 
+<span class="ot">&gt;</span>                      <span class="fu">&amp;&amp;</span> weight t1 <span class="fu">+</span> weight t2 <span class="fu">==</span> w</code></pre></div>
+<p>The following tree merge function can be used to build Huffman trees.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> merge t1 t2 <span class="fu">=</span> <span class="dt">Fork</span> t1 t2 (weight t1 <span class="fu">+</span> weight t2)</code></pre></div>
+<p>Consider the following function that builds trees from frequency tables:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; createTree ::</span> [(<span class="dt">Char</span>,<span class="dt">Int</span>)] <span class="ot">-&gt;</span> <span class="dt">HTree</span>
+<span class="ot">&gt;</span> createTree [(c,i)] <span class="fu">=</span> <span class="dt">Leaf</span> c i 
+<span class="ot">&gt;</span> createTree ((c,i)<span class="fu">:</span>t) <span class="fu">=</span> merge (<span class="dt">Leaf</span> c i) (createTree t)</code></pre></div>
+<p>Test with QuickCheck whether for any frequency list <code>xs</code> it is the case that <code>createTree xs</code> has the Huffman property.</p>
+<hr>
+<p><strong>Answer</strong></p>
+<p>Here is a relevant QuickCheck property:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_h ::</span> [(<span class="dt">Char</span>,<span class="dt">Int</span>)] <span class="ot">-&gt;</span> <span class="dt">Property</span> 
+<span class="ot">&gt;</span> prop_h xs <span class="fu">=</span> (not<span class="fu">.</span>null) xs <span class="fu">==&gt;</span> prop_huffman (createTree xs)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test2 <span class="fu">=</span> quickCheck prop_h</code></pre></div>
+<p>Note that we have to rule out empty strings in the definition of <code>prop_h</code>.</p>
+<p>This test succeeds.</p>
+<hr>
+<p><strong>Problem 5</strong></p>
+<p><em>Huffman code</em> is used in compression algorithms. It gives efficient encodings of characters as bit strings, in the sense that more frequent characters get mapped to shorter bit strings. Huffman trees are built from frequency lists, as follows:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; buildTree ::</span> [(<span class="dt">Char</span>, <span class="dt">Int</span>)] <span class="ot">-&gt;</span> <span class="dt">HTree</span>
+<span class="ot">&gt;</span> buildTree table <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>     sortedTable <span class="fu">=</span> sortBy (comparing snd) table
+<span class="ot">&gt;</span>     trees <span class="fu">=</span> map (\ (c,i) <span class="ot">-&gt;</span> <span class="dt">Leaf</span> c i) sortedTable
+<span class="ot">&gt;     bld ::</span> [<span class="dt">HTree</span>] <span class="ot">-&gt;</span> <span class="dt">HTree</span> 
+<span class="ot">&gt;</span>     bld ([t])    <span class="fu">=</span> t
+<span class="ot">&gt;</span>     bld (a<span class="fu">:</span>b<span class="fu">:</span>cs) <span class="fu">=</span> bld <span class="fu">$</span> 
+<span class="ot">&gt;</span>         insertBy (comparing weight) (merge a b) cs
+<span class="ot">&gt;</span>   <span class="kw">in</span> bld trees</code></pre></div>
+<p>Explain how this algorithm works by inspection of the code.</p>
+<p>Next, test with QuickCheck whether all Huffman trees built by means of <code>buildTree</code> have the Huffman property?</p>
+<hr>
+<p><strong>Answer</strong></p>
+<p>The algorithm constructs a tree from a frequency list by first mapping the frequency list to a list of leaf trees, each with weight equal to the frequency, in ascending order of frequencies. Next, this list is transformed into a single tree by recursively merging the first two trees in the list, and inserting the result at the position determined by the new weight. This puts characters with low frequencies `deeper' in the tree than characters with high frequencies.</p>
+<p>All Huffman trees built by <code>buildTree</code> have the Huffman property. The reason is that all trees except leaf trees are constructed with <code>merge</code>. Since leaf trees have the Huffman property and <code>merge</code> preserves the Huffman property, <code>buildTree table</code> will have the Huffman property for any table.</p>
+<p>But in the problem statement you were asked to test for this. Here is a relevant property:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_h2 ::</span> [(<span class="dt">Char</span>,<span class="dt">Int</span>)] <span class="ot">-&gt;</span> <span class="dt">Property</span>
+<span class="ot">&gt;</span> prop_h2 t <span class="fu">=</span> (not<span class="fu">.</span>null) t <span class="fu">==&gt;</span> prop_huffman (buildTree t)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test3 <span class="fu">=</span> quickCheck prop_h2</code></pre></div>
+<p>Alternatively:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_h2' ::</span> [(<span class="dt">Char</span>,<span class="dt">Int</span>)] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_h2' t <span class="fu">=</span> null t <span class="fu">||</span> prop_huffman (buildTree t)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test3' <span class="fu">=</span> quickCheck prop_h2'</code></pre></div>
+<p>These tests succeed.</p>
+<hr>
+<p><strong>Problem 6</strong></p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">type</span> <span class="dt">CodeTable</span> <span class="fu">=</span> [(<span class="dt">Char</span>,<span class="dt">Code</span>)]</code></pre></div>
+<p>Building a code table from a Huffman tree:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; tree2table ::</span> <span class="dt">HTree</span> <span class="ot">-&gt;</span> <span class="dt">CodeTable</span>
+<span class="ot">&gt;</span> tree2table (<span class="dt">Leaf</span> c _)    <span class="fu">=</span> [(c, [])]
+<span class="ot">&gt;</span> tree2table (<span class="dt">Fork</span> l r _)  <span class="fu">=</span> 
+<span class="ot">&gt;</span>   map (addBit <span class="dv">0</span>) (tree2table l) <span class="fu">++</span> map (addBit <span class="dv">1</span>) (tree2table r)
+<span class="ot">&gt;</span>      <span class="kw">where</span> addBit b <span class="fu">=</span> \ (c,xs) <span class="ot">-&gt;</span> (c,b<span class="fu">:</span>xs)</code></pre></div>
+<p>Building a code table from a string: first use the string to build a frequency list, next map that to a Huffman tree, next use the Huffman tree for constructing the table.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; string2table ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">CodeTable</span>
+<span class="ot">&gt;</span> string2table <span class="fu">=</span> tree2table <span class="fu">.</span> buildTree <span class="fu">.</span> freqList </code></pre></div>
+<p>This uses your code for <code>freqList</code> from an earlier question. Example:</p>
+<pre><code> *LabExam&gt; string2table "the quick brown fox jumps over the lazy dog"
+ [('s',[0,0,0,0,0]),('v',[0,0,0,0,1]),('p',[0,0,0,1,0]),('q',[0,0,0,1,1]),
+  ('y',[0,0,1,0,0]),('z',[0,0,1,0,1]),('w',[0,0,1,1,0]),('x',[0,0,1,1,1]),
+  ('i',[0,1,0,0,0]),('j',[0,1,0,0,1]),('f',[0,1,0,1,0]),('g',[0,1,0,1,1]),
+  ('m',[0,1,1,0,0]),('n',[0,1,1,0,1]),('k',[0,1,1,1,0]),('l',[0,1,1,1,1]),
+  ('o',[1,0,0]),('e',[1,0,1,0]),('t',[1,0,1,1,0]),('u',[1,0,1,1,1]),
+  ('h',[1,1,0,0,0]),('r',[1,1,0,0,1]),('c',[1,1,0,1,0,0]),
+  ('d',[1,1,0,1,0,1]),('a',[1,1,0,1,1,0]),('b',[1,1,0,1,1,1]),
+  (' ',[1,1,1])]</code></pre>
+<p>Notice that the codes for 'o' and ' ' (space) are the shortest, corresponding to the fact that these are the characters that occur most often in the text.</p>
+<p>Encode a string using a code table:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; ecd ::</span> <span class="dt">CodeTable</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Code</span>
+<span class="ot">&gt;</span> ecd m <span class="fu">=</span> concatMap f <span class="kw">where</span>
+<span class="ot">&gt;</span>    f x <span class="fu">=</span> maybe (myundefined x) id <span class="fu">$</span> lookup x m
+<span class="ot">&gt;</span>    myundefined x <span class="fu">=</span> (error <span class="fu">$</span> <span class="st">"No '"</span><span class="fu">++</span>[x]<span class="fu">++</span><span class="st">"' in the code table"</span>)</code></pre></div>
+<p>The codetable is computed from a string, so we can view encoding as a function that takes a first string for the frequencies, and uses these to encode a second string:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; encode ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Code</span>
+<span class="ot">&gt;</span> encode fqs message <span class="fu">=</span> ecd (string2table fqs) message</code></pre></div>
+<p>Decode using a frequency string:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; decode ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Code</span> <span class="ot">-&gt;</span> <span class="dt">String</span>
+<span class="ot">&gt;</span> decode s <span class="fu">=</span> dcd tree 
+<span class="ot">&gt;</span>     <span class="kw">where</span>  tree <span class="fu">=</span> buildTree <span class="fu">$</span> freqList s
+<span class="ot">&gt;            dcd ::</span> <span class="dt">HTree</span> <span class="ot">-&gt;</span> <span class="dt">Code</span> <span class="ot">-&gt;</span> <span class="dt">String</span>
+<span class="ot">&gt;</span>            dcd (<span class="dt">Leaf</span> c _) []        <span class="fu">=</span> [c]
+<span class="ot">&gt;</span>            dcd (<span class="dt">Leaf</span> c _) bs        <span class="fu">=</span> c <span class="fu">:</span> dcd tree bs
+<span class="ot">&gt;</span>            dcd (<span class="dt">Fork</span> l r _) (b<span class="fu">:</span>bs)  <span class="fu">=</span> dcd (<span class="kw">if</span> b <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> l <span class="kw">else</span> r) bs</code></pre></div>
+<p>Your task is to test this code for correctness with QuickCheck. Some care should be taken to ensure that the Huffman tree has weight information for all characters. Also, you may assume that the string that is used to compute the frequency table is non-trivial: it should assign weights to at least two characters.</p>
+<p>Deliverables: some suitable QuickCheck properties, plus a test report. If your testing reveals an error, please indicate how it could be corrected. If your testing indicates that the code is correct, please explain why you are confident that you did run enough tests.</p>
+<hr>
+<p><strong>Answer</strong></p>
+<p>The obvious thing to do is to check for a number of randomly generated Huffman trees and a number of randomly generated strings whether the result of decoding an encoding of the string gives the string back.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_Huffman1 ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span> 
+<span class="ot">&gt;</span> prop_Huffman1 s <span class="fu">=</span> 
+<span class="ot">&gt;</span>    decode s (encode s s) <span class="fu">==</span> s </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test4 <span class="fu">=</span> quickCheck prop_Huffman1</code></pre></div>
+<p>Now the first of these tests reveals that there is an error in the code:</p>
+<pre><code> *LabExamAnswers&gt; test4
+ *** Failed! (after 1 test):                             
+ Exception:
+   LabExamAnswers.lhs:(157,7)-(159,52): Non-exhaustive patterns in function bld
+ ""</code></pre>
+<p>The function <code>bld</code> assumes that its input list is non-empty. Obviously, things go wrong if start out from an empty frequency list. So we have to exclude this:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_Huffman1' ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Property</span> 
+<span class="ot">&gt;</span> prop_Huffman1' s <span class="fu">=</span> 
+<span class="ot">&gt;</span>    (not<span class="fu">.</span>null) s <span class="fu">==&gt;</span> decode s (encode s s) <span class="fu">==</span> s </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test4' <span class="fu">=</span> quickCheck prop_Huffman1'</code></pre></div>
+<p>This new test succeeds.</p>
+<p>But note that both tests assume that the input string for encoding also is non-empty. Let's drop that assumption:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_Huffman2 ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Property</span> 
+<span class="ot">&gt;</span> prop_Huffman2 s s' <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>  <span class="kw">in</span> 
+<span class="ot">&gt;</span>    (not<span class="fu">.</span>null) s  <span class="fu">==&gt;</span> decode s (encode s s') <span class="fu">==</span> s'</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test5 <span class="fu">=</span> quickCheck prop_Huffman2</code></pre></div>
+<p>Oops, this fails:</p>
+<pre><code>  *LabExamAnswers&gt; test5
+  *** Failed! Falsifiable (after 1 test and 2 shrinks):                   
+  "a"
+  ""</code></pre>
+<p>Could it be that there is something wrong with encoding and decoding for the empty input string?</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_Huffman3 ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Property</span> 
+<span class="ot">&gt;</span> prop_Huffman3 s <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>  <span class="kw">in</span> 
+<span class="ot">&gt;</span>    (not<span class="fu">.</span>null) s  <span class="fu">==&gt;</span> decode s (encode s <span class="st">""</span>) <span class="fu">==</span> <span class="st">""</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test5' <span class="fu">=</span> quickCheck prop_Huffman3</code></pre></div>
+<p>Yes, there is something wrong. Let's check encoding and decoding separately:</p>
+<pre><code>    *LabExamAnswers&gt; encode "aaabbc" ""
+    []</code></pre>
+<p>Hmm, that seems OK.</p>
+<pre><code> *LabExamAnswers&gt; decode "aaabbc" []
+ "*** Exception: LabExamAnswers.lhs:(264,14)-(266,72): Non-exhaustive patterns in function dcd</code></pre>
+<p>So this is where trouble resides. How do we repair this? By providing the missing pattern!</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; decode' ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Code</span> <span class="ot">-&gt;</span> <span class="dt">String</span>
+<span class="ot">&gt;</span> decode' s <span class="fu">=</span> dcd tree 
+<span class="ot">&gt;</span>     <span class="kw">where</span>  tree <span class="fu">=</span> buildTree <span class="fu">$</span> freqList s
+<span class="ot">&gt;            dcd ::</span> <span class="dt">HTree</span> <span class="ot">-&gt;</span> <span class="dt">Code</span> <span class="ot">-&gt;</span> <span class="dt">String</span>
+<span class="ot">&gt;</span>            dcd (<span class="dt">Leaf</span> c _) []        <span class="fu">=</span> [c]
+<span class="ot">&gt;</span>            dcd (<span class="dt">Leaf</span> c _) bs        <span class="fu">=</span> c <span class="fu">:</span> dcd tree bs
+<span class="ot">&gt;</span>            dcd (<span class="dt">Fork</span> _ _ _) []      <span class="fu">=</span> []
+<span class="ot">&gt;</span>            dcd (<span class="dt">Fork</span> l r _) (b<span class="fu">:</span>bs)  <span class="fu">=</span> dcd (<span class="kw">if</span> b <span class="fu">==</span> <span class="dv">0</span> <span class="kw">then</span> l <span class="kw">else</span> r) bs</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_Huffman3' ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Property</span> 
+<span class="ot">&gt;</span> prop_Huffman3' s <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>  <span class="kw">in</span> 
+<span class="ot">&gt;</span>    (not<span class="fu">.</span>null) s  <span class="fu">==&gt;</span> decode' s (encode s <span class="st">""</span>) <span class="fu">==</span> <span class="st">""</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test5'' <span class="fu">=</span> quickCheck prop_Huffman3'</code></pre></div>
+<p>This still fails:</p>
+<pre><code> *** Failed! Falsifiable (after 1 test and 1 shrink):     
+ "a"</code></pre>
+<p>This counterexample uses a frequency table built from a single character, and the empty input string.</p>
+<p>Let's check by hand what happens in this case:</p>
+<pre><code> *LabExamAnswers&gt; encode "a" []
+ []
+ *LabExamAnswers&gt; decode "a" []
+ "a"
+ *LabExamAnswers&gt; decode' "a" []
+ "a"</code></pre>
+<p>Ah, it seems decoding of the empty code list on the basis of a frequency table built from a single character gives the wrong result.</p>
+<p>But it was indicated in the problem that such degenerate frequency lists should be excluded. Let's try this:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_Huffman3'' ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Property</span> 
+<span class="ot">&gt;</span> prop_Huffman3'' s <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>  <span class="kw">in</span> 
+<span class="ot">&gt;</span>    length (nub s) <span class="fu">&gt;</span> <span class="dv">1</span> <span class="fu">==&gt;</span> decode' s (encode s <span class="st">""</span>) <span class="fu">==</span> <span class="st">""</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test5''' <span class="fu">=</span> quickCheck prop_Huffman3''</code></pre></div>
+<p>This test seems fine. Let's also modify the other property that we tested with:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_Huffman2' ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Property</span> 
+<span class="ot">&gt;</span> prop_Huffman2' s s' <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>  <span class="kw">in</span> 
+<span class="ot">&gt;</span>     length (nub s) <span class="fu">&gt;</span> <span class="dv">1</span> <span class="fu">==&gt;</span> decode' s (encode s s') <span class="fu">==</span> s'</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test6 <span class="fu">=</span> quickCheck prop_Huffman2'</code></pre></div>
+<p>This fails again.</p>
+<pre><code>  LabExamAnswers&gt; test6</code></pre>
+<ul>
+<li>** Failed! Exception: 'Prelude.undefined' (after 1 test and 3 shrinks): " ab" " c"</li>
+</ul>
+<p>The example makes clear that the test was wrong: the character <code>c</code> did not occur in the frequency list. So we have to exclude that.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_Huffman4 ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Property</span> 
+<span class="ot">&gt;</span> prop_Huffman4 s s' <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>  <span class="kw">in</span> 
+<span class="ot">&gt;</span>     length (nub (s<span class="fu">++</span>s')) <span class="fu">&gt;</span> <span class="dv">1</span> <span class="fu">==&gt;</span> decode' (s<span class="fu">++</span>s') (encode (s<span class="fu">++</span>s') s') <span class="fu">==</span> s'</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test7 <span class="fu">=</span> quickCheck prop_Huffman4</code></pre></div>
+<p>Now at last we seem to be OK.</p>
+<hr>
+<p><strong>Bonus Problem</strong></p>
+<p>[If you manage to solve this bonus problem you earn compensation for errors in your answers to the regular problems above.]</p>
+<p>Once you have convinced yourself that all code you developed and tested in this exam session is correct and fast, you can use it to compress texts for which you have a frequency table.</p>
+<p>A frequency table for English you can create by taking some sample text from a corpus. Take for instance, the <a href="http://homepages.cwi.nl/~jve/courses/15/testing/lab/LabExam.hs">source code of this Lab Exam</a>, or some fragment from the <a href="http://ota.ox.ac.uk/text/3048.txt">ASCII version of the novel <em>Lord Jim</em> by <em>Joseph Conrad</em></a>. Next, use the frequency table you have computed to test your compression software. Count each character in the text you are compressing as 8 bits. Next count the numbers of bits in the Huffman encoding, and compute the compression factor you have achieved.</p>
+<p>To make this into a practical method, you should find a way to represent bit lists in a compact way. Check if you can use <code>bits2integer</code> for this. But maybe you need hexadecimal representation. Have a look at <a href="https://www.fpcomplete.com/school/to-infinity-and-beyond/pick-of-the-week/bytestring-bits-and-pieces">ByteString Bits and Pieces</a> for some inspiration.</p>
+<p>Implement your method, compute the compression factor you have achieved, and test whether your software works correctly by decompressing and comparing with the original input. Can you use QuickCheck for this?</p>
+<hr>
+<p><strong>Answer</strong></p>
+<p>First check that <code>bits2integer</code> is not the way to go:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; compr ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> 
+<span class="ot">&gt;</span> compr s <span class="fu">=</span> show <span class="fu">$</span> bits2integer (encode s s)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; decompr ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span> 
+<span class="ot">&gt;</span> decompr s t <span class="fu">=</span> decode' s (integer2bits <span class="fu">$</span> read t)</code></pre></div>
+<p>A problem here is that the codes <code>[0,0]</code> and <code>[0]</code> both get mapped to <code>0</code>, but they encode different strings. In general, trailing zeros in codes are ignored by <code>integer2bits</code>, but they have meaning in the Huffman codes:</p>
+<p>This explains:</p>
+<pre><code> *LabExamAnswers&gt; encode "aab" "aab"
+ [1,1,0]
+ *LabExamAnswers&gt; compr "aab"
+ "3"
+ *LabExamAnswers&gt; decompr "aab" "3"
+ "aa"
+ </code></pre>
+<p>This means you need another method ...</p>
+<hr>
+<div class="references">
+
+</div>
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_AMS, sans-serif;"></div></div></body></html>

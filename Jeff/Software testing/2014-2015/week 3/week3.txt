@@ -1,0 +1,11 @@
+Week 3
+
+Slides for this week: here
+Code for the slides: Week3.hs
+Workshop problems: Workshop3.pdf
+Workshop answers: Workshop3Answers.pdf
+Lab problems: Lab3.pdf.
+Deadline for solutions to the lab problems: Tuesday Sept 23, 24.00 h.
+Reading assignment: read Chapter 5 from The Haskell Road, and try some of the exercises.
+If you still want to buy a copy of the Haskell Road book, please send an email to me (Jan van Eijck).
+If you still need to pay for a copy of the Haskell Road book you received, please transfer 15 euros to my account: Jan van Eijck, Amsterdam, NL06INGB0002143806.

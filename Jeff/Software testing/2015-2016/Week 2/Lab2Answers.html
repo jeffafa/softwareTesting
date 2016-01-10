@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0068)http://homepages.cwi.nl/~jve/courses/15/testing/lab/Lab2Answers.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="./Lab2Answers_files/buttondown.css" type="text/css">
+  <script src="./Lab2Answers_files/MathJax.js" type="text/javascript"></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?rev=2.6.0') format('woff'), url('http://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?rev=2.6.0') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+<h1 id="lab-2-software-specification-and-testing-with-answers">Lab 2 Software Specification and Testing, With Answers</h1>
+<hr>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">module</span> <span class="dt">Lab2Answers</span> <span class="kw">where</span>
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">Data.List</span>
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">Data.Char</span>
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">System.Random</span>
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">Lecture2</span></code></pre></div>
+<hr>
+<p><strong>Recognizing triangles</strong></p>
+<p>Write a program (in Haskell) that takes a triple of integer values as arguments and gives as output one of the following statements:</p>
+<ul>
+<li><p><code>Not a triangle</code> (<code>Geen driehoek</code>) if the three numbers cannot occur as the lengths of the sides of triangle,</p></li>
+<li><p><code>Equilateral</code> (<code>Gelijkzijdig</code>) if the three numbers are the lengths of the sides of an equilateral triangle,</p></li>
+<li><p><code>Rectangular</code> (<code>Rechthoekig</code>) if the three numbers are the lengths of the sides of a rectangular triangle,</p></li>
+<li><p><code>Isosceles</code> (<code>Gelijkbenig</code>) if the three numbers are the lengths of the sides of an isosceles (but not equilateral) triangle,</p></li>
+<li><p><code>Other</code> (<code>Anders</code>) if the three numbers are the lengths of the sides of a triangle that is not equilateral, not rectangular, and not isosceles.</p></li>
+</ul>
+<p>Here is a useful datatype definition:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">data</span> <span class="dt">Shape</span> <span class="fu">=</span> <span class="dt">NoTriangle</span> <span class="fu">|</span> <span class="dt">Equilateral</span> 
+<span class="ot">&gt;</span>            <span class="fu">|</span> <span class="dt">Isosceles</span>  <span class="fu">|</span> <span class="dt">Rectangular</span> <span class="fu">|</span> <span class="dt">Other</span> <span class="kw">deriving</span> (<span class="dt">Eq</span>,<span class="dt">Show</span>)</code></pre></div>
+<p>Now define a function <code>triangle :: Integer -&gt; Integer -&gt; Integer -&gt; Shape</code> with the right properties.</p>
+<p>You may wish to consult <a href="http://en.wikipedia.org/wiki/Triangle">wikipedia</a>. Indicate how you <em>tested</em> or <em>checked</em> the correctness of the program.</p>
+<p>Deliverables: Haskell program, concise test report, indication of time spent.</p>
+<p><strong>Answer</strong></p>
+<p>Here is a Haskell program that solves the problem:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; triangle ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Shape</span>
+<span class="ot">&gt;</span> triangle x y z <span class="fu">=</span> triangle' xs <span class="kw">where</span> xs <span class="fu">=</span> sort [x,y,z]
+<span class="ot">&gt;</span> 
+<span class="ot">&gt; triangle' ::</span> [<span class="dt">Integer</span>] <span class="ot">-&gt;</span> <span class="dt">Shape</span>
+<span class="ot">&gt;</span> triangle' [x,y,z] <span class="fu">=</span> <span class="kw">if</span> x <span class="fu">+</span> y <span class="fu">&lt;=</span> z <span class="kw">then</span> <span class="dt">NoTriangle</span>
+<span class="ot">&gt;</span>                     <span class="kw">else</span> <span class="kw">if</span> x <span class="fu">==</span> y <span class="fu">&amp;&amp;</span> y <span class="fu">==</span> z <span class="kw">then</span> <span class="dt">Equilateral</span>
+<span class="ot">&gt;</span>                     <span class="kw">else</span> <span class="kw">if</span> x<span class="fu">^</span><span class="dv">2</span> <span class="fu">+</span> y<span class="fu">^</span><span class="dv">2</span> <span class="fu">==</span> z<span class="fu">^</span><span class="dv">2</span> <span class="kw">then</span> <span class="dt">Rectangular</span>
+<span class="ot">&gt;</span>                     <span class="kw">else</span> <span class="kw">if</span> x <span class="fu">==</span> y <span class="fu">||</span> y <span class="fu">==</span> z <span class="kw">then</span> <span class="dt">Isosceles</span>
+<span class="ot">&gt;</span>                     <span class="kw">else</span> <span class="dt">Other</span></code></pre></div>
+<p>The insight behind this implementation is that if we first put the three side lengths in ascending order, then the specification can use the fact that <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" role="math" style="width: 4.433em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.311em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1004.31em 2.491em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-4" style="font-family: MathJax_Main; padding-left: 0.306em;">≤</span><span class="mi" id="MathJax-Span-5" style="font-family: MathJax_Math-italic; padding-left: 0.306em;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-6" style="font-family: MathJax_Main; padding-left: 0.306em;">≤</span><span class="mi" id="MathJax-Span-7" style="font-family: MathJax_Math-italic; padding-left: 0.306em;">z<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.247em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.003em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>≤</mo><mi>y</mi><mo>≤</mo><mi>z</mi></math></span></span><script type="math/tex" id="MathJax-Element-1">x \leq y \leq z</script></span>. This considerably simplifies the case distinctions.</p>
+<p>Here are relevant test cases for <code>triangle</code>:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> otriples <span class="fu">=</span> [[x,y,z] <span class="fu">|</span> x <span class="ot">&lt;-</span> [<span class="fu">-</span><span class="dv">1</span><span class="fu">..</span><span class="dv">5</span>], y <span class="ot">&lt;-</span> [x<span class="fu">..</span><span class="dv">5</span>], z <span class="ot">&lt;-</span> [y<span class="fu">..</span><span class="dv">5</span>]]</code></pre></div>
+<p>The following tests check that the order in which the sides are given does not matter:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> test1 <span class="fu">=</span> and 
+<span class="ot">&gt;</span>         [ triangle x y z <span class="fu">==</span> triangle y z x <span class="fu">|</span> [x,y,z] <span class="ot">&lt;-</span> otriples ]
+<span class="ot">&gt;</span> test2 <span class="fu">=</span> and 
+<span class="ot">&gt;</span>         [ triangle x y z <span class="fu">==</span> triangle z y x <span class="fu">|</span> [x,y,z] <span class="ot">&lt;-</span> otriples ]</code></pre></div>
+<p>Here is a useful function for inspecting various outcomes:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; test3 ::</span> <span class="dt">Shape</span> <span class="ot">-&gt;</span> [[<span class="dt">Integer</span>]]
+<span class="ot">&gt;</span> test3 shape <span class="fu">=</span> 
+<span class="ot">&gt;</span>       [ [x,y,z] <span class="fu">|</span> [x,y,z] <span class="ot">&lt;-</span> otriples, triangle x y z <span class="fu">==</span> shape ]</code></pre></div>
+<p>Some outcomes:</p>
+<pre><code> *Lab2Answers&gt; test3 NoTriangle
+ [[-1,-1,-1],[-1,-1,0],[-1,-1,1],[-1,-1,2],[-1,-1,3],[-1,-1,4],[-1,-1,5],
+  [-1,0,0],[-1,0,1],[-1,0,2],[-1,0,3],[-1,0,4],[-1,0,5],[-1,1,1],[-1,1,2],
+  [-1,1,3],[-1,1,4],[-1,1,5],[-1,2,2],[-1,2,3],[-1,2,4],[-1,2,5],[-1,3,3],
+  [-1,3,4],[-1,3,5],[-1,4,4],[-1,4,5],[-1,5,5],[0,0,0],[0,0,1],[0,0,2],
+  [0,0,3],[0,0,4],[0,0,5],[0,1,1],[0,1,2],[0,1,3],[0,1,4],[0,1,5],[0,2,2],
+  [0,2,3],[0,2,4],[0,2,5],[0,3,3],[0,3,4],[0,3,5],[0,4,4],[0,4,5],[0,5,5],
+  [1,1,2],[1,1,3],[1,1,4],[1,1,5],[1,2,3],[1,2,4],[1,2,5],[1,3,4],[1,3,5],
+  [1,4,5],[2,2,4],[2,2,5],[2,3,5]]
+ *Lab2Answers&gt; test3 Equilateral
+ [[1,1,1],[2,2,2],[3,3,3],[4,4,4],[5,5,5]]
+ *Lab2Answers&gt; test3 Isosceles
+ [[1,2,2],[1,3,3],[1,4,4],[1,5,5],[2,2,3],[2,3,3],[2,4,4],[2,5,5],[3,3,4],
+  [3,3,5],[3,4,4],[3,5,5],[4,4,5],[4,5,5]]
+ *Lab2Answers&gt; test3 Rectangular
+ [[3,4,5]]
+ *Lab2Answers&gt; test3 Other
+ [[2,3,4],[2,4,5]]
+ </code></pre>
+<hr>
+<p><strong>Recognizing Permutations</strong></p>
+<p>A permutation of a finite list is another finite list with the same elements, but possibly in a different order. For example, [3,2,1] is a permutation of [1,2,3], but [2,2,0] is not. Write a function</p>
+<pre><code> isPermutation :: Eq a =&gt; [a] -&gt; [a] -&gt; Bool</code></pre>
+<p>that returns <code>True</code> if its arguments are permutations of each other.</p>
+<p>Next, define some testable properties for this function, and use a number of well-chosen lists to test <code>isPermutation</code>. You may assume that your input lists do not contain duplicates. What does this mean for your testing procedure?</p>
+<p>Can you automate the test process? Use the techniques presented in this week's lecture.</p>
+<p>Deliverables: Haskell program, concise test report, indication of time spent.</p>
+<p><strong>Answer</strong></p>
+<p>Here is an implementation:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; isPermutation ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> isPermutation [] [] <span class="fu">=</span> <span class="dt">True</span>
+<span class="ot">&gt;</span> isPermutation [] ys <span class="fu">=</span> <span class="dt">False</span>
+<span class="ot">&gt;</span> isPermutation ys [] <span class="fu">=</span> <span class="dt">False</span>
+<span class="ot">&gt;</span> isPermutation (x<span class="fu">:</span>xs) ys <span class="fu">=</span> 
+<span class="ot">&gt;</span>   elem x ys <span class="fu">&amp;&amp;</span> isPermutation xs (delete x ys)</code></pre></div>
+<p>Here are some testable properties:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_id ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_id xs <span class="fu">=</span> isPermutation xs xs
+<span class="ot">&gt;</span> 
+<span class="ot">&gt; prop_ord1 ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_ord1 xs <span class="fu">=</span> isPermutation xs (sort xs)
+<span class="ot">&gt;</span> 
+<span class="ot">&gt; prop_ord2 ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_ord2 xs <span class="fu">=</span> isPermutation (sort xs) xs
+<span class="ot">&gt;</span> 
+<span class="ot">&gt; prop_reverse1 ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_reverse1 xs <span class="fu">=</span> isPermutation xs (reverse xs)
+<span class="ot">&gt;</span> 
+<span class="ot">&gt; prop_reverse2 ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_reverse2 xs <span class="fu">=</span> isPermutation (reverse xs) xs
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> prop_double xs <span class="fu">=</span> (xs <span class="fu">==</span> []) <span class="fu">||</span> not (isPermutation xs (xs <span class="fu">++</span> xs))</code></pre></div>
+<p>Testing with this:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; testProp ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> ([<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> testProp n prop <span class="fu">=</span> prop [<span class="dv">0</span><span class="fu">..</span>n]</code></pre></div>
+<p>Since we only have to test with input lists without duplicates, lists of the form <code>[0..n]</code> and permutations of such lists are enough for testing.</p>
+<hr>
+<p><strong>Recognizing and generating derangements</strong></p>
+<p>A derangement of the list <code>[0..n-1]</code> of natural numbers is a permutation <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;&amp;#x03C0;&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-8" role="math" style="width: 0.671em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.61em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.61em 2.127em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-9"><span class="mi" id="MathJax-Span-10" style="font-family: MathJax_Math-italic;">π<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>π</mi></math></span></span><script type="math/tex" id="MathJax-Element-2">\pi</script></span> of the list with the property that for no <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-11" role="math" style="width: 0.671em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.61em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.55em 2.127em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-12"><span class="mi" id="MathJax-Span-13" style="font-family: MathJax_Math-italic;">x</span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math></span></span><script type="math/tex" id="MathJax-Element-3">x</script></span> in the list <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;&amp;#x03C0;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-14" role="math" style="width: 4.008em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.887em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.217em 1003.83em 2.552em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-15"><span class="mi" id="MathJax-Span-16" style="font-family: MathJax_Math-italic;">π<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-17" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-18" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-19" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-20" style="font-family: MathJax_Main; padding-left: 0.306em;">=</span><span class="mi" id="MathJax-Span-21" style="font-family: MathJax_Math-italic; padding-left: 0.306em;">x</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>π</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi></math></span></span><script type="math/tex" id="MathJax-Element-4">\pi(x) = x</script></span>. This is what you need if you prepare for <em>Sinterklaas</em> with a group of friends, where you want to avoid the situation that someone has to buy a surprise gift for him- or herself.</p>
+<p>Give a Haskell implementation of a property <code>isDerangement</code> that checks whether one list is a derangement of another one.</p>
+<p>Give a Haskell implementation of a function <code>deran</code> that generates a list of all derangements of the list <code>[0..n-1]</code>.</p>
+<p><strong>Note</strong> You may wish to consult the <code>perms</code> function defined in <a href="http://homepages.cwi.nl/~jve/courses/15/testing/workshops/Workshop1.html">workshop 1</a>.</p>
+<p>Next, define some testable properties for the <code>isDerangement</code> function, and use some well-chosen integer lists to test <code>isDerangement</code>.</p>
+<p>Can you automate the test process?</p>
+<p>Deliverables: Haskell program, concise test report, indication of time spent.</p>
+<p><strong>Answer</strong></p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; isDerangement ::</span> <span class="dt">Eq</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> isDerangement xs ys <span class="fu">=</span> isPermutation xs ys 
+<span class="ot">&gt;</span>                       <span class="fu">&amp;&amp;</span>
+<span class="ot">&gt;</span>                       and (zipWith (<span class="fu">/=</span>) xs ys) </code></pre></div>
+<p>All derangements of list <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;[&lt;/mo&gt;&lt;mn&gt;0..&lt;/mn&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;]&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-22" role="math" style="width: 4.129em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.008em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.217em 1003.89em 2.552em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-23"><span class="mo" id="MathJax-Span-24" style="font-family: MathJax_Main;">[</span><span class="mn" id="MathJax-Span-25" style="font-family: MathJax_Main;">0..</span><span class="mi" id="MathJax-Span-26" style="font-family: MathJax_Math-italic;">n</span><span class="mo" id="MathJax-Span-27" style="font-family: MathJax_Main; padding-left: 0.246em;">−</span><span class="mn" id="MathJax-Span-28" style="font-family: MathJax_Main; padding-left: 0.246em;">1</span><span class="mo" id="MathJax-Span-29" style="font-family: MathJax_Main;">]</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">[</mo><mn>0..</mn><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></math></span></span><script type="math/tex" id="MathJax-Element-5">[0..n-1]</script></span>:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; deran ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> [[<span class="dt">Int</span>]]
+<span class="ot">&gt;</span> deran n <span class="fu">=</span> 
+<span class="ot">&gt;</span>   filter (\ xs <span class="ot">-&gt;</span> all (\ m <span class="ot">-&gt;</span> xs<span class="fu">!!</span>m <span class="fu">/=</span> m) [<span class="dv">0</span><span class="fu">..</span>n<span class="fu">-</span><span class="dv">1</span>])
+<span class="ot">&gt;</span>          (perms [<span class="dv">0</span><span class="fu">..</span>n<span class="fu">-</span><span class="dv">1</span>])
+<span class="ot">&gt;</span> 
+<span class="ot">&gt; perms ::</span> [a] <span class="ot">-&gt;</span> [[a]]
+<span class="ot">&gt;</span> perms [] <span class="fu">=</span> [[]]
+<span class="ot">&gt;</span> perms (x<span class="fu">:</span>xs) <span class="fu">=</span> concat (map (insrt x) (perms xs)) <span class="kw">where</span>
+<span class="ot">&gt;</span>   insrt x [] <span class="fu">=</span> [[x]]
+<span class="ot">&gt;</span>   insrt x (y<span class="fu">:</span>ys) <span class="fu">=</span> (x<span class="fu">:</span>y<span class="fu">:</span>ys) <span class="fu">:</span> map (y<span class="fu">:</span>) (insrt x ys)</code></pre></div>
+<p>Some testable properties of <code>isDerangement</code>:</p>
+<p>The relation preserves length of lists:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_length ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_length xs ys <span class="fu">=</span> isDerangement xs ys <span class="fu">==&gt;</span> length xs <span class="fu">==</span> length ys</code></pre></div>
+<p>The relation is symmetric:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_symm ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_symm xs ys <span class="fu">=</span> isDerangement xs ys <span class="fu">==&gt;</span> isDerangement ys xs </code></pre></div>
+<p>The relation is irreflexive for non-empty lists:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_irrefl ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_irrefl xs ys <span class="fu">=</span> isDerangement xs ys <span class="fu">==&gt;</span> 
+<span class="ot">&gt;</span>            ((null xs <span class="fu">&amp;&amp;</span> null ys) <span class="fu">||</span> not (xs <span class="fu">==</span> ys))</code></pre></div>
+<p>Every derangement is a permutation</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prop_dIsP ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> prop_dIsP xs ys <span class="fu">=</span> not (isDerangement xs ys) <span class="fu">||</span> isPermutation xs ys</code></pre></div>
+<p>Automated testing: let</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; testWithRel ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> ([<span class="dt">Int</span>] <span class="ot">-&gt;</span> [<span class="dt">Int</span>] <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> testWithRel n m rel <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>     (xs,ys)  <span class="fu">=</span> (take m [<span class="dv">0</span><span class="fu">..</span>n],drop m [<span class="dv">0</span><span class="fu">..</span>n])
+<span class="ot">&gt;</span>   <span class="kw">in</span> rel [<span class="dv">0</span><span class="fu">..</span>n] (ys<span class="fu">++</span>xs)</code></pre></div>
+<hr>
+<p><strong>Implementing and testing IBAN validation</strong></p>
+<p>The International Bank Account Number (IBAN) was designed to facility international money transfer, to uniquely identify bank accounts worldwide. It is described in <a href="http://www.europeanpaymentscouncil.eu/documents/ECBS%20IBAN%20standard%20EBS204_V3.2.pdf">this document</a>. The document also defines a procedure for validating IBAN codes. Write a function</p>
+<pre><code>iban :: String -&gt; Bool</code></pre>
+<p>that implements this validation procedure.</p>
+<p>Next, test your implementation using some suitable <a href="http://www.rbs.co.uk/corporate/international/g0/guide-to-international-business/regulatory-information/iban/iban-example.ashx">list of examples</a>.</p>
+<p><strong>Note</strong> It is not enough to test only with <em>correct</em> examples. You should invent a way to test with <em>incorrect</em> examples also.</p>
+<p>Can you automate the test process?</p>
+<p>Deliverables: Haskell program, concise test report, indication of time spent.</p>
+<p><strong>Answer</strong></p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; iban ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> iban s <span class="fu">=</span>  mod (read <span class="fu">$</span> concat <span class="fu">$</span> map conv <span class="fu">$</span> swap4 s) <span class="dv">97</span> <span class="fu">==</span> <span class="dv">1</span>
+<span class="ot">&gt;</span> 
+<span class="ot">&gt; swap4 ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">String</span>
+<span class="ot">&gt;</span> swap4 xs <span class="fu">=</span> <span class="kw">let</span> (ys,zs) <span class="fu">=</span> (take <span class="dv">4</span> xs,drop <span class="dv">4</span> xs) <span class="kw">in</span> zs<span class="fu">++</span>ys
+<span class="ot">&gt;</span> 
+<span class="ot">&gt; conv ::</span> <span class="dt">Char</span> <span class="ot">-&gt;</span> [<span class="dt">Char</span>] 
+<span class="ot">&gt;</span> conv x <span class="fu">|</span> elem x [<span class="ch">'0'</span><span class="fu">..</span><span class="ch">'9'</span>] <span class="fu">=</span> [x]
+<span class="ot">&gt;</span>        <span class="fu">|</span> elem x [<span class="ch">'A'</span><span class="fu">..</span><span class="ch">'Z'</span>] <span class="fu">=</span> show (ord x <span class="fu">-</span> <span class="dv">55</span>)
+<span class="ot">&gt;</span>        <span class="fu">|</span> otherwise     <span class="fu">=</span> error <span class="st">"invalid character in code"</span></code></pre></div>
+<p>The two digits after the two-character country code are the check digits. This means that precisely one among 97 possibilities should be a valid IBAN.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; testIBAN ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> testIBAN (x<span class="fu">:</span>y<span class="fu">:</span>z<span class="fu">:</span>u<span class="fu">:</span>rest) <span class="fu">=</span> <span class="kw">let</span> 
+<span class="ot">&gt;</span>    strings <span class="fu">=</span> [ (a<span class="fu">:</span>b<span class="fu">:</span>c<span class="fu">:</span>d<span class="fu">:</span>es) <span class="fu">|</span> a <span class="ot">&lt;-</span> [x], b <span class="ot">&lt;-</span> [y], 
+<span class="ot">&gt;</span>               c <span class="ot">&lt;-</span> [<span class="ch">'0'</span><span class="fu">..</span><span class="ch">'9'</span>], d <span class="ot">&lt;-</span> [<span class="ch">'0'</span><span class="fu">..</span><span class="ch">'9'</span>],
+<span class="ot">&gt;</span>               notElem [c,d] [<span class="st">"97"</span>,<span class="st">"98"</span>,<span class="st">"99"</span>], es <span class="ot">&lt;-</span> [rest] ]
+<span class="ot">&gt;</span>    passes  <span class="fu">=</span> filter iban strings 
+<span class="ot">&gt;</span>  <span class="kw">in</span> 
+<span class="ot">&gt;</span>    length passes <span class="fu">==</span> <span class="dv">1</span></code></pre></div>
+<p>Explanation: <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;97&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-30" role="math" style="width: 1.095em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.035em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.277em 1001.04em 2.309em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-31"><span class="mn" id="MathJax-Span-32" style="font-family: MathJax_Main;">97</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.878em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>97</mn></math></span></span><script type="math/tex" id="MathJax-Element-6">97</script></span> is the largest prime below <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;100&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-33" role="math" style="width: 1.581em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.52em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.277em 1001.46em 2.309em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-34"><span class="mn" id="MathJax-Span-35" style="font-family: MathJax_Main;">100</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.816em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>100</mn></math></span></span><script type="math/tex" id="MathJax-Element-7">100</script></span>, and this means that all remainders on division by <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;97&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-36" role="math" style="width: 1.095em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.035em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.277em 1001.04em 2.309em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-37"><span class="mn" id="MathJax-Span-38" style="font-family: MathJax_Main;">97</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.878em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>97</mn></math></span></span><script type="math/tex" id="MathJax-Element-8">97</script></span> are different. It follows that for a given valid IBAN number, all variations that result from replacing the check digits by different digits in the range <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mo fence=&quot;false&quot; stretchy=&quot;false&quot;&gt;{&lt;/mo&gt;&lt;mn&gt;00&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo&gt;.&lt;/mo&gt;&lt;mo&gt;.&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;96&lt;/mn&gt;&lt;mo fence=&quot;false&quot; stretchy=&quot;false&quot;&gt;}&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-39" role="math" style="width: 5.039em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.857em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.217em 1004.8em 2.552em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-40"><span class="mo" id="MathJax-Span-41" style="font-family: MathJax_Main;">{</span><span class="mn" id="MathJax-Span-42" style="font-family: MathJax_Main;">00</span><span class="mo" id="MathJax-Span-43" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-44" style="font-family: MathJax_Main; padding-left: 0.185em;">.</span><span class="mo" id="MathJax-Span-45" style="font-family: MathJax_Main; padding-left: 0.185em;">.</span><span class="mo" id="MathJax-Span-46" style="font-family: MathJax_Main; padding-left: 0.185em;">,</span><span class="mn" id="MathJax-Span-47" style="font-family: MathJax_Main; padding-left: 0.185em;">96</span><span class="mo" id="MathJax-Span-48" style="font-family: MathJax_Main;">}</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo fence="false" stretchy="false">{</mo><mn>00</mn><mo>,</mo><mo>.</mo><mo>.</mo><mo>,</mo><mn>96</mn><mo fence="false" stretchy="false">}</mo></math></span></span><script type="math/tex" id="MathJax-Element-9">\{ 00, .., 96 \}</script></span> must result in an invalid IBAN number.</p>
+<p>Test this with your own IBAN:</p>
+<pre><code> *Lab2Answers&gt; iban "NL06INGB0002143806"
+ True
+ *Lab2Answers&gt; testIBAN "NL06INGB0002143806"
+ True</code></pre>
+<p>We can also use examples from the list mentioned in the exercise.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> ibanExamples <span class="fu">=</span> map (filter (<span class="fu">/=</span> <span class="ch">' '</span>))
+<span class="ot">&gt;</span>                [ <span class="st">"AL47 2121 1009 0000 0002 3569 8741"</span>,
+<span class="ot">&gt;</span>                  <span class="st">"AD12 0001 2030 2003 5910 0100"</span>,
+<span class="ot">&gt;</span>                  <span class="st">"AT61 1904 3002 3457 3201"</span>,
+<span class="ot">&gt;</span>                  <span class="st">"AZ21 NABZ 0000 0000 1370 1000 1944"</span>,
+<span class="ot">&gt;</span>                  <span class="st">"BH67 BMAG 0000 1299 1234 56"</span>,
+<span class="ot">&gt;</span>                  <span class="st">"BE62 5100 0754 7061"</span>,
+<span class="ot">&gt;</span>                  <span class="st">"BG80 BNBG 9661 1020 3456 78"</span>,
+<span class="ot">&gt;</span>                  <span class="st">"HR12 1001 0051 8630 0016 0"</span>   ]</code></pre></div>
+<p>That's enough, for the idea.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> runTest1 <span class="fu">=</span> all iban ibanExamples                          
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> runTest2 <span class="fu">=</span> all testIBAN ibanExamples</code></pre></div>
+<p>Of course, the sky is the limit for the amount of information that you can use for further strengthening of the IBAN check. You could use the list of two-letter country codes specified in <a href="https://en.wikipedia.org/wiki/ISO_3166">ISO 3166</a>, you could add information about the format of the BBAN codes of specific countries (details are <a href="http://www.swift.com/dsp/resources/documents/IBAN_Registry.pdf">here</a>), and so on.</p>
+<p>Automating the test process should be easy: if you start from a list of valid IBAN codes, then making small variations by permuting pairs of characters should result in codes that fail the test.</p>
+<hr>
+<p><strong>Bonus</strong></p>
+<p>Take your pick from <a href="http://projecteuler.net/">Project Euler</a>.</p>
+<p><strong>Answer</strong></p>
+<p>As an example, we will solve problem 049.</p>
+<pre><code> The arithmetic sequence, 1487, 4817, 8147, in which each of the
+ terms increases by 3330, is unusual in two ways: (i) each of the three
+ terms are prime, and, (ii) each of the 4-digit numbers are
+ permutations of one another.
+
+ There are no arithmetic sequences made up of three 1-, 2-, or 3-digit
+ primes, exhibiting this property, but there is one other 4-digit
+ increasing sequence.
+
+ What 12-digit number do you form by concatenating the three terms
+ in this sequence?</code></pre>
+<p>Here is a program that solves this:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; prime ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span> 
+<span class="ot">&gt;</span> prime n <span class="fu">=</span> all (\ x <span class="ot">-&gt;</span> rem n x <span class="fu">/=</span> <span class="dv">0</span>) xs <span class="kw">where</span>
+<span class="ot">&gt;</span>   xs <span class="fu">=</span> takeWhile (\ y <span class="ot">-&gt;</span> y<span class="fu">^</span><span class="dv">2</span> <span class="fu">&lt;=</span> n) primes
+<span class="ot">&gt;</span> 
+<span class="ot">&gt; primes ::</span> [<span class="dt">Integer</span>] 
+<span class="ot">&gt;</span> primes <span class="fu">=</span> <span class="dv">2</span> <span class="fu">:</span> filter prime [<span class="dv">3</span><span class="fu">..</span>]
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> primes4d <span class="fu">=</span> filter prime [<span class="dv">1000</span><span class="fu">..</span><span class="dv">9999</span>]
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> prms x y <span class="fu">=</span> sort (toRevDigits x) <span class="fu">==</span> sort (toRevDigits y)
+<span class="ot">&gt;</span> 
+<span class="ot">&gt; toRevDigits ::</span> <span class="dt">Integer</span> <span class="ot">-&gt;</span> [<span class="dt">Integer</span>]
+<span class="ot">&gt;</span> toRevDigits n <span class="fu">=</span> <span class="kw">if</span> n <span class="fu">&lt;</span> <span class="dv">10</span> <span class="kw">then</span> [n] <span class="kw">else</span> mod n <span class="dv">10</span> <span class="fu">:</span> toRevDigits (div n <span class="dv">10</span>)
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> permPairs <span class="fu">=</span> [(x,y) <span class="fu">|</span> x <span class="ot">&lt;-</span> primes4d, y <span class="ot">&lt;-</span> dropWhile (<span class="fu">&lt;=</span>x) primes4d, prms x y ]</code></pre></div>
+<p>Now the key insight: if we have found a permuted prime pair <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-10-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-49" role="math" style="width: 2.37em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.309em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.217em 1002.19em 2.552em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-50"><span class="mo" id="MathJax-Span-51" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-52" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-53" style="font-family: MathJax_Main;">,</span><span class="mi" id="MathJax-Span-54" style="font-family: MathJax_Math-italic; padding-left: 0.185em;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-55" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-10">(x,y)</script></span> with <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-11-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-56" role="math" style="width: 2.552em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.491em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.399em 1002.49em 2.491em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-57"><span class="mi" id="MathJax-Span-58" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-59" style="font-family: MathJax_Main; padding-left: 0.306em;">&lt;</span><span class="mi" id="MathJax-Span-60" style="font-family: MathJax_Math-italic; padding-left: 0.306em;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.247em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.878em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>&lt;</mo><mi>y</mi></math></span></span><script type="math/tex" id="MathJax-Element-11">x < y</script></span>, then there is exactly one candidate <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-12-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-61" role="math" style="width: 0.488em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.488em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.49em 2.127em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-62"><span class="mi" id="MathJax-Span-63" style="font-family: MathJax_Math-italic;">z<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>z</mi></math></span></span><script type="math/tex" id="MathJax-Element-12">z</script></span> for making an arithmetic sequence <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-13-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-64" role="math" style="width: 3.401em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.28em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.217em 1003.16em 2.552em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-65"><span class="mo" id="MathJax-Span-66" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-67" style="font-family: MathJax_Math-italic;">x</span><span class="mo" id="MathJax-Span-68" style="font-family: MathJax_Main;">,</span><span class="mi" id="MathJax-Span-69" style="font-family: MathJax_Math-italic; padding-left: 0.185em;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-70" style="font-family: MathJax_Main;">,</span><span class="mi" id="MathJax-Span-71" style="font-family: MathJax_Math-italic; padding-left: 0.185em;">z<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-72" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-13">(x,y,z)</script></span>, namely the number <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-14-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-73" role="math" style="width: 0.488em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.488em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.49em 2.127em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-74"><span class="mi" id="MathJax-Span-75" style="font-family: MathJax_Math-italic;">z<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>z</mi></math></span></span><script type="math/tex" id="MathJax-Element-14">z</script></span> that has the same distance to <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-15-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-76" role="math" style="width: 0.61em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.549em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.55em 2.309em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-77"><span class="mi" id="MathJax-Span-78" style="font-family: MathJax_Math-italic;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.247em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.816em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi></math></span></span><script type="math/tex" id="MathJax-Element-15">y</script></span> as <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-16-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-79" role="math" style="width: 0.61em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.549em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.55em 2.309em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-80"><span class="mi" id="MathJax-Span-81" style="font-family: MathJax_Math-italic;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.247em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.816em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>y</mi></math></span></span><script type="math/tex" id="MathJax-Element-16">y</script></span> has to <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-17-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-82" role="math" style="width: 0.671em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.61em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.55em 2.127em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-83"><span class="mi" id="MathJax-Span-84" style="font-family: MathJax_Math-italic;">x</span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math></span></span><script type="math/tex" id="MathJax-Element-17">x</script></span>. This is the number <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-18-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-85" role="math" style="width: 11.289em; display: inline-block;"><span style="display: inline-block; position: relative; width: 10.925em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.217em 1010.87em 2.552em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-86"><span class="mi" id="MathJax-Span-87" style="font-family: MathJax_Math-italic;">z<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-88" style="font-family: MathJax_Main; padding-left: 0.306em;">=</span><span class="mi" id="MathJax-Span-89" style="font-family: MathJax_Math-italic; padding-left: 0.306em;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-90" style="font-family: MathJax_Main; padding-left: 0.246em;">+</span><span class="mo" id="MathJax-Span-91" style="font-family: MathJax_Main; padding-left: 0.246em;">(</span><span class="mi" id="MathJax-Span-92" style="font-family: MathJax_Math-italic;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-93" style="font-family: MathJax_Main; padding-left: 0.246em;">−</span><span class="mi" id="MathJax-Span-94" style="font-family: MathJax_Math-italic; padding-left: 0.246em;">x</span><span class="mo" id="MathJax-Span-95" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-96" style="font-family: MathJax_Main; padding-left: 0.306em;">=</span><span class="mn" id="MathJax-Span-97" style="font-family: MathJax_Main; padding-left: 0.306em;">2</span><span class="mi" id="MathJax-Span-98" style="font-family: MathJax_Math-italic;">y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-99" style="font-family: MathJax_Main; padding-left: 0.246em;">−</span><span class="mi" id="MathJax-Span-100" style="font-family: MathJax_Math-italic; padding-left: 0.246em;">x</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>z</mi><mo>=</mo><mi>y</mi><mo>+</mo><mo stretchy="false">(</mo><mi>y</mi><mo>−</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>y</mi><mo>−</mo><mi>x</mi></math></span></span><script type="math/tex" id="MathJax-Element-18">z = y + (y-x) = 2y-x</script></span>.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> sols <span class="fu">=</span> [ (x,y,<span class="dv">2</span><span class="fu">*</span>y<span class="fu">-</span>x) <span class="fu">|</span> (x,y) <span class="ot">&lt;-</span> permPairs, prms x (<span class="dv">2</span><span class="fu">*</span>y<span class="fu">-</span>x), prime (<span class="dv">2</span><span class="fu">*</span>y<span class="fu">-</span>x) ]
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> conc (x,y,z) <span class="fu">=</span> show x <span class="fu">++</span> show y <span class="fu">++</span> show z
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> sol49 <span class="fu">=</span> conc <span class="fu">$</span> head (tail sols) <span class="co">-- "296962999629"</span></code></pre></div>
+<hr>
+<p><strong>Submission deadline</strong> is Sunday evening, September 13th, at midnight.</p>
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Main, sans-serif;"></div></div></body></html>

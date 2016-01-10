@@ -1,0 +1,10 @@
+Week 2
+
+Slides for this week: here.
+Code for the slides: Week2.hs
+Workshop problems: Workshop2.pdf
+Workshop answers: Workshop2Answers.pdf
+Lab problems: Lab2.pdf. The last two problems are bonus problems. Solve them to show you are smart.
+Code for the lab problems: Lab2.hs.
+Deadline for solutions to the lab problems: Tuesday Sept 16, 24.00 h.
+Reading assignment: read Chapters 3 and 4 from The Haskell Road, and try some of the exercises.

@@ -1,0 +1,116 @@
+  module Lab4Answers where
+ 
+  import Data.List
+  import System.Random
+  import Test.QuickCheck
+  import Lecture2
+  import SetOrd
+
+  genIntSet :: IO (Set Int) 
+  genIntSet = do 
+              xs <- genIntList
+              return (list2set xs)
+
+  intersectS :: Ord a => Set a -> Set a -> Set a
+  intersectS (Set xs) (Set ys) = list2set (intersect xs ys)
+  
+  unionS :: Ord a => Set a -> Set a -> Set a
+  unionS (Set xs) (Set ys) = list2set (union xs ys)
+  
+  difS :: Ord a => Set a -> Set a -> Set a
+  difS (Set xs) (Set ys) = list2set (xs \\ ys)
+
+  prop_1 :: Ord a => (Set a,Set a) -> Bool
+  prop_1 (s,t) = difS (unionS s t) (difS s t) == t 
+  
+  prop_2 :: Ord a => (Set a,Set a) -> Bool
+  prop_2 (s,t) = difS (unionS s t) (difS t s) == s
+  
+  prop_3 :: Ord a => (Set a,Set a) -> Bool
+  prop_3 (s,t) = 
+    unionS s t == unionS (unionS (difS s t) (difS t s)) 
+                         (intersectS s t)
+
+  genPair :: IO a -> IO (a,a)
+  genPair gen = do 
+                x <- gen 
+                y <- gen 
+                return (x,y)
+  
+  genIntSetP :: IO (Set Int,Set Int) 
+  genIntSetP = genPair genIntSet 
+
+  tests :: Show a => IO a -> (a -> Bool) -> Int -> IO ()
+  tests generator p n = tests' generator p n 0
+  
+  tests' :: Show a => IO a -> (a -> Bool) -> Int -> Int -> IO ()
+  tests' generator p n k =
+    if n == k then print (show n ++ " tests passed")
+    else do x <- generator
+            if not (p x) then print ("failed test on: " ++ show x)
+               else do print ("pass on:" ++ show x)
+                       tests' generator p n (k+1)
+
+  type Rel a = [(a,a)]
+
+  conv :: Rel a -> Rel a
+  conv = map (\ (x,y) -> (y,x)) 
+
+  symClos :: Ord a => Rel a -> Rel a
+  symClos r = sort $ nub (r ++ conv r) 
+
+  infixr 5 @@
+  
+  (@@) :: Eq a => Rel a -> Rel a -> Rel a
+  r @@ s = 
+    nub [ (x,z) | (x,y) <- r, (w,z) <- s, y == w ]
+
+  fp :: Eq a => (a -> a) -> a -> a
+  fp f = until (\ x -> x == f x) f
+  
+  trClos:: Ord a => Rel a -> Rel a 
+  trClos r = fp (\ s -> (sort.nub) (s ++ (s @@ s))) r
+
+  isSymmetric :: Eq a => Rel a -> Bool
+  isSymmetric r = containedIn (conv r) r 
+  
+  isTransitive :: Eq a => Rel a -> Bool
+  isTransitive r = containedIn (r @@ r) r 
+  
+  containedIn :: Eq a => [a] -> [a] -> Bool
+  containedIn xs ys = all (\ x -> elem x ys) xs
+
+  newtype Elt = Elt Int deriving (Eq,Ord,Show)
+  instance Arbitrary Elt where 
+    arbitrary = oneof (map (return.Elt) [0..5])
+
+  prop_sym r = isSymmetric (symClos r) 
+    where types =  r :: Rel Elt
+
+  prop_sym2 r = containedIn r (symClos r) 
+    where types =  r :: Rel Elt
+
+  prop_sym3 r = let s  = symClos r
+                    xs = s \\ r 
+                in all (not.isSymmetric) [ delete x s | x <- xs ]
+    where types =  r :: Rel Elt
+
+  prop_trans r = isTransitive (trClos r) 
+    where types =  r :: Rel Elt
+
+  prop_trans1 r = containedIn r (trClos r) 
+    where types =  r :: Rel Elt
+
+  cnv = sort . conv
+
+  prop_trans2 r = trClos (cnv r) == cnv (trClos r)
+    where types =  r :: Rel Elt
+
+  prop_trans3 r = let s  = trClos r
+                      xs = s \\ r 
+                in all (not.isTransitive) [ delete x s | x <- xs ]
+    where types =  r :: Rel Elt
+
+  prop_test r = trClos (symClos r) == symClos (trClos r) 
+   where types =  r :: Rel Elt
+

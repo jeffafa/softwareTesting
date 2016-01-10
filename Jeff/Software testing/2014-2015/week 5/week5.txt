@@ -1,0 +1,10 @@
+Week 5
+
+Slides for this week: here
+Code for the slides: Week5.hs
+Workshop problems: Workshop5.pdf
+Workshop answers: Workshop5Answers.pdf
+Lab problems: Lab5.pdf.
+Code for the lab problems: Lab5.hs.
+Deadline for solutions to the lab problems: Tuesday Oct 7, 24.00 h.
+Reading assignment: read Chapter 7 from The Haskell Road, and try some of the exercises.

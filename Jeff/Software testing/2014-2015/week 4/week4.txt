@@ -1,0 +1,10 @@
+Week 4
+
+Slides for this week: here
+Code for the slides: Week4.hs
+Workshop problems: Workshop4.pdf
+Workshop answers: Workshop4Answers.pdf
+Lab problems: Lab4.pdf.
+Code for the lab problems: Lab4.hs.
+Deadline for solutions to the lab problems: Tuesday Sept 30, 24.00 h.
+Reading assignment: if you did not already do so, please do read Chapter 5 from The Haskell Road, and try some of the exercises.

@@ -1,0 +1,28 @@
+course page
+http://homepages.cwi.nl/~jve/courses/14/testing/
+
+
+Sets
+Knowledge assumed from your BSc or premaster.
+https://www.youtube.com/watch?v=3Cx1ymiwbGc&feature=youtu.be
+
+Relations
+Knowledge assumed from BSc or premaster.
+Prerequisite: Sets
+https://www.youtube.com/watch?v=4wMShytC6t0&feature=youtu.be
+
+Properties of Relations
+Knowledge assumed from BSc or premaster.
+Prerequisite: Relations
+https://www.youtube.com/watch?v=HMYfFcvQeqU&feature=youtu.be
+
+Haskell: introduction & history
+Introduction into Haskell, its history, its syntax and alternatives.
+https://www.youtube.com/watch?v=KpuzjqMadCw&feature=youtu.be
+
+QuickCheck (by John Hughes)
+One of the presentations John Hughes gave about his QuickCheck.
+https://www.youtube.com/watch?v=gPFSZ8oKjco&feature=youtu.be
+
+
+https://www.haskell.org/

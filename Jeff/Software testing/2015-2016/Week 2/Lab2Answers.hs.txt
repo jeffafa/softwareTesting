@@ -1,0 +1,133 @@
+  module Lab2Answers where
+ 
+  import Data.List
+  import Data.Char
+  import System.Random
+  import Lecture2
+
+  data Shape = NoTriangle | Equilateral 
+             | Isosceles  | Rectangular | Other deriving (Eq,Show)
+
+  triangle :: Integer -> Integer -> Integer -> Shape
+  triangle x y z = triangle' xs where xs = sort [x,y,z]
+  
+  triangle' :: [Integer] -> Shape
+  triangle' [x,y,z] = if x + y <= z then NoTriangle
+                      else if x == y && y == z then Equilateral
+                      else if x^2 + y^2 == z^2 then Rectangular
+                      else if x == y || y == z then Isosceles
+                      else Other
+
+  otriples = [[x,y,z] | x <- [-1..5], y <- [x..5], z <- [y..5]]
+
+  test1 = and 
+          [ triangle x y z == triangle y z x | [x,y,z] <- otriples ]
+  test2 = and 
+          [ triangle x y z == triangle z y x | [x,y,z] <- otriples ]
+
+  test3 :: Shape -> [[Integer]]
+  test3 shape = 
+        [ [x,y,z] | [x,y,z] <- otriples, triangle x y z == shape ]
+
+  isPermutation :: Eq a => [a] -> [a] -> Bool
+  isPermutation [] [] = True
+  isPermutation [] ys = False
+  isPermutation ys [] = False
+  isPermutation (x:xs) ys = 
+    elem x ys && isPermutation xs (delete x ys)
+
+  prop_id :: Eq a => [a] -> Bool
+  prop_id xs = isPermutation xs xs
+  
+  prop_ord1 :: Ord a => [a] -> Bool
+  prop_ord1 xs = isPermutation xs (sort xs)
+  
+  prop_ord2 :: Ord a => [a] -> Bool
+  prop_ord2 xs = isPermutation (sort xs) xs
+  
+  prop_reverse1 :: Eq a => [a] -> Bool
+  prop_reverse1 xs = isPermutation xs (reverse xs)
+  
+  prop_reverse2 :: Eq a => [a] -> Bool
+  prop_reverse2 xs = isPermutation (reverse xs) xs
+  
+  prop_double xs = (xs == []) || not (isPermutation xs (xs ++ xs))
+
+  testProp :: Int -> ([Int] -> Bool) -> Bool
+  testProp n prop = prop [0..n]
+
+  isDerangement :: Eq a => [a] -> [a] -> Bool
+  isDerangement xs ys = isPermutation xs ys 
+                        &&
+                        and (zipWith (/=) xs ys) 
+
+  deran :: Int -> [[Int]]
+  deran n = 
+    filter (\ xs -> all (\ m -> xs!!m /= m) [0..n-1])
+           (perms [0..n-1])
+  
+  perms :: [a] -> [[a]]
+  perms [] = [[]]
+  perms (x:xs) = concat (map (insrt x) (perms xs)) where
+    insrt x [] = [[x]]
+    insrt x (y:ys) = (x:y:ys) : map (y:) (insrt x ys)
+
+  prop_length :: Ord a => [a] -> [a] -> Bool
+  prop_length xs ys = isDerangement xs ys ==> length xs == length ys
+
+  prop_symm :: Ord a => [a] -> [a] -> Bool
+  prop_symm xs ys = isDerangement xs ys ==> isDerangement ys xs 
+
+  prop_irrefl :: Ord a => [a] -> [a] -> Bool
+  prop_irrefl xs ys = isDerangement xs ys ==> 
+             ((null xs && null ys) || not (xs == ys))
+
+  prop_dIsP :: Ord a => [a] -> [a] -> Bool
+  prop_dIsP xs ys = not (isDerangement xs ys) || isPermutation xs ys
+
+  testWithRel :: Int -> Int -> ([Int] -> [Int] -> Bool) -> Bool
+  testWithRel n m rel = let 
+      (xs,ys)  = (take m [0..n],drop m [0..n])
+    in rel [0..n] (ys++xs)
+
+  iban :: String -> Bool
+  iban s =  mod (read $ concat $ map conv $ swap4 s) 97 == 1
+  
+  swap4 :: String -> String
+  swap4 xs = let (ys,zs) = (take 4 xs,drop 4 xs) in zs++ys
+  
+  conv :: Char -> [Char] 
+  conv x | elem x ['0'..'9'] = [x]
+         | elem x ['A'..'Z'] = show (ord x - 55)
+         | otherwise     = error "invalid character in code"
+
+  testIBAN :: String -> Bool
+  testIBAN (x:y:z:u:rest) = let 
+     strings = [ (a:b:c:d:es) | a <- [x], b <- [y], 
+                c <- ['0'..'9'], d <- ['0'..'9'], es <- [rest] ]
+     passes  = filter iban strings 
+   in 
+     length passes == 1
+
+  prime :: Integer -> Bool 
+  prime n = all (\ x -> rem n x /= 0) xs where
+    xs = takeWhile (\ y -> y^2 <= n) primes
+  
+  primes :: [Integer] 
+  primes = 2 : filter prime [3..]
+  
+  primes4d = filter prime [1000..9999]
+  
+  prms x y = sort (toRevDigits x) == sort (toRevDigits y)
+  
+  toRevDigits :: Integer -> [Integer]
+  toRevDigits n = if n < 10 then [n] else mod n 10 : toRevDigits (div n 10)
+ 
+  permPairs = [(x,y) | x <- primes4d, y <- dropWhile (<=x) primes4d, prms x y ]
+
+  sols = [ (x,y,2*y-x) | (x,y) <- permPairs, prms x (2*y-x), prime (2*y-x) ]
+  
+  conc (x,y,z) = show x ++ show y ++ show z
+  
+  sol49 = conc $ head (tail sols) -- "296962999629"
+

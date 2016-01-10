@@ -1,0 +1,5 @@
+Week 7
+
+Guest lecture by Machiel van der Bijl, founder of Axini, on the use of formal specification and specification-based testing for the analysis of production software.
+Workshop session: Q and A session in preparation for the exam.
+No lab this week: exam preparation time.

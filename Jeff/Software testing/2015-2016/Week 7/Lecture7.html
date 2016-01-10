@@ -1,0 +1,464 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0070)http://homepages.cwi.nl/~jve/courses/15/testing/lectures/Lecture7.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="./Lecture7_files/buttondown.css" type="text/css">
+  <script src="./Lecture7_files/MathJax.js" type="text/javascript"></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?rev=2.6.0') format('woff'), url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?rev=2.6.0') format('woff'), url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?rev=2.6.0') format('woff'), url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?rev=2.6.0') format('woff'), url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?rev=2.6.0') format('woff'), url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?rev=2.6.0') format('woff'), url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?rev=2.6.0') format('woff'), url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?rev=2.6.0') format('woff'), url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?rev=2.6.0') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?rev=2.6.0') format('woff'), url('https://cdn.mathjax.org/mathjax/2.6-latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?rev=2.6.0') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+<h1 id="lecture-7-winding-up">Lecture 7: Winding Up</h1>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">module</span> <span class="dt">Lecture7</span>
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> <span class="kw">where</span> 
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">Data.List</span>
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">Test.QuickCheck</span>
+<span class="ot">&gt;</span> <span class="kw">import </span><span class="dt">Test.MuCheck</span></code></pre></div>
+<p><strong>Abstract</strong></p>
+<p>Once more: Recursion and Induction</p>
+<p>Some last exercises with QuickCheck</p>
+<p>What have we learned?</p>
+<p>How to prepare for the exam?</p>
+<hr>
+<p><strong>Once more: Recursion and Induction</strong></p>
+<p>Let's talk about binary trees again.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">data</span> <span class="dt">Btree</span> a <span class="fu">=</span> <span class="dt">Leaf</span> <span class="fu">|</span> <span class="dt">B</span> a (<span class="dt">Btree</span> a) (<span class="dt">Btree</span> a) <span class="kw">deriving</span> (<span class="dt">Eq</span>,<span class="dt">Show</span>)</code></pre></div>
+<p>Two example trees:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> example1 <span class="fu">=</span> <span class="dt">B</span> <span class="st">"Goedel, Kurt"</span> <span class="dt">Leaf</span>
+<span class="ot">&gt;</span>            (<span class="dt">B</span> <span class="st">"Hoare, Tony"</span> <span class="dt">Leaf</span> (<span class="dt">B</span> <span class="st">"Turing, Alan"</span> <span class="dt">Leaf</span> <span class="dt">Leaf</span>))
+<span class="ot">&gt;</span>            
+<span class="ot">&gt;</span> example2 <span class="fu">=</span> <span class="dt">B</span> <span class="st">"Hoare, Tony"</span> (<span class="dt">B</span> <span class="st">"Goedel, Kurt"</span> <span class="dt">Leaf</span> <span class="dt">Leaf</span>)
+<span class="ot">&gt;</span>                            (<span class="dt">B</span> <span class="st">"Turing, Alan"</span> <span class="dt">Leaf</span> <span class="dt">Leaf</span>) </code></pre></div>
+<p>Binary search trees are good for searching if they are <em>balanced</em>: the weights of the two subtrees should be (nearly) equal.</p>
+<p>Example 1 is unbalanced, example 2 is balanced. In example 1 you have to take two steps from the root of the tree before you reach Turing, in example 2 you can get to Turing from the root in one step.</p>
+<p>What does <em>balanced</em> mean? What does <em>weight</em> mean? Let's define <em>weight</em> as <em>number of internal nodes</em>.</p>
+<p><strong>Review Question</strong></p>
+<p>How can you show that the following map computes weight correctly?</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; weight ::</span> <span class="dt">Btree</span> a <span class="ot">-&gt;</span> <span class="dt">Int</span>
+<span class="ot">&gt;</span> weight <span class="dt">Leaf</span> <span class="fu">=</span> <span class="dv">0</span>
+<span class="ot">&gt;</span> weight (<span class="dt">B</span> _ t1 t2) <span class="fu">=</span> <span class="dv">1</span> <span class="fu">+</span> weight t1 <span class="fu">+</span> weight t2</code></pre></div>
+<p><strong>Answer</strong> By giving a <em>proof by induction</em>. Here goes:</p>
+<p>A leaf node has no internal nodes, so the first clause for <code>weight</code> correctly computes this.</p>
+<p>If <code>t1</code> has <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" role="math" style="width: 0.671em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.61em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.61em 2.127em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math-italic;">n</span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></span></span><script type="math/tex" id="MathJax-Element-1">n</script></span> internal nodes, and <code>t2</code> has <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-4" role="math" style="width: 0.974em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.913em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.91em 2.127em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-5"><span class="mi" id="MathJax-Span-6" style="font-family: MathJax_Math-italic;">m</span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi></math></span></span><script type="math/tex" id="MathJax-Element-2">m</script></span> internal nodes then <code>B x t1 t2</code> has <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-7" role="math" style="width: 4.736em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.554em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.277em 1004.55em 2.37em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-8"><span class="mn" id="MathJax-Span-9" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-10" style="font-family: MathJax_Main; padding-left: 0.246em;">+</span><span class="mi" id="MathJax-Span-11" style="font-family: MathJax_Math-italic; padding-left: 0.246em;">n</span><span class="mo" id="MathJax-Span-12" style="font-family: MathJax_Main; padding-left: 0.246em;">+</span><span class="mi" id="MathJax-Span-13" style="font-family: MathJax_Math-italic; padding-left: 0.246em;">m</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.122em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.878em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mo>+</mo><mi>n</mi><mo>+</mo><mi>m</mi></math></span></span><script type="math/tex" id="MathJax-Element-3">1 + n + m</script></span> internal nodes, and the second clause for <code>weight</code> correctly computes this. QED.</p>
+<p>Now suppose we count the number of leaves of an binary tree:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; leafCnt ::</span> <span class="dt">Btree</span> a <span class="ot">-&gt;</span> <span class="dt">Int</span>
+<span class="ot">&gt;</span> leafCnt <span class="dt">Leaf</span> <span class="fu">=</span> <span class="dv">1</span>
+<span class="ot">&gt;</span> leafCnt (<span class="dt">B</span> _ t1 t2) <span class="fu">=</span> leafCnt t1 <span class="fu">+</span>leafCnt t2</code></pre></div>
+<p>Try this out on the examples:</p>
+<pre><code> *Lecture7&gt; weight example1
+ 3
+ *Lecture7&gt; leafCnt example1
+ 4
+ *Lecture7&gt; weight example2
+ 3
+ *Lecture7&gt; leafCnt example2
+ 4</code></pre>
+<p>Hmm. Will it <em>always</em> be the case that the number of leaves of a binary tree is one more than the number of its internal nodes?</p>
+<p>Let us try a <em>proof by induction</em>.</p>
+<p><strong>Proposition</strong> The number of leaves of a binary tree is one more than the number of internal nodes.</p>
+<p>Basis: <code>Leaf</code> has one leaf, and no internal nodes. So the proposition holds for this case.</p>
+<p>Induction step: Assume that the proposition holds for <code>t1</code> and <code>t2</code>. We have to show that it also holds for <code>B x t1 t2</code>. The number of leaves of <code>B x t1 t2</code> is given by <code>leafCnt t1 + leafCnt t2</code>. We know from the induction hypothesis that this is equal to <code>weight t1 + weight t2 + 2</code>. But the number of internal nodes of <code>B x t1 t2</code> is given by <code>weight t1 + weight t2 + 1</code>. So the number of leaves is one more than the number of internal nodes, and the proposition holds. QED.</p>
+<hr>
+<p><strong>Some last exercises with QuickCheck</strong></p>
+<p>It follows from this proposition that the following test should always succeed:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> prop_tree t <span class="fu">=</span> weight t <span class="fu">+</span> <span class="dv">1</span> <span class="fu">==</span> leafCnt t
+<span class="ot">&gt;</span>         <span class="kw">where</span> types <span class="fu">=</span><span class="ot"> t ::</span> <span class="dt">Btree</span> <span class="dt">Int</span></code></pre></div>
+<p>But we cannot run this directly as a QuickCheck test:</p>
+<pre><code> *Lecture7&gt; quickCheck prop_tree
+ &lt;interactive&gt;:5:1:
+     No instance for (Arbitrary (Btree Int))
+       arising from a use of ‘quickCheck’
+     In the expression: quickCheck prop_tree
+     In an equation for ‘it’: it = quickCheck prop_tree</code></pre>
+<p>How can we remedy this? By putting <code>Btree a</code> in the class <code>Arbitrary</code>.</p>
+<p>How to do this? First, we have to assume that a <em>generator</em> is available for the info at the internal nodes.</p>
+<p>In other words, <code>Btree a</code> should be such that <code>a</code> is in class <code>Arbitrary</code>.</p>
+<p>Next, we have to control the size of the generated trees. A generated tree of size <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-14" role="math" style="width: 0.671em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.61em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.338em 1000.61em 2.127em -999.997em); top: -1.939em; left: 0.003em;"><span class="mrow" id="MathJax-Span-15"><span class="mi" id="MathJax-Span-16" style="font-family: MathJax_Math-italic;">n</span></span><span style="display: inline-block; width: 0px; height: 1.945em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></span></span><script type="math/tex" id="MathJax-Element-4">n</script></span> should have subtrees of size no larger than <span class="math inline"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mo&gt;/&lt;/mo&gt;&lt;/mrow&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-17" role="math" style="width: 1.702em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.641em; height: 0px; font-size: 103%;"><span style="position: absolute; clip: rect(1.217em 1001.58em 2.552em -999.997em); top: -2.121em; left: 0.003em;"><span class="mrow" id="MathJax-Span-18"><span class="mi" id="MathJax-Span-19" style="font-family: MathJax_Math-italic;">n</span><span class="texatom" id="MathJax-Span-20"><span class="mrow" id="MathJax-Span-21"><span class="mo" id="MathJax-Span-22" style="font-family: MathJax_Main;">/</span></span></span><span class="mn" id="MathJax-Span-23" style="font-family: MathJax_Main;">2</span></span><span style="display: inline-block; width: 0px; height: 2.127em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.128em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mrow class="MJX-TeXAtom-ORD"><mo>/</mo></mrow><mn>2</mn></math></span></span><script type="math/tex" id="MathJax-Element-5">n/2</script></span>.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">instance</span> <span class="dt">Arbitrary</span> a <span class="ot">=&gt;</span> <span class="dt">Arbitrary</span> (<span class="dt">Btree</span> a) <span class="kw">where</span>
+<span class="ot">&gt;</span>     arbitrary <span class="fu">=</span> sized gtree
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> gtree <span class="dv">0</span> <span class="fu">=</span> return <span class="dt">Leaf</span>
+<span class="ot">&gt;</span> gtree n <span class="fu">=</span> <span class="kw">do</span>
+<span class="ot">&gt;</span>            x <span class="ot">&lt;-</span> arbitrary 
+<span class="ot">&gt;</span>            t1 <span class="ot">&lt;-</span> subtree
+<span class="ot">&gt;</span>            t2 <span class="ot">&lt;-</span> subtree
+<span class="ot">&gt;</span>            return (<span class="dt">B</span> x t1 t2)
+<span class="ot">&gt;</span>       <span class="kw">where</span> subtree <span class="fu">=</span> gtree (n <span class="ot">`div`</span> <span class="dv">2</span>)</code></pre></div>
+<p>For further understanding of this, it is useful to check the type of <code>sized</code>:</p>
+<pre><code>    *Lecture7&gt; :t sized
+    sized :: (Int -&gt; Gen a) -&gt; Gen a</code></pre>
+<p>Now the test runs and succeeds:</p>
+<pre><code>*Lecture7&gt; quickCheck prop_tree
++++ OK, passed 100 tests.
+        </code></pre>
+<hr>
+<p><strong>Tree Definitions and Abstraction</strong></p>
+<p>We could improve on the definitions of <code>weight</code> and <code>leafCnt</code> if we had a <code>foldT</code> function for binary trees, for then we could say:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; weight' ::</span> <span class="dt">Btree</span> a <span class="ot">-&gt;</span> <span class="dt">Int</span>
+<span class="ot">&gt;</span> weight' <span class="fu">=</span> foldT (\ _ n m <span class="ot">-&gt;</span> <span class="dv">1</span><span class="fu">+</span>n<span class="fu">+</span>m) <span class="dv">0</span>
+<span class="ot">&gt;</span> 
+<span class="ot">&gt; leafCnt' ::</span> <span class="dt">Btree</span> a <span class="ot">-&gt;</span> <span class="dt">Int</span>
+<span class="ot">&gt;</span> leafCnt' <span class="fu">=</span> foldT (\ _ n m <span class="ot">-&gt;</span> n<span class="fu">+</span>m) <span class="dv">1</span>       </code></pre></div>
+<p>Notice how this extracts the <em>essence</em> of the weight and leafCnt definitions.</p>
+<p>So let's define <code>foldT</code>. Note the type of the first argument.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; foldT ::</span> (a <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> b <span class="ot">-&gt;</span> <span class="dt">Btree</span> a <span class="ot">-&gt;</span> b
+<span class="ot">&gt;</span> foldT f z <span class="dt">Leaf</span> <span class="fu">=</span> z
+<span class="ot">&gt;</span> foldT f z (<span class="dt">B</span> x t1 t2) <span class="fu">=</span> f x (foldT f z t1) (foldT f z t2)</code></pre></div>
+<p>Think of the function <code>f :: a -&gt; b -&gt; b -&gt; b</code> as function that combines the info at the internal node of the tree with the results of type <code>b</code> of the recursive calls on the two subtrees to produce an overall result of type <code>b</code>.</p>
+<p>It also useful to have <code>mapT</code>, which behaves on binary trees like <code>map</code> behaves on lists.</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="ot">mapT ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> <span class="dt">Tree</span> a <span class="ot">-&gt;</span> <span class="dt">Tree</span> b   
+mapT f <span class="dt">Leaf</span> <span class="fu">=</span> <span class="dt">Leaf</span> 
+mapT f (<span class="dt">B</span> x left right) <span class="fu">=</span> <span class="dt">B</span> (f x) (mapT f left) (mapT f right)</code></pre></div>
+<p>But notice that we can use <code>foldT</code> to define <code>mapT</code>, as follows:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; mapT ::</span> (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> <span class="dt">Btree</span> a <span class="ot">-&gt;</span> <span class="dt">Btree</span> b
+<span class="ot">&gt;</span> mapT f <span class="fu">=</span> foldT (\ x t1 t2 <span class="ot">-&gt;</span> <span class="dt">B</span> (f x) t1 t2) <span class="dt">Leaf</span></code></pre></div>
+<p>Also notice that <code>foldT</code> is a much more powerful tool than <code>mapT</code></p>
+<p>Example: suppose we want to define a map from <code>Tree a</code> to <code>Tree Int</code> where the info at the internal node is replaced by weight info.</p>
+<p>Notice that <code>mapT</code> cannot do this, for the weight info about a tree cannot be determined from the info at its internal node.</p>
+<p>But with <code>foldT</code> it is very easy:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; w ::</span> <span class="dt">Btree</span> a <span class="ot">-&gt;</span> <span class="dt">Btree</span> <span class="dt">Int</span>
+<span class="ot">&gt;</span> w <span class="fu">=</span> foldT (\ _ t1 t2 <span class="ot">-&gt;</span> <span class="dt">B</span> (<span class="dv">1</span> <span class="fu">+</span> weight t1 <span class="fu">+</span> weight t2) t1 t2) <span class="dt">Leaf</span></code></pre></div>
+<p>Example use:</p>
+<pre><code>    *Lecture7&gt; w example1
+    B 3 Leaf (B 2 Leaf (B 1 Leaf Leaf))
+    *Lecture7&gt; w example2
+    B 3 (B 1 Leaf Leaf) (B 1 Leaf Leaf)
+           </code></pre>
+<p>This reveals clearly that <code>example1</code> is not balanced.</p>
+<hr>
+<p>So let us return to the use of binary trees to speed up search.</p>
+<p>It looks like we need balanced trees for that. Here is a definition of <code>balanced</code>:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; balanced ::</span> <span class="dt">Btree</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> balanced <span class="dt">Leaf</span> <span class="fu">=</span> <span class="dt">True</span>
+<span class="ot">&gt;</span> balanced (<span class="dt">B</span> _ t1 t2) <span class="fu">=</span>
+<span class="ot">&gt;</span>     balanced t1 <span class="fu">&amp;&amp;</span> balanced t2 <span class="fu">&amp;&amp;</span> weight t1 <span class="fu">==</span> weight t2               </code></pre></div>
+<p>Balancedness is a very strong requirement: you cannot have balanced trees with an even number of internal nodes. (Why not?)</p>
+<p>So we need to soften the requirement a bit:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; nbalanced ::</span> <span class="dt">Btree</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> nbalanced <span class="dt">Leaf</span> <span class="fu">=</span> <span class="dt">True</span>
+<span class="ot">&gt;</span> nbalanced (<span class="dt">B</span> _ t1 t2) <span class="fu">=</span>
+<span class="ot">&gt;</span>     nbalanced t1 <span class="fu">&amp;&amp;</span> nbalanced t2
+<span class="ot">&gt;</span>     <span class="fu">&amp;&amp;</span> diff (weight t1) (weight t2) <span class="fu">&lt;=</span> <span class="dv">1</span>
+<span class="ot">&gt;</span>   <span class="kw">where</span> diff n m <span class="fu">=</span> abs (n <span class="fu">-</span> m)</code></pre></div>
+<p><strong>Review question</strong> Suppose we have an <em>ordered list</em>. How do we convert this into a <em>nearly balanced binary tree</em>?</p>
+<p><strong>Answer</strong> We have to put the element that is (nearly) in the middle of the list at the top of the tree.</p>
+<p>This suggests a <strong>recursive procedure</strong>: split the list into <code>firstHalf ++ [x] ++ secondHalf</code>, with the two halves of (nearly) equal length.</p>
+<p>Next, put <code>x</code> at the top of the tree, and recursively construct the two subtrees.</p>
+<p>The <strong>power of recursion</strong> again:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; list2btree ::</span> [a] <span class="ot">-&gt;</span> <span class="dt">Btree</span> a
+<span class="ot">&gt;</span> list2btree [] <span class="fu">=</span> <span class="dt">Leaf</span>
+<span class="ot">&gt;</span> list2btree xs <span class="fu">=</span> <span class="kw">let</span>
+<span class="ot">&gt;</span>    n  <span class="fu">=</span> length xs 
+<span class="ot">&gt;</span>    firstHalf  <span class="fu">=</span> take (n <span class="ot">`div`</span> <span class="dv">2</span>) xs
+<span class="ot">&gt;</span>    secondHalf <span class="fu">=</span> drop (n <span class="ot">`div`</span> <span class="dv">2</span>) xs
+<span class="ot">&gt;</span>    (x,secondHalf') <span class="fu">=</span> (head secondHalf,tail secondHalf)
+<span class="ot">&gt;</span>  <span class="kw">in</span>
+<span class="ot">&gt;</span>    <span class="dt">B</span> x (list2btree firstHalf) (list2btree secondHalf')</code></pre></div>
+<p><strong>Review question</strong> Does this function always construct nearly balanced trees?</p>
+<p>We could try a proof by induction. Instead, let us write a test for this.</p>
+<p><strong>Review question</strong> Is the following a correct test?</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> prop_nbalance xs <span class="fu">=</span> nbalanced <span class="fu">$</span> list2btree xs
+<span class="ot">&gt;</span>    <span class="kw">where</span> types <span class="fu">=</span><span class="ot"> xs ::</span> [<span class="dt">Int</span>]</code></pre></div>
+<p><strong>Answer</strong> Yes, and it succeeds:</p>
+<pre><code>       *Lecture7&gt; quickCheck prop_nbalance 
+       +++ OK, passed 100 tests.
+                              </code></pre>
+<p><strong>Review question</strong> How can test that the function always creates ordered trees from ordered lists?</p>
+<p><strong>Answer</strong> This is more difficult than it may seem. To start with, we need a definition of <em>ordered</em> for binary trees. In fact, a large part of the <a href="http://homepages.cwi.nl/~jve/courses/15/testing/lab/LabExam2014.pdf">Lab Exam of last year</a> was devoted to finding a correct definition for this ...</p>
+<hr>
+<p>Let us do a detour: first define <em>in order traversal</em> of a binary tree:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; inOrder ::</span> <span class="dt">Btree</span> a <span class="ot">-&gt;</span> [a]
+<span class="ot">&gt;</span> inOrder <span class="dt">Leaf</span> <span class="fu">=</span> []
+<span class="ot">&gt;</span> inOrder (<span class="dt">B</span> x t1 t2) <span class="fu">=</span> inOrder t1 <span class="fu">++</span> [x] <span class="fu">++</span> inOrder t2</code></pre></div>
+<p>Now we can call a binary tree <em>ordered</em> if its in order traversal results in an ordered list:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; orderedT ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> <span class="dt">Btree</span> a <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> orderedT t <span class="fu">=</span> ordered (inOrder t)</code></pre></div>
+<p>This uses the following definition of <code>ordered</code> for lists:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; ordered ::</span> <span class="dt">Ord</span> a <span class="ot">=&gt;</span> [a] <span class="ot">-&gt;</span> <span class="dt">Bool</span>
+<span class="ot">&gt;</span> ordered xs <span class="fu">=</span> all (uncurry (<span class="fu">&lt;=</span>)) (zip xs (tail xs))</code></pre></div>
+<p><strong>Review question</strong> Do you understand this definition? To check this, first check piece by piece that it is well-typed. Next check whether you fully understand what it says.</p>
+<p>Now here is a property to test:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> prop_orderT xs <span class="fu">=</span> ordered xs <span class="fu">==&gt;</span> orderedT <span class="fu">$</span> list2btree xs
+<span class="ot">&gt;</span>         <span class="kw">where</span> types <span class="fu">=</span><span class="ot"> xs ::</span> [<span class="dt">Int</span>]</code></pre></div>
+<p>This is hard to test with QuickCheck, because the precondition is hard to fulfil:</p>
+<pre><code>    *Lecture7&gt; quickCheck prop_orderT 
+    *** Gave up! Passed only 74 tests.
+    *Lecture7&gt; quickCheck prop_orderT 
+    *** Gave up! Passed only 75 tests.</code></pre>
+<p>QuickCheck gives up is because it does not manage to generate any ordered lists. Since orderedness of the input is a precondition, all tests that it generated will vacuously succeed.</p>
+<p>To remedy this, we need to generate ordered lists in the first place:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> prop_orderT' (<span class="dt">Ordered</span> xs) <span class="fu">=</span> orderedT <span class="fu">$</span> list2btree xs
+<span class="ot">&gt;</span>         <span class="kw">where</span> types <span class="fu">=</span><span class="ot"> xs ::</span> [<span class="dt">Int</span>]</code></pre></div>
+<p>Now we get a test that works, and ... succeeds:</p>
+<pre><code>   *Lecture7&gt; quickCheck prop_orderT'
+   +++ OK, passed 100 tests.</code></pre>
+<p>To see why and how this works, consult <a href="https://hackage.haskell.org/package/QuickCheck-2.4.1.1/docs/Test-QuickCheck-Modifiers.html">QuickCheck Modifiers</a>.</p>
+<hr>
+<p><strong>Binary Search</strong></p>
+<p><a href="https://reprog.wordpress.com/2010/04/19/are-you-one-of-the-10-percent/">Are you one of the 10% of programmers who can write a binary search?</a></p>
+<p>See also: <a href="https://tfetimes.com/wp-content/uploads/2015/04/ProgrammingPearls2nd.pdf">Jon Bentley, Programming Pearls, Second Edition</a>.</p>
+<div class="figure">
+<img src="./Lecture7_files/pearls.jpg" alt="">
+
+</div>
+<p>This is a <a href="http://www.cs.cmu.edu/~agroce/passages/PearlsReview.pdf">recommended book</a>. From this review:</p>
+<p>"<em>Programming Pearls</em> is about programming, and it is probably not a book for anyone who isn't a moderately capable programmer."</p>
+<p><strong>Review Question</strong> How can we do (fast) binary search on long ordered lists? Suppose the list consists of pairs and is ordered by first element. We want to use the first elements as keys to find second elements (values).</p>
+<p><strong>Answer</strong> Transform the list into a (nearly) balanced tree, and then do binary search on the tree.</p>
+<p>To implement binary search, we (again) use <em>recursion</em>:</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt; bSearch ::</span> <span class="dt">Ord</span> key <span class="ot">=&gt;</span> key <span class="ot">-&gt;</span> <span class="dt">Btree</span> (key,value) <span class="ot">-&gt;</span> <span class="dt">Maybe</span> value
+<span class="ot">&gt;</span> bSearch _ <span class="dt">Leaf</span> <span class="fu">=</span> <span class="dt">Nothing</span>
+<span class="ot">&gt;</span> bSearch x (<span class="dt">B</span> (k,v) left right) <span class="fu">=</span> <span class="kw">if</span> x <span class="fu">==</span> k <span class="kw">then</span> <span class="dt">Just</span> v
+<span class="ot">&gt;</span>                                  <span class="kw">else</span> <span class="kw">if</span> x <span class="fu">&lt;</span> k <span class="kw">then</span> bSearch x left
+<span class="ot">&gt;</span>                                  <span class="kw">else</span> bSearch x right</code></pre></div>
+<p>How do we test this? What are the relevant properties?</p>
+<p>Here is one. If <code>x</code> occurs as a key in a binary tree <code>t</code>, and the tree is ordered, then <code>bSearch x t</code> will return <code>Just v</code> for some <code>v</code> with <code>(x,v)</code> at an internal node of <code>t</code>.</p>
+<p>Here is another. If <code>x</code> does not occur as a key the search will return <code>Nothing</code>.</p>
+<p>These can be used for testing if we construct appropriate trees.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> prop_bsearch1 xs <span class="fu">=</span> <span class="kw">let</span>
+<span class="ot">&gt;</span>    types <span class="fu">=</span><span class="ot"> xs ::</span> [<span class="dt">Int</span>]
+<span class="ot">&gt;</span>    keyValues <span class="fu">=</span> zip (sort xs) xs
+<span class="ot">&gt;</span>    tree <span class="fu">=</span> list2btree keyValues
+<span class="ot">&gt;</span>  <span class="kw">in</span>
+<span class="ot">&gt;</span>    all (\x <span class="ot">-&gt;</span> bSearch x tree <span class="fu">/=</span> <span class="dt">Nothing</span>) xs </code></pre></div>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> prop_bsearch2 xs ys <span class="fu">=</span> <span class="kw">let</span>
+<span class="ot">&gt;</span>    types <span class="fu">=</span> xs<span class="fu">++</span><span class="ot">ys ::</span> [<span class="dt">Int</span>]
+<span class="ot">&gt;</span>    zs <span class="fu">=</span> nub ys \\ xs
+<span class="ot">&gt;</span>    keyValues <span class="fu">=</span> zip (sort xs) xs
+<span class="ot">&gt;</span>    tree <span class="fu">=</span> list2btree keyValues
+<span class="ot">&gt;</span>  <span class="kw">in</span>
+<span class="ot">&gt;</span>    all (\x <span class="ot">-&gt;</span> bSearch x tree <span class="fu">==</span> <span class="dt">Nothing</span>) zs </code></pre></div>
+<p>Both of these tests succeed.</p>
+<hr>
+<p><strong>What have we learned?</strong></p>
+<ul>
+<li><p>Software testing only makes sense if you have a <em>specification</em>.</p></li>
+<li><p>Specifications are only useful for testing if they can be stated in a <em>formal way</em>.</p></li>
+<li><p>Specifications are easier to comprehend and use if your programming language provides an easy means to state <em>pre- and postconditions</em> of functions.</p></li>
+<li><p>Specifications should be stated in terms of <em>properties</em>.</p></li>
+<li><p>In property based testing, the test process can be <em>automated</em>.</p></li>
+<li><p>Once you have a useful specification, the test process (almost) takes care of itself. And: the <strong>QuickCheck</strong> method works for any programming language.</p></li>
+<li><p>Maybe the key point: <strong>Abstraction Matters</strong>.</p></li>
+</ul>
+<hr>
+<p><strong>How can the quality of specifications be tested?</strong></p>
+<p>This is the age-old question from social philosophy:</p>
+<p><a href="https://en.wikipedia.org/wiki/Quis_custodiet_ipsos_custodes%3F">Quis custodiet ipsos custodes?</a>: "Who will guard the guardsmen themselves?"</p>
+<p>Who or what can guarantee that the police force itself is not currupt?</p>
+<p>In software testing: who or what guarantees the <strong>quality of tests</strong>?</p>
+<p>An interesting approach to the problem of evaluating the quality of a specification S for a program P is as follows.</p>
+<p>Create a series of <em>mutants</em> of P by making a number of <em>random small patches</em> to the program. Next check the proportion of the mutants that are killed off by S. High quality specifications are successful mutant killers.</p>
+<p>See <a href="https://en.wikipedia.org/wiki/Mutation_testing">Mutation testing</a> for further description of the approach and some history (the approach was first proposed in 1971, and first implemented in 1980).</p>
+<p>A Haskell tool for mutation checking is described <a href="http://web.engr.oregonstate.edu/~alipour/pub/mucheck.pdf">here</a>.</p>
+<p>If there is time we can play a bit with the <a href="https://hackage.haskell.org/package/MuCheck">muCheck package</a> ...</p>
+<hr>
+<p><strong>Some more nice material on Haskell</strong></p>
+<p>A brilliant but steeply paced tutorial on Haskell is the blog <a href="http://yannesposito.com/Scratch/en/blog/Haskell-the-Hard-Way/">Haskell Fast and Hard</a>, also with an <a href="https://www.fpcomplete.com/school/starting-with-haskell/haskell-fast-hard">interactive version</a>.</p>
+<p>According to the author, the fact that Haskell is hard is a good thing. "It is because it is hard that Haskell is interesting."</p>
+<p>The interactive version of the tutorial is part of <a href="https://www.fpcomplete.com/">FP Complete</a>, an amazing source of info about Haskell making a strong case for functional programming as a solution to the high rate of software project failure we see today.</p>
+<p>FP Complete lists the following as key features of Haskell. See if you agree.</p>
+<ul>
+<li><p>Cut code size by 50-80%</p></li>
+<li><p>Dramatically cut errors</p></li>
+<li><p>Significantly reduce time for finding and fixing errors—fewer errors and fixing them at compile time, not run-time</p></li>
+<li><p>Easy code maintenance and rework without introducing new errors (no more spaghetti code)</p></li>
+<li><p>Much more secure—much fewer holes to exploit</p></li>
+<li><p>Built-in concurrency and parallel processing boost performance</p></li>
+</ul>
+<p>If you agree with most of this, you might also wish to read <a href="https://wiki.haskell.org/Why_Haskell_matters">Why Haskell matters</a>.</p>
+<hr>
+<p><strong>Another recommended book</strong></p>
+<div class="figure">
+<img src="./Lecture7_files/Mythical_man-month.jpg" alt="">
+
+</div>
+<p><strong>And one more</strong></p>
+<div class="figure">
+<img src="./Lecture7_files/whyprogramsfail.jpg" alt="">
+
+</div>
+<hr>
+<p><strong>How to prepare for the exam?</strong></p>
+<p>The <strong>best preparation for your exam</strong> is to attempt to solve some (or better: many) of the old workshop and lab problems again, on your own, and next check your answers by consulting the solutions. Also, solving some more of the problems in <em>The Haskell Road</em> is a good idea.</p>
+<p>Next, look at the example programs that were discussed in the lecture notes. Each time you encounter a <strong>review question</strong>, then you should attempt to <strong>provide your own answer</strong> before you read on.</p>
+<p><strong>Ask yourself questions all the time while preparing for the exam.</strong></p>
+<hr>
+<p><strong>Do not forget to fill out the online course review form</strong></p>
+<hr>
+<p><strong>Take good note of the time and venue on Monday October 19.</strong></p>
+<p><strong>Remember our honour code agreement.</strong></p>
+<p><strong>Make sure you have Haskell and QuickCheck properly installed on your laptop, and that your laptop battery is charged.</strong></p>
+<p>Back to <a href="http://homepages.cwi.nl/~jve/courses/15/testing/index.html">Main page</a>.</p>
+<hr>
+<div id="references" class="references">
+
+</div>
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Main, sans-serif;"></div></div></body></html>

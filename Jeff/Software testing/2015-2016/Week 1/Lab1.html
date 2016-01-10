@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0061)http://homepages.cwi.nl/~jve/courses/15/testing/lab/Lab1.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="./Lab1_files/buttondown.css" type="text/css">
+</head>
+<body>
+<h1 id="lab-1-functional-programming-and-some-logic">Lab 1: Functional Programming and (Some) Logic</h1>
+<hr>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">module</span> <span class="dt">Lab1</span> <span class="kw">where</span></code></pre></div>
+<hr>
+<p><strong>Implement and test the Luhn Algorithm</strong></p>
+<p>The <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn algorithm</a> is a formula for validating credit card numbers. Detailed instructions for a Haskell solution are <a href="http://www.seas.upenn.edu/~cis194/hw/01-intro.pdf">here</a>. This exercise is taken from the <a href="http://www.seas.upenn.edu/~cis194/lectures.html">Upenn Haskell Course</a>, exercises 1--5. Please observe the style instructions on the Upenn course website. Note that <strong>testing software</strong> for the exercises is provided, together with a test for the first exercise. Your task is also to give tests for exercises 2--5.</p>
+<p><strong>Note</strong> You should use the files <a href="http://www.seas.upenn.edu/~cis194/extras/01-intro/HW01.hs">HW01.hs</a>, <a href="http://www.seas.upenn.edu/~cis194/extras/01-intro/HW01Tests.hs">HW01Tests.hs</a> and <a href="http://www.seas.upenn.edu/~cis194/extras/01-intro/Testing.hs">Testing.hs</a> as your starting point.</p>
+<hr>
+<p><strong>Crime Scene Investigation</strong></p>
+<p>A group of five school children is caught in a crime. One of them has stolen something from some kid they all dislike. The headmistress has to find out who did it. She questions the children, and this is what they say:</p>
+<p><em>Matthew</em>: Carl didn't do it, and neither did I.</p>
+<p><em>Peter</em> It was Matthew or it was Jack.</p>
+<p><em>Jack</em> Matthew and Peter are both lying.</p>
+<p><em>Arnold</em> Matthew or Peter is speaking the truth, but not both.</p>
+<p><em>Carl</em> What Arnold says is not true.</p>
+<p>Their class teacher now comes in. She says: three of these boys always tell the truth, and two always lie. You can assume that what the class teacher says is true. Use Haskell to write a function that computes who was the thief, and a function that computes which boys made honest declarations. Here are some definitions to get you started.</p>
+<div class="sourceCode"><pre class="sourceCode literate literatehaskell"><code class="sourceCode literatehaskell"><span class="ot">&gt;</span> <span class="kw">data</span> <span class="dt">Boy</span> <span class="fu">=</span> <span class="dt">Matthew</span> <span class="fu">|</span> <span class="dt">Peter</span> <span class="fu">|</span> <span class="dt">Jack</span> <span class="fu">|</span> <span class="dt">Arnold</span> <span class="fu">|</span> <span class="dt">Carl</span> 
+<span class="ot">&gt;</span>            <span class="kw">deriving</span> (<span class="dt">Eq</span>,<span class="dt">Show</span>)
+<span class="ot">&gt;</span> 
+<span class="ot">&gt;</span> boys <span class="fu">=</span> [<span class="dt">Matthew</span>, <span class="dt">Peter</span>, <span class="dt">Jack</span>, <span class="dt">Arnold</span>, <span class="dt">Carl</span>]</code></pre></div>
+<p>You should first define a function</p>
+<pre><code>  says :: Boy -&gt; Boy -&gt; Bool</code></pre>
+<p>for encoding what the boys say about each other.</p>
+<p>Next, define</p>
+<pre><code>  accusers :: Boy -&gt; [Boy]</code></pre>
+<p>giving the list of accusers of each boy.</p>
+<p>Finally, define</p>
+<pre><code> guilty, honest :: [Boy]</code></pre>
+<p>to give the list of guilty boys, plus the list of boys who made honest (true) statements.</p>
+<p>If the puzzle is well-designed, then <code>guilty</code> should give a singleton list.</p>
+<hr>
+<p><strong>Bonus</strong></p>
+<p>If this was all easy for you, you should next try some of the problems of <a href="http://projecteuler.net/">Project Euler</a>. Try problems 9, 10 and 49.</p>
+<hr>
+<p><strong>Submission deadline</strong> is Sunday evening, September 6th, at midnight.</p>
+<div id="references" class="references">
+
+</div>
+
+
+</body></html>

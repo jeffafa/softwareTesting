@@ -1,0 +1,18 @@
+Paper Sessions Here are some important papers that reflect on the software testing process:
+
+James A. Whittaker, What is software testing? And why is it so hard? IEEE Software, vol.17, no.1, pp.70-79, january/february 2000: here
+Tony Hoare, How did software get so reliable without proof?, FME'96: Industrial Benefit and Advances in Formal Methods, Lecture Notes in Computer Science, 1996, Volume 1051/1996, 1-17. here
+Bertrand Meyer, Seven Principles of Software Testing, Computer, August 2008 (vol. 41 no. 8), pp 99-101. here
+Jonathan P. Bowen and Michael G. Hinchey, Ten Commandments of Formal Methods, Computer, 1995, vol 28, no 4, pages 56 etc. here
+Jonathan P. Bowen and Michael G. Hinchey, Ten Commandments Revisited: A Ten-Year Perspective on the Industrial Application of Formal Methods, Proceedings of the 10th international workshop on Formal methods for industrial critical systems Pages 8-16. here
+Use these papers to broaden your understanding of software testing, and on the connection between specification and testing.
+Next, write a short essay in which you discuss the following claim:
+
+If you want to become a better software tester, 
+you should start with making the specifications of the 
+software you want to test as clear as possible. Once
+you have clear specifications, the testing process can 
+often be automated, and will almost take care of itself. 
+Further background can be found in the following survey paper:
+
+Robert M. Hierons and many others, Using Formal Specifications to Support Testing ACM Computing Surveys, Vol 41, No 2, February 2009. here
