@@ -1,0 +1,49 @@
+module LabExam
+
+where
+import Data.List
+
+data Btree a = Leaf | B a (Btree a) (Btree a) deriving (Eq,Show)
+
+makeT :: Ord a => [a] -> Btree a
+makeT = foldr insertT Leaf
+
+insertT :: Ord a => a -> Btree a -> Btree a
+insertT x Leaf = B x Leaf Leaf
+insertT x (B y left right) 
+  | x < y     = B y (insertT x left) right
+  | otherwise = B y left (insertT x right) 
+
+type Dict = Btree (String,String) 
+
+lemma, info :: (String,String) -> String
+lemma (x,_) = x
+info  (_,y) = y 
+
+invar :: (a -> Bool) -> (a -> a) -> a -> a
+invar p = assert (\ x y -> not (p x) || p y) 
+
+assert :: (a -> b -> Bool) -> (a -> b) -> a -> b 
+assert p f x = let x' = f x in 
+   if p x x' then x' else error "assert"
+
+ordered1 :: Dict -> Bool
+ordered1 Leaf = True
+ordered1 (B _ Leaf Leaf) = True
+ordered1 (B x Leaf (B x1 l r)) = 
+  lemma x < lemma x1 && ordered1  (B x1 l r)
+ordered1 (B x (B x1 l r) Leaf) = 
+  ordered1 (B x1 l r) && lemma x1 < lemma x
+ordered1 (B x (B x1 l1 r1) (B x2 l2 r2)) = 
+  lemma x1 < lemma x && lemma x < lemma x2 && 
+  ordered1 (B x1 l1 r1) && ordered1 (B x2 l2 r2)
+
+ordered2 :: Dict -> Bool
+ordered2 dict = ordered' [] [] dict where 
+  ordered' :: [String] -> [String] -> Dict -> Bool
+  ordered' _ _ Leaf = True 
+  ordered' xs ys (B u left right) = let z = lemma u in 
+      (xs == [] || z > head xs) &&
+      (ys == [] || z < head ys) &&
+       ordered' xs [z] left && ordered' [z] ys right
+
